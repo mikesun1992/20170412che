@@ -1,0 +1,2024 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>江淮 和悦A30 2013款 1.5L手动豪华型 国IV-车碑二手车直卖网</title>
+		<meta content="车碑二手车直卖网" name="keywords" />
+		<meta content="" name="description" />
+		<link href="/skin/css/car.css" rel="stylesheet" type="text/css"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="/skin/css/iPicture.css">
+		<script type="text/javascript" src="/static/js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="/static/js/jquery.ipicture.js"></script>
+		<!--<script type="text/javascript" src="/static/js/jquery.js"></script>
+		<script type="text/javascript" src="/static/js/layer/layer.min.js"></script>
+		<script type="text/javascript" src="/static/js/laydate/laydate.js"></script>
+		<script type="text/javascript" src="/static/js/jquery.SuperSlide.2.1.js"></script>
+		<script type="text/javascript" src="/static/js/Validform_v5.3.2_min.js"></script>-->
+		<script type="text/javascript" src="/skin/js/jquery.SuperSlide.2.1.js"></script>
+		<script language="JavaScript">
+			$(function() {
+				//品牌选择
+				$("#brand").change(function(){
+					$.get("/?mod=ajax&ajax=1", { 
+						pid :  $("#brand").val() 
+					}, function (data, textStatus){
+						   $("#subbrand").html(data); // 把返回的数据添加到页面上
+						}
+					);
+				});
+				$("div.car_tab ul li a").mouseover(function() {
+					$(this).addClass("here").parent().siblings().children().removeClass("here");
+					var index = $div_li.index(this);
+					$("div.cartab_box > div").eq(index).show().siblings().hide();
+				});
+				$("#hits").load("/?m=ajax&ajax=1&carshit=1&id=188");
+				$(".emcity").toggle(
+				  function () {
+					$(".emission_city").show();
+				  },
+				  function () {
+					$(".emission_city").hide();
+				  }
+				);
+				//表单验证
+				$(".yuyueform").Validform({
+					tiptype:3
+				});
+
+				$('#yuyue').on('click', function(){
+					var yuyueindex =  $.layer({
+						type: 1,
+						title: '预约看车',
+						shade: [0.5, '#000'],
+						area: ['460px', 'auto'],
+						page: {dom: '#A1'}
+					});
+					$('#btnYuyueLookCar').on('click', function(){
+						$.post("/?m=ajax&ajax=1&yuyue=1",{
+							pid: 188, 
+							uid: 285, 
+							name: $("#A1 input[name='name']").val(), 
+							mobilephone: $("#A1 input[name='mobilephone']").val(),
+							ordertime: $("#A1 input[name='ordertime']").val(),
+							orderinfo:$("#A1 textarea[name='orderinfo']").val()
+						},function(data){
+							if (data==1)
+							{
+								layer.close(yuyueindex);
+								layer.alert("预约成功！请耐心等待商家和您联系！", 9);
+								$('#yuyueform')[0].reset();
+							}
+							else{
+								layer.close(yuyueindex);
+								layer.alert("预约失败！请再次预约！", 9);
+							}
+						});
+					});
+				});
+				$('#xunjia').on('click', function(){
+					 var xunjiaindex = $.layer({
+						type: 1,
+						title: '我要砍价',
+						shade: [0.5, '#000'],
+						area: ['460px', 'auto'],
+						page: {dom: '#B1'}
+					});
+					$('#btnxuejia').on('click', function(){
+						$.post("/?m=ajax&ajax=1&xunjia=1",{
+							pid: 188, 
+							uid: 285, 
+							name: $("#B1 input[name='name']").val(), 
+							mobilephone: $("#B1 input[name='mobilephone']").val(),
+						},function(data){
+							if (data==1)
+							{
+								layer.close(xunjiaindex);
+								layer.alert("询价成功！请耐心等待商家和您联系！", 9);
+								$('#xunjiaform')[0].reset();
+							}
+							else{
+								layer.close(xunjiaindex);
+								layer.alert("询价失败！请再次询价！", 9);
+							}
+						});
+					});
+				});	
+                $('#daikuan').on('click', function(){
+					var daikuanindex =  $.layer({
+						type: 1,
+						title: '分期贷款(元)',
+						shade: [0.5, '#000'],
+						area: ['460px', 'auto'],
+						page: {dom: '#C1'}
+					});
+					$('#btndaikuan').on('click', function(){
+						$.post("/?m=ajax&ajax=1&daikuan=1",{
+							pid: 188, 
+							uid: 285, 
+							name: $("#C1 input[name='name']").val(), 
+							mobilephone: $("#C1 input[name='mobilephone']").val(),
+							ordertime: $("#C1 input[name='ordertime']").val(),
+							orderinfo:$("#C1 textarea[name='orderinfo']").val()
+						},function(data){
+							if (data==1)
+							{
+								layer.close(daikuanindex);
+								layer.alert("申请成功！请耐心等待商家和您联系！", 9);
+								$('#daikuanform')[0].reset();
+							}
+							else{
+								layer.close(daikuanindex);
+								layer.alert("申请失败！请再次申请！", 9);
+							}
+						});
+					});
+				});
+				
+			})
+		</script>
+
+        <script type="text/javascript">
+
+		//检测详情tab
+		function setTab(m, n) {
+			var tli = document.getElementById("menu" + m).getElementsByTagName("li");
+			/*获取选项卡的LI对象*/
+			var mli = document.getElementById("main" + m).getElementsByTagName("ul");
+			/*获取主显示区域对象*/
+			for (i = 0; i < tli.length; i++) {
+				tli[i].className = i == n ? "hover" : "";
+				/*更改选项卡的LI对象的样式，如果是选定的项则使用.hover样式*/
+				mli[i].style.display = i == n ? "block" : "none";
+				/*确定主区域显示哪一个对象*/
+			}
+		};
+	</script>
+
+
+<script type="text/javascript">
+$(function(){
+	$('#user_login').click(function(){	
+		if("undefined" != typeof closetime){
+			clearTimeout(closetime);	
+		}
+		openWindow(loginOpen,500,440,false,true);//弹框的id，宽度，高度，是否需要禁止滚动	
+	});
+});	
+</script>
+
+ 
+<script type="text/javascript">
+var timer;
+var second = getCookie("secondsremained");
+var isSubmit = true;
+$(function(){
+	loadInputCss();
+	
+	$("#loginCar").click(function(){
+		buttonClick($(this));
+		// 防止显示提示发送验证码时出现错误信息提示
+		if($('#login_carer_tipinfo').css('color') == 'rgb(102, 102, 102)' || $('#login_carer_tipinfo').css('color') == '#666' || $('#login_carer_tipinfo').css('color') == '#666666'){
+			return;
+		}
+		login();
+	});
+	
+	// 获取验证码点击事件
+	$('#getyzmcar').click(function(){
+		buttonClick($(this));
+		if(!$('#getyzmcar').hasClass('getYzm_On')){
+			return;
+		}
+		var mobile = $('#czhib_userName').val();
+		if(isMobil(mobile)){
+			var getVerifyUrl = 'czhib_customer/getVerify.htm'; //图形验证码
+			var czhib_yzm = $('#czhib_yzm').val().trim();
+			if("" == czhib_yzm || null == czhib_yzm)
+			{
+				$('#login_carer_tipinfo').css('color', 'red').html('请输入图形验证码！');
+				setTimeout("$('#login_carer_tipinfo').css('color', 'red').html('');", 3000);
+				$('#czhib_yzm').parent().removeClass('InputBingo black').addClass('InputWrong');	
+				return;
+			}
+			$.post(getVerifyUrl, {mobile : mobile,'customeryzm':czhib_yzm}, function(data) {
+				if(data.status){
+					$('#getyzmcar').removeClass('getYzm_On');
+					addCookie("secondsremained",60,60);//添加cookie记录,有效时间60s
+					second = 60;
+					timer = setTimeout('changeSecond()', 1000);
+					$('#login_carer_tipinfo').css('color', '#666').html('验证码已发送至手机，请耐心等待并查收！');
+					setTimeout("$('#login_carer_tipinfo').css('color', 'red').html('');", 3000);
+				} else {
+					$('#login_carer_tipinfo').html(data.msg);
+					if(data.msg.indexOf('图形验证码') >= 0){
+						$('#czhib_yzm').parent().removeClass('InputBingo black').addClass('InputWrong');	
+					}
+				}
+			}, 'json');
+		} else {
+			$('#login_carer_tipinfo').css('color', 'red').html('请输入正确的手机号码！');
+			$('#czhib_userName').parent().removeClass('InputBingo black');
+			$('#czhib_userName').parent().addClass('InputWrong');
+		}
+	});
+});
+
+//获取验证码按钮样式改变
+function changeSecond(){
+	$('#getyzmcar').html('(' + second + ')' + '重新获取');
+	second--;
+	if (second > -1) {
+		timer = setTimeout('changeSecond()', 1000);
+		editCookie("secondsremained", second, second+1);
+	} else {
+		var mobile = $('#czhib_userName').val();
+		//if(isMobil(mobile)){
+			$('#getyzmcar').addClass("getYzm_On");
+		//} else {
+		//	$('#getyzmcar').removeClass('getYzm_On');
+		//}
+		$('#getyzmcar').html('重新获取');
+		clearTimeout(timer);
+	}
+}
+
+//加载input标签样式
+function loadInputCss(){
+	if(second > 0){
+		$('#getyzmcar').html('(' + second + ')' + '重新获取');
+		$('#getyzmcar').removeClass('getYzm_On');
+		timer = setTimeout('changeSecond()', 1000);
+	} else {
+		$('#getyzmcar').html('获取验证码');
+	}
+	inputFocusAndBlur('#czhib_userName');
+	inputFocusAndBlur('#czhib_password');
+	inputFocusAndBlur('#czhib_yzm');
+}
+
+//手机号码输入监听
+function listenButton() {
+	if($('#czhib_userName').val().length == 11 && $('#getyzmcar').html() == '获取验证码'){
+		$('#getyzmcar').addClass("getYzm_On");
+	}
+}
+
+$(document).keydown(function(event) {
+	if (event.keyCode == 13 && isSubmit) {
+		/*回车键*/
+		setTimeout(function() {
+			login();
+		}, 10);
+	}else{
+		$(".boxy-btn1").focus();
+		isSubmit = true;
+	}
+});
+
+// 发送验证码时添加cookie
+function addCookie(name, value, expiresHours) {
+	var cookieString = name + "=" + escape(value);
+	// 判断是否设置过期时间,0代表关闭浏览器时失效
+	if (expiresHours > 0) {
+		var date = new Date();
+		date.setTime(date.getTime() + expiresHours * 1000);
+		cookieString = cookieString + ";expires=" + date.toUTCString();
+	}
+	document.cookie = cookieString;
+}
+
+// 修改cookie的值
+function editCookie(name, value, expiresHours) {
+	var cookieString = name + "=" + escape(value);
+	if (expiresHours > 0) {
+		var date = new Date();
+		date.setTime(date.getTime() + expiresHours * 1000); // 单位是毫秒
+		cookieString = cookieString + ";expires=" + date.toGMTString();
+	}
+	document.cookie = cookieString;
+}
+
+// 按钮点击优化
+var clickObj;
+function buttonClick(obj) {
+	if(obj.attr('data-click') == 'false'){
+		return;
+	}
+	obj.attr('data-click', 'false');
+	clickObj = obj;
+	setTimeout("clickObj.attr('data-click', 'true');", 2000);
+}
+
+
+//input标签焦点获得与失去
+function inputFocusAndBlur(id){
+	var obj = $(id);
+	obj.focus(function(){
+		obj.parent().removeClass('InputWrong').addClass('InputBingo');
+		if(obj.val() == obj.attr('default') || obj.css('color') == 'rgb(255, 0, 0)' || obj.css('color') == 'red'){
+			obj.val('');
+		}
+		if(document.getElementById('login_carer_tipinfo').style.color == 'red'){
+			$('#login_carer_tipinfo').html('');
+		}
+		obj.parent().addClass('black');
+	}).blur(function(){
+		if(obj.val() == '' || obj.val() == null){
+			obj.val(obj.attr('default'));
+			obj.parent().removeClass('black');
+		}
+	});
+}
+
+function login(){
+	var userName = $('#czhib_userName').val().trim();
+	var password = $('#czhib_password').val().trim();
+	var yzm = $('#czhib_yzm').val().trim();
+	var url = 'czhib_customer/signin.htm';
+	var successUrl = 'czhib_customer/index.htm';
+	isSubmit = false;
+	$.post(url, {userName:userName,password:password,yzm:yzm}, function(data) {
+		if(data.status){
+			delCookie('secondsremained');
+			window.location.href=$('base').attr('href') + successUrl;
+		}else{
+			if(data.msg == '用户不存在，评估或预约卖车后可创建用户' || data.msg == '请填写完整信息'){
+				if(data.msg == '请填写完整信息'){
+					if(userName == ''){
+						$('#czhib_userName').parent().removeClass('InputBingo black').addClass('InputWrong');
+					}
+					if(password == ''){
+						$('#czhib_password').parent().removeClass('InputBingo black').addClass('InputWrong');	
+					}
+					if(yzm == ''){
+						$('#czhib_yzm').parent().removeClass('InputBingo black').addClass('InputWrong');	
+					}				
+				}
+				$('#login_carer_tipinfo').html(data.msg).css('color', 'red');
+			} else if(data.msg == '图形验证码错误') {
+				$('#login_carer_tipinfo').css('color', 'red').html('图形验证码错误');
+				$('#czhib_yzm').parent().removeClass('InputBingo black').addClass('InputWrong');
+			} else {
+				$('#login_carer_tipinfo').css('color', 'red').html(data.data.smsyzmError);
+				$('#czhib_password').parent().removeClass('InputBingo black').addClass('InputWrong');
+				if(data.data.picyzmError != null){
+					$('#login_carer_tipinfo').html($('#login_carer_tipinfo').html() + "|"+ data.data.picyzmError);
+					//$('#czhib_yzm').parent().removeClass('InputBingo black').addClass('InputWrong');
+					$('#yzmImgBtn')[0].src='czhib_pub/yzm.htm?t='+Math.random();
+				}
+			}
+		}
+	}, 'json');
+}
+</script>
+ 
+<script type="text/javascript">
+
+function openWindow(id,w,h,r,s){
+	$('.loginOpenUl').find('.InputWrong').each(function(){
+		$(this).removeClass('InputWrong').addClass('InputBingo');
+	});
+	
+     $('#login_carer_tipinfo').html('');
+     $('#yzmImgBtn')[0].src = 'czhib_pub/yzm.htm?t='+Math.random();
+     openClose(businessWrong);
+     openClose(subOk);
+     newOpen(id,w,h,r,s);//弹框的id，宽度，高度，是否需要禁止滚动	
+	
+}
+
+
+</script>
+
+		</head>
+	<body>
+<!--内容--> 
+<script type="text/javascript" src="/static/js/jquery.inputtext.js"></script>
+<script language="JavaScript">
+$(function(){
+	$("#carcount").load("/?m=ajax&ajax=1&carcount=1");
+	$(".keywords").textRemindAuto();
+		//城市选择
+	$(".topcity").toggle(
+	  function () {
+		$(".topcitylist").show();
+	  },
+	  function () {
+		$(".topcitylist").hide();
+	  }
+	);
+	})
+</script>
+
+<!--头部-->
+
+<script language="JavaScript">
+$(function(){
+	$("#login").load("/index.php?m=ajax&ajax=1&login=1");
+})
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<div class="top">
+	<div class="top_main clearfix">
+		<div class="top_left"><span class='uers' id="login"></span>		</div>
+		<div class="top_right">
+		<a href="/m/">手机端</a>&nbsp;&nbsp;|&nbsp;&nbsp;收藏到桌面</div>
+	</div>
+</div><div class="headw">
+	<div class="head">
+		<div class="logo"><a href="/"><img src="/skin/images/logo.jpg" alt="车碑"></a></div>
+		 	<div class="topcity">
+				<div class="topcitybox"><i></i><script src="/?m=city"></script></div></div>
+			<div class="topcitylist hide">
+			<h3>热门城市</h3>
+			<ul class="clearfix">
+				<li><a href="/?m=city&cid=0">全国</a></li>
+								<li><a href="/?m=city&cid=38">天津市</a></li>
+								<li><a href="/?m=city&cid=122">南京市</a></li>
+								<li><a href="/?m=city&cid=100">长春市</a></li>
+								<li><a href="/?m=city&cid=86">沈阳市</a></li>
+								<li><a href="/?m=city&cid=63">台北市</a></li>
+								<li><a href="/?m=city&cid=52">太原市</a></li>
+								<li><a href="/?m=city&cid=41">石家庄市</a></li>
+								<li><a href="/?m=city&cid=40">重庆市</a></li>
+								<li><a href="/?m=city&cid=39">上海市</a></li>
+								<li><a href="/?m=city&cid=284">成都市</a></li>
+							</ul>
+			<p class="tr"><a href="/?m=citylist" class="orange01">更多城市</a></p>
+			</div>
+					<div class="topsearch">
+			<div class="topsearchbox">
+			<form method="get" action="/">
+				<input type="text" name="k" class="keywords" value="请输入车辆关键词或信息编号"><input type="submit" value="" class="button"/>
+				<input type="hidden" name="m" value="search">
+			</form>
+			</div>
+			<p class="topkeywords"><a href="/?m=search&k=%E5%AE%9D%E9%A9%AC">宝马</a>&nbsp;&nbsp;<a href="/?m=search&k=%E5%A5%94%E9%A9%B0">奔驰</a>&nbsp;&nbsp;<a href="/?m=search&k=%E5%A4%A7%E4%BC%97">大众</a>&nbsp;&nbsp;<a href="/?m=search&k=%E5%88%AB%E5%85%8B">别克</a>&nbsp;&nbsp;<a href="/?m=search&k=%E9%9B%AA%E5%BC%97%E5%85%B0">雪弗兰</a>&nbsp;&nbsp;<a href="/?m=search&k=%E5%B9%BF%E5%B7%9E%E6%9C%AC%E7%94%B0">广州本田</a>&nbsp;&nbsp;<a href="/?m=search&k=%E4%B8%9C%E9%A3%8E%E6%9C%AC%E7%94%B0">东风本田</a>&nbsp;&nbsp;<a href="/?m=search&k=%E4%B8%B0%E7%94%B0">丰田</a>&nbsp;&nbsp;<a href="/?m=search&k=%E8%B5%B7%E4%BA%9A">起亚</a>&nbsp;&nbsp;</p>
+		</div><div class="hot-phone">
+
+                <i></i>
+
+                <!--顶部热线电话  -->
+ 
+               <span class="js-change-phone">
+
+                    400-832-0851
+                </span>
+
+            </div>
+	</div>
+</div>
+
+
+
+<div class="nav_list">
+	<ul class="clearfix">
+				<li>
+		<a href="/index.html" title="首页"  >首页</a>
+		</li>
+				<li>
+		<a href="/buy.html" title="我要买车"  >我要买车</a>
+		</li>
+				<li>
+		<a href="/sellcar.html" title="我要卖车"  >我要卖车</a>
+		</li>
+				<li>
+		<a href="/buycar.html" title="帮我找车"  >帮我找车</a>
+		</li>
+				<li>
+		<a href="/insurance.html" title="服务保障"  >服务保障</a>
+		</li>
+				<li>
+		<a href="/#" title="车碑论坛"  >车碑论坛</a>
+		</li>
+				<li style="float:right;"><a href="/app.html" style="vertical-align:top;"><img src="/skin/img/dealer.png"/>APP下载</a></li>
+		<li style="float:right;"><a href="/service.html" style="vertical-align:top;"><img src="/skin/img/kche.png"/>我要服务</a></li>
+	</ul>
+</div>
+<!--头部end --><div class="nav">您当前的位置：<a href="/">首页</a> <span>></span> <a href="/?m=search">买车</a> <span>></span> 江淮 和悦A30 2013款 1.5L手动豪华型 国IV</div>
+<div class="main mt10">
+	<div class="carbox clearfix">
+		<div class="carbox_left">
+			<div class="carpicbox">
+												<img src="/upload_cars/IMG_20161227_095136.jpg" id="BigImg"/>
+							</div>
+						<div class="ladyScroll">
+				<a class="prev" href="javascript:void(0)"></a>
+				<div class="scrollWrap">
+					<div class="dlList">
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_095136.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_095136.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_095151.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_095151.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_095206.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_095206.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_095237.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_095237.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_095334.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_095334.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_095344.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_095344.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_095416.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_095416.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_095428.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_095428.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_093550.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_093550.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_093604.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_093604.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_093620.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_093620.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_093639.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_093639.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_093647.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_093647.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_093727.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_093727.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_093749.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_093749.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_093803.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_093803.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_093818.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_093818.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_093828.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_093828.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_093835.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_093835.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_093847.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_093847.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_094004.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_094004.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_094013.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_094013.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_095459.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_095459.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_095527.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_095527.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_095543.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_095543.jpg'"></dt>
+						</dl>
+												<dl>
+							<dt><img src="/upload_cars/IMG_20161227_095806.jpg" onmousemove="javascript:document.getElementById('BigImg').src='/upload_cars/IMG_20161227_095806.jpg'"></dt>
+						</dl>
+											</div>
+				</div>
+				<a class="next" href="javascript:void(0)"></a>
+			</div>
+			<script type="text/javascript">
+				jQuery(".ladyScroll").slide({ mainCell:".dlList", effect:"leftLoop",vis:5, autoPlay:true});
+			</script>
+					</div>
+		<div class="carbox_center">
+		<ul class="clearfix">
+			       </ul>
+			<h1 class="carname">江淮 和悦A30 2013款 1.5L手动豪华型 国IV</h1>
+			<p class="gray01" style="line-height:28px;"><span>发布日期：2016-12-27<span class="pl10">关注度：<span class="orange01" id="hits"></span>  车源号: <em>1482812050</em>
+			<span class="bdsharebuttonbox" style="float:right;"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a></span>
+			</p>
+			<div class="pricebox clearfix">
+				<div class="mt20">车主报价：<span class="price">￥4.50万</span>
+				<a href="javascript:;" class="a3 clearfix" id="yuyue"><i></i><span>预约看车</span></a>
+				<a href="javascript:;" class="a4 clearfix" id="xunjia"><i></i><span>砍 价</span></a>
+				首付：<span class="price">￥1.35万</span>
+				<a href="javascript:;" class="a5 clearfix" id="daikuan"><i></i><span>分期贷款</span></a>
+				</div>
+				<div>出厂报价：<span class="fb white">0.00</span>万  + <span class="fb white">0.00</span>万(购置税) 您节省了<span class="fb white">0.00</span>万</div>
+			</div>
+			<div class="para">
+				<ul class="clearfix">
+                    <li>
+                        <dl>
+                             <dt><span class="img1"></span></dt>
+                             <dd>表显里程<strong>3.30万公里</strong></dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                             <dt><span class="img2"></span></dt>
+                             <dd>上牌时间<strong>2014年1月</strong></dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+							<dt><span class="img3"></span></dt>
+                            <dd>排放标准<strong>国四</strong>
+							</dd>
+						</dl>
+                    </li>
+						 <li>
+                        <dl>
+							<dt><span class="img4"></span></dt>
+                            <dd>档位/排量<strong>手动/1.5L</strong>
+							</dd>
+						</dl>
+                    </li>
+					 <li class="last">
+                        <dl>
+							<dt><span class="img5"></span></dt>
+                            <dd>牌照所在地<strong>滁州市</strong>
+							</dd>
+						</dl>
+                    </li>
+				</ul>
+            </div>
+			<div class="contactbox" id="tel">
+				<h3>免费咨询电话（8:00-19:00 周六日休息） <i class="i-yb"></i>延长质保&nbsp;&nbsp;&nbsp;<i class="i-ckb"></i>代办服务&nbsp;&nbsp;&nbsp;<i class="i-dk"></i>分期购车</h3>
+			</div>
+			<div class="ensure"><!--保障服务-->
+            <img src="/skin/img/server.png" width="672" height="92" />
+			</div>
+		</div>
+		
+	</div>
+</div>
+<div class="notice mt20">
+	<span class="fr">看车电话：<span class="orange01">400-832-0851</span></span>二手车交易车辆过户前请勿轻易给对方押金、订金，交易中请仔细查验车况，避免上当受骗。
+</div>
+<div class="main">
+	<div class="main clearfix" style="margin-top:40px;">
+	<div class="main">
+	
+		<ul class="cardetail_tab clearfix ">
+			<li class="here"><a href="#A">基本信息</a></li>
+			<li><a href="#B">车辆配置</a></li>
+			<li><a href="#C">车主描述</a></li>
+		    <li><a href="#D">检测报告</a></li>
+			<li><a href="#E">图片展示</a></li>
+
+		</ul>
+		<a name="A">
+		<div class="cardetailbox">
+			<div class="car_box5">
+				<em></em>
+				<h4 class="mt10"><span class="title">基本信息</span></h4>
+			</div>
+			<div style="clear:both;"></div>
+			<div class="box">
+				<ul class="cardetaillist clearfix">
+					<li><span>车   型：</span>小型车</li>
+					<li><span>车体颜色：</span>白色</li>
+					<li><span>首次上牌：</span>2014-1</li>	
+                    <li><span>过户次数：</span>0次</li>
+					<li><span>年检有效期至：</span>2018-01</li>
+					<li><span>交强险到期</span>2017-12</li>
+					<li><span>商业险到期：</span>2017-12</li>
+					<li><span>车辆用途：</span>-</li>
+
+				</ul>
+			</div>
+		</div>
+		<a name="B">
+		<div class="cardetailbox">
+			<div class="car_box5">
+				<em></em>
+				<h4 class="mt10"><span class="title">车辆配置</span></h4>
+			</div>
+			<div style="clear:both;"></div>
+			<div class="box">
+				<ul class="cardetaillist clearfix">
+					<li><span>变 速 器：</span>手动</li>
+					<li><span>燃油标号：</span>国四</li>
+					<li><span>排    量：</span>1.5L</li>		
+				</ul>
+			</div>
+		</div>
+		
+			<div class="box">
+				<ul class="cardetaillist clearfix">
+																	
+																							
+																							
+																							
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+																	<span class="icon_gp"></span>
+															</ul>
+			</div>
+			<a name="C">
+		<div class="cardetailbox">
+			<div class="car_box5">
+				<em></em>
+			<h4 class="mt10"><span class="title">车主描述</span></h4>
+			</div>
+			<div class="box">
+				
+			</div>
+		</div>
+			<a name="D">
+		<div class="cardetailbox">
+			<div class="car_box5">
+				<em></em>
+			<h4 class="mt10"><span class="title">检测报告</span></h4>
+			</div>
+			<div class="box">
+	 <div id="certificate"> <div class="detail-report-new-wrapper" rrc-event-scope="certification"> <div class="container"> <div class="border-top"> <div class="left"></div> <div class="right"></div> <div class="center"></div> </div> </div> <div class="container"> <div class="border-center"> <div class="left"></div> <div class="right"></div> <div class="center"> <div class="content clearfixnew"> <div class="title">车碑质量检测合格证
+                    <div class="test-ps">258项专业检测：108项国家标准检测，150项车碑车专项检测</div> </div> <div class="content-left"> <div class="head-img"> <img class="tester-img" src="/upload/image/20161207/20161207142424_87788.png" /> </div> <div class="staff-ID">NO.550004</div> <div class="staff-star"> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="mark"><span>100%&nbsp;</span>好评</div> </div> <div class="name">单正园</div> <div class="staff-title">评估师</div> <div class="achievement"> <div class="car-number-inspected"> <span>检测日期：</span> <span class="number-unit">2016-12-27</span> </div> <div class="car-number-rejected"> <span>评估有效期：</span> <span class="number-unit">1个月</span> </div> </div> <div class="staff-video video-open"><i class="iconfont icon-20shipin"></i>车辆检测拒绝重大事故车<div class="jiantou-right"></div></div> <button class="ask-btn btn-base btn-default" id="free_phone_btn" rrc-tel-button="咨询-PC-详情页-5" rrc-event-name="button-vehiclecondition" rrc-event-param="detail"> <img class="report-img" src="/skin/img/tel.gif">&nbsp;&nbsp;免费咨询车况
+                    	</button> </div> <div class="content-right"> <div class="test-result"> <span class="result">检验结果 : </span>
+                                经检测，此车骨架完好，无结构性损伤，安全系统正常，灯光控制正常，电器系统正常。此车作为家用车，里程较少，外观不错只有几处细小划痕，不影响整车外观，推荐购买！                       </div> <div class="test-main"> <div class="test-main-item"> <img class="" src="/skin/img/pcsgc.png" /> <div class="option-title">排除事故车</div> <div class="option"> <div class="child-title">重大事故排查28项</div> <i class="iconfont icon-gou"></i> </div> </div> <div class="test-main-item fire"> <img class="" src="/skin/img/pchsc.png" /> <div class="option-title">排除火烧车</div> <div class="option"> <div class="child-title">火烧车排查4项</div> <i class="iconfont icon-gou"></i> </div> </div> <div class="test-main-item"> <img class="" src="/skin/img/pcspc.png" /> <div class="option-title">排除泡水车</div> <div class="option"> <div class="child-title">泡水车排查6项</div> <i class="iconfont icon-gou"></i> </div> </div> </div> <div class="other clearfixnew"> <div class="test-other narrow  "> <div class="other-title">核心部件检测</div> <div class="option"> <div class="child-title">发动机舱</div> <div class="mun">15项</div> <i class="iconfont icon-gou"></i> </div> <div class="option"> <div class="child-title">底盘</div> <div class="mun">4项</div> <i class="iconfont icon-gou"></i> </div> <div class="option"> <div class="child-title">悬挂系统</div> <div class="mun">7项</div> <i class="iconfont icon-gou"></i> </div> </div> <div class="test-other   "> <div class="other-title">磨损程度评估</div> <div class="option"> <div class="child-title">车体覆盖件</div> <div class="mun">7项</div> <i class="iconfont icon-gou"></i> <a class="test-fail-box" href="#detail_blemish_inspect" rrc-event-name="flaw-moreinfo"> <div class="test-fail"> <div class="mun">5项</div> <div class="cuowutishi"></div> <div class="fail-remind "> <p class="fail-num">有5处瑕疵</p> <div class="fail-text">查看详情<div class="jiantou-right"></div></div> <i class="test-fail-triangle-outer"></i> <i class="test-fail-triangle-inner"></i> </div> </div> </a> </div> <div class="option"> <div class="child-title">车身辅助结构件</div> <div class="mun">12项</div> <i class="iconfont icon-gou"></i> </div> <div class="option"> <div class="child-title">车内易磨损部位</div> <div class="mun">10项</div> <i class="iconfont icon-gou"></i> </div> </div> <div class="test-other   pass-mar"> <div class="other-title">常用功能检测</div> <div class="option"> <div class="child-title">电子控制系统</div> <div class="mun">6项</div> <i class="iconfont icon-gou"></i> </div> <div class="option"> <div class="child-title">常用功能开关</div> <div class="mun">13项</div> <i class="iconfont icon-gou"></i> </div> <div class="option"> <div class="child-title">灯光系统</div> <div class="mun">5项</div> <i class="iconfont icon-gou"></i> </div> <div class="option"> <div class="child-title">玻璃、后视镜</div> <div class="mun">11项</div> <i class="iconfont icon-gou"></i> </div> <div class="option"> <div class="child-title">轮胎轮毂</div> <div class="mun">10项</div> <i class="iconfont icon-gou"></i> </div> <div class="option"> <div class="child-title">随车附件</div> <div class="mun">6项</div> <i class="iconfont icon-gou"></i> </div> </div> <div class="test-other  narrow-last pass-mar"> <div class="other-title">启动检测</div> <div class="option"> <div class="child-title">驾驶室</div> <div class="mun">4项</div> <i class="iconfont icon-gou"></i> </div> <div class="option"> <div class="child-title">发动机</div> <div class="mun">4项</div> <i class="iconfont icon-gou"></i> </div> <div class="option"> <div class="child-title">转向系统</div> <div class="mun">3项</div> <i class="iconfont icon-gou"></i> </div> </div> </div> </div> <div class="signature"> <div class="signature-message">以上为当前车况，交易前会做二次深度检测</div> </div> <div class="qualified"> </div> </div> </div> </div> <div class="container"> <div class="border-bottom"> <div class="left"></div> <div class="right"></div> <div class="center"></div> </div> </div> </div> </div>
+<div style="clear:both;">&nbsp;</div> 
+<div class="center">
+	<div id="tabs0" class="tabs0">
+		<ul class="menu0" id="menu0">
+			<li onclick="setTab(0,0)" class="hover"><span></span>事故排查</li>
+			<li onclick="setTab(0,1)" class=""><span></span>外观检测</li>
+			<li onclick="setTab(0,2)" class=""><span></span>发动机检测</li>
+			<li onclick="setTab(0,3)" class=""><span></span>系统设备性能</li>
+            <li onclick="setTab(0,4)" class=""><span></span>底盘检测</li>
+            <li onclick="setTab(0,5)" class=""><span></span>车辆配置</li>
+            <li onclick="setTab(0,6)" class=""><span></span>内饰检测</li>
+            <li onclick="setTab(0,7)" class=""><span></span>新车参数</li>
+		</ul>
+		<div class="main" id="main0">
+			<ul class="block">
+				<li>
+					<div class="clear"></div>
+					<div class="jiance_table_text bottom_liubai">
+						
+						<div class="jiance_ner jiance_table_text">
+
+<div class="title"> <div class="qualified"> <i>√</i>合格
+                    </div><span>&nbsp; 0</span></div>
+							<div class="borken_new_img borken_new_img_sg_bg" style="position:relative">
+						</div>
+					<table>
+						<tr>
+							<th width="838" colspan="4">
+								<p align="left">&nbsp;&nbsp; 排除重大碰撞</th>
+						</tr>
+  <tr>
+    <th width="179">左A柱</th>
+    <td width="240">正常</td>
+    <th width="250">右A柱</th>
+    <td width="169" class="border_none">正常</td>
+  </tr>
+  <tr>
+    <th width="179">左B柱</th>
+    <td width="240">正常</td>
+    <th width="250">右B柱</th>
+    <td width="169" class="border_none">正常</td>
+  </tr>
+  <tr>
+    <th width="179">左C柱</th>
+    <td width="240">正常</td>
+    <th width="250">右C柱</th>
+    <td width="169" class="border_none">正常</td>
+  </tr>
+						<tr>
+							<th width="179">左前纵梁</th>
+							<td width="240">正常</td>
+							<th width="250">右前纵梁</th>
+							<td width="169" class="border_none">正常</td>
+						</tr>
+						<tr>
+							<th width="179">左后纵梁</th>
+							<td width="240">正常</td>
+							<th width="250">右后纵梁</th>
+							<td width="169" class="border_none">正常</td>
+						</tr>
+						<tr>
+							<th width="179">前防撞梁</th>
+							<td width="240">正常</td>
+							<th width="250">后防撞梁</th>
+							<td width="169" class="border_none">正常</td>
+						</tr>
+						<tr>
+							<th width="179">左前减震器悬挂部位</th>
+							<td width="240">正常</td>
+							<th width="250">右前减震器悬挂部位</th>
+							<td width="169" class="border_none">正常</td>
+						</tr>
+						<tr>
+							<th width="179">左后减震器悬挂部位</th>
+							<td width="240">正常</td>
+							<th width="250">右后减震器悬挂部位</th>
+							<td width="169" class="border_none">正常</td>
+						</tr>
+						<tr>
+							<th width="179">发动机舱防火墙</th>
+							<td width="240">正常</td>
+							<th width="250">后备箱底板</th>
+							<td width="169" class="border_none">正常</td>
+						</tr>
+						<tr>
+							<th width="179">车身左右对称性</th>
+							<td width="240">正常</td>
+						</tr>
+
+						<tr>
+							<th width="838" colspan="4">
+								<p align="left">&nbsp;&nbsp; 排除泡水</th>
+						</tr>
+						<tr>
+							<th width="179">发动机线束及橡胶制品</th>
+							<td width="240">正常</td>
+							<th width="250">后备箱边角及备胎槽</th>
+							<td width="169" class="border_none">正常</td>
+						</tr>
+
+						<tr>
+							<th width="179">座椅滑轨内</th>
+							<td width="240">正常</td>
+							<th width="250">后排座椅坐垫底部</th>
+							<td width="169" class="border_none">正常</td>
+						</tr>
+						<tr>
+							<th width="179">安全带底部</th>
+							<td width="240">正常</td>
+							<th width="250">全车地胶地毯</th>
+							<td width="169" class="border_none">正常</td>
+						</tr>
+						<tr>
+							<th width="179">音响喇叭底部</th>
+							<td width="240">正常</td>
+							<th width="250">烟灰缸底座</th>
+							<td width="169" class="border_none">正常</td>
+						</tr>
+
+						<tr>
+							<th width="838" colspan="4">
+								<p align="left">&nbsp;&nbsp; 排除火烧</th>
+						</tr>
+						<tr>
+							<th width="179">车辆覆盖件及驾驶舱</th>
+							<td width="240">正常</td>
+						</tr>
+</table>
+				</li>
+			</ul>
+
+			<ul>
+				<li>
+					<div class="clear"></div>
+
+						<div class="jiance_ner jiance_table_text">
+  
+							<div class="title"> <div class="qualified"> <i>√</i>合格
+                    </div><span>事故项（0）  特定项（0）  缺陷项：（0）3</span></div>
+
+
+							<div class="" style="width: 800px; height: 400px; text-align: center; margin: 60px auto;">
+								<div id="iPicture" data-interaction="hover">
+									<div class="ip_slide">
+										<!-- 本身的图片 -->
+										<img class="ip_tooltipImg" src="/skin/img/Carwg.png">
+										<!--左前保险杠-->
+										ccccc2aaaa
+										<div class="ip_tooltip ip_img32" style="top: 216px; left: 692px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!--右前保险杠-->
+										<div class="ip_tooltip ip_img32" style="top: 216px; left: 611px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--左后保险杆-->
+										<div class="ip_tooltip ip_img32" style="top: 216px; left: 90px; z-index: 1; display:block;" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/upload/image/20161227/20161227120104_72421.jpg" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--右后保险杆-->
+										<div class="ip_tooltip ip_img32" style="top: 216px; left: 170px; z-index: 1; display:block;" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+										<!--左前翼子板-->
+										<div class="ip_tooltip ip_img32" style="top: 70px; left: 480px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--右前翼子板-->
+										<div class="ip_tooltip ip_img32" style="top: 340px; left: 480px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--左后翼子板-->
+										<div class="ip_tooltip ip_img32" style="top: 70px; left: 264px; z-index: 1; display:block;" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/upload/image/20161227/20161227120129_76030.jpg" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--右后翼子板-->
+										<div class="ip_tooltip ip_img32" style="top: 340px; left: 268px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--左A柱-->
+										<div class="ip_tooltip ip_img32" style="top: 111px; left: 408px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--右A柱-->
+										<div class="ip_tooltip ip_img32" style="top: 302px; left: 408px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--左B柱-->
+										<div class="ip_tooltip ip_img32" style="top: 90px; left: 365px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--右B柱-->
+										<div class="ip_tooltip ip_img32" style="top: 315px; left: 370px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--左C柱-->
+										<div class="ip_tooltip ip_img32" style="top: 98px; left: 310px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--右C柱-->
+										<div class="ip_tooltip ip_img32" style="top: 318px; left: 310px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--左前门-->
+										<div class="ip_tooltip ip_img32" style="top: 55px; left: 410px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--右前门-->
+										<div class="ip_tooltip ip_img32" style="top: 350px; left: 410px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--左后门-->
+										<div class="ip_tooltip ip_img32" style="top: 55px; left: 340px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--右后门-->
+										<div class="ip_tooltip ip_img32" style="top: 350px; left: 350px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--左车顶-->
+										<div class="ip_tooltip ip_img32" style="top: 185px; left: 368px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--右车顶-->
+										<div class="ip_tooltip ip_img32" style="top: 230px; left: 368px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--左侧裙边-->
+										<div class="ip_tooltip ip_img32" style="top: 30px; left: 370px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--右侧裙边-->
+										<div class="ip_tooltip ip_img32" style="top: 378px; left: 375px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--后备箱-->
+										<div class="ip_tooltip ip_img32" style="top: 205px; left: 245px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--发动机盖-->
+										<div class="ip_tooltip ip_img32" style="top: 205px; left: 520px; z-index: 1; display:none" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="/" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<script type="text/javascript">
+									$("#iPicture").iPicture();
+								</script>
+
+							</div>
+
+
+						<table>
+  <tr>
+    <th width="179">左前保险杠：</th>
+    <td width="240">
+				做漆
+			</td>
+    <th width="250">右前保险杠：</th>
+    <td width="169" class="border_none">
+				做漆
+			</td>
+  </tr>
+  <tr>
+    <th width="179">左后保险杆：</th>
+    <td width="240">
+		完好
+			</td>
+    <th width="250">右后保险杆：</th>
+    <td width="169" class="border_none">
+		完好
+			</td>
+  </tr>
+  <tr>
+    <th width="179">左前翼子板：</th>
+    <td width="240">
+		完好
+			</td>
+    <th width="250">右前翼子板：</th>
+    <td width="169" class="border_none">
+		完好
+			</td>
+  </tr>
+							<tr>
+								<th width="179">左后翼子板：</th>
+								<td width="240">
+									完好
+																	</td>
+								<th width="250">右后翼子板：</th>
+								<td width="169" class="border_none">
+																		钣金
+																	</td>
+							</tr>
+
+							<tr>
+								<th width="179">左A柱：</th>
+								<td width="240">
+									完好
+																	</td>
+								<th width="250">右A柱：</th>
+								<td width="169" class="border_none">
+									完好
+																	</td>
+							</tr>
+
+							<tr>
+								<th width="179">左B柱：</th>
+								<td width="240">
+									完好
+																	</td>
+								<th width="250">右B柱：</th>
+								<td width="169" class="border_none">
+									完好
+																	</td>
+							</tr>
+
+							<tr>
+								<th width="179">左C柱：</th>
+								<td width="240">
+									完好
+																	</td>
+								<th width="250">右C柱：</th>
+								<td width="169" class="border_none">
+									完好
+																	</td>
+							</tr>
+
+							<tr>
+								<th width="179">左前门：</th>
+								<td width="240">
+									完好
+																	</td>
+								<th width="250">右前门：</th>
+								<td width="169" class="border_none">
+									完好
+																	</td>
+							</tr>
+
+							<tr>
+								<th width="179">左后门：</th>
+								<td width="240">
+									完好
+																	</td>
+								<th width="250">右后门：</th>
+								<td width="169" class="border_none">
+									完好
+																	</td>
+							</tr>
+
+							<tr>
+
+								<th width="250">左车顶：</th>
+								<td width="169" >
+									完好
+																	</td>
+
+								<th width="179">右车顶：</th>
+								<td width="240" class="border_none">
+									完好
+																	</td>
+							</tr>
+
+							<tr>
+
+								<th width="250">左侧裙边：</th>
+								<td width="169" >
+									完好
+																	</td>
+								<th width="179">右侧裙边：</th>
+								<td width="240" class="border_none">
+									完好
+																	</td>
+							</tr>
+
+							<tr>
+
+								<th width="179">后备箱 ：</th>
+								<td width="240">
+									完好
+																	</td>
+								<th width="250">发动机盖：</th>
+								<td width="169" class="border_none">
+									完好
+																	</td>
+							</tr>
+</table>
+
+
+						<div class="clear"></div>
+					</div>
+				</li>
+			</ul>
+
+	<ul class="block" style="display: none;">
+				<li>
+					<div class="clear"></div>
+					<div class="jiance_table_text bottom_liubai">
+						
+						<div class="jiance_ner jiance_table_text">
+
+<div class="title"> <div class="qualified"> <i>√</i>合格
+                    </div><span>转向助力方式:电动助力  0</span></div>
+   
+							<div class="borken_new_img borken_new_img_fadongji_bg" style="position:relative">
+						</div>
+					<table>
+  <tr>
+    <th width="179">是否有拆卸痕迹：</th>
+    <td width="240">否</td>
+    <th width="250">舱线束是否老化：</th>
+    <td width="169" class="border_none">否</td>
+  </tr>
+  <tr>
+    <th width="179">传感器外观损坏：</th>
+    <td width="240">否</td>
+    <th width="250">缸线有无破损：</th>
+    <td width="169" class="border_none">否</td>
+  </tr>
+  <tr>
+    <th width="179">缸盖漏油渗油：</th>
+    <td width="240">否</td>
+    <th width="250">水箱是否破损：</th>
+    <td width="169" class="border_none">否</td>
+  </tr>
+    <tr>
+    <th width="179">机油底壳：</th>
+    <td width="240">正常</td>
+    <th width="250">机油液面：</th>
+    <td width="169" class="border_none">正常</td>
+  </tr>
+    <tr>
+    <th width="179">防冻液液面：</th>
+    <td width="240">正常</td>
+    <th width="250">助力泵液面：</th>
+    <td width="169" class="border_none"> 无  </td>
+  </tr>
+    <tr>
+    <th width="179">变速箱底壳：</th>
+    <td width="240">正常</td>
+    <th width="250">螺丝出厂状态：</th>
+    <td width="169" class="border_none">是</td>
+  </tr>
+    <tr>
+    <th width="179">制动液液面：</th>
+    <td width="240">正常</td>
+    <th width="250">空调压缩机：</th>
+    <td width="169" class="border_none"> 正常  </td>
+  </tr>
+    <tr>
+    <th width="179" height="19">转向助力泵：</th>
+    <td width="240" height="19"> 正常  　</td>
+    <th width="250" height="19">　</th>
+    <td width="169" class="border_none" height="19">　</td>
+  </tr>
+    </table>
+				</li>
+			</ul>
+ 	<ul class="block" style="display: none;">
+				<li>
+					<div class="clear"></div>
+					<div class="jiance_table_text bottom_liubai">
+						
+						<div class="jiance_ner jiance_table_text">
+
+<div class="title"> <div class="qualified"> <i>√</i>合格
+                    </div><span> 0</span></div>
+   
+							<div class="borken_new_img borken_new_img_xingneng_bg" style="position:relative">
+						</div>
+<table> <tr>
+    <th width="838" colspan="4">
+	<p align="left">&nbsp;&nbsp; 安全系统检测</th>
+  </tr>
+
+  <tr>
+    <th width="178">变速箱系统警示灯：</th>
+    <td width="241">正常</td>
+    <th width="250">制动系统警示灯：</th>
+    <td width="169" class="border_none">正常</td>
+  </tr>
+  <tr>
+    <th width="178">ABS系统警示灯：</th>
+    <td width="241"> 正常  </td>
+    <th width="250">安全气囊系统：</th>
+    <td width="169" class="border_none"> 正常  </td>
+  </tr>
+  <tr>
+    <th width="178">发动机系统警示灯：</th>
+    <td width="241">正常</td>
+    <th width="250">　</th>
+    <td width="169" class="border_none">　</td>
+ <tr>
+    <th width="838" colspan="4">
+	<p align="left">&nbsp;&nbsp; 指示灯系统检测</th>
+  </tr>
+
+  <tr>
+    <th width="178">前雾灯：</th>
+    <td width="241"> 正常  　</td>
+    <th width="250">后雾灯：</th>
+    <td width="169" class="border_none"> 正常  </td>
+  </tr>
+  <tr>
+    <th width="178">近光灯：</th>
+    <td width="241">正常</td>
+    <th width="250">远光灯：</th>
+    <td width="169" class="border_none">正常</td>
+  </tr>
+  <tr>
+    <th width="178">前转向灯：</th>
+    <td width="241">正常</td>
+    <th width="250">后转向灯：</th>
+    <td width="169" class="border_none">正常　</td>
+  </tr>
+    <tr>
+    <th width="178">倒车灯：</th>
+    <td width="241">正常</td>
+    <th width="250">刹车灯：</th>
+    <td width="169" class="border_none">正常</td>
+  </tr>
+  <tr>
+    <th width="178">室内顶灯：</th>
+    <td width="241">正常</td>
+    <th width="250">　</th>
+    <td width="169" class="border_none">　</td>
+  </tr>
+</table>
+				</li>
+			</ul>
+ 	<ul class="block" style="display: none;">
+				<li>
+					<div class="clear"></div>
+					<div class="jiance_table_text bottom_liubai">
+						
+						<div class="jiance_ner jiance_table_text">
+
+<div class="title"> <div class="qualified"> <i>√</i> 合格  
+                    </div><span>底盘检测5项  0</span></div>
+   
+							<div class="borken_new_img borken_new_img_dipan_bg" style="position:relative">
+						</div>
+			<table>
+ <tr>
+    <th width="179">右后减震器：</th>
+    <td width="240">				正常
+				 </td>
+    <th width="250">右前减震器：</th>
+    <td width="169" class="border_none">				正常
+				 </td>
+  </tr>
+  <tr>
+    <th width="179">左前减震器：</th>
+    <td width="240">				正常
+				 </td>
+    <th width="250">左后减震器：</th>
+    <td width="169" class="border_none">				正常
+				 </td>
+  </tr>
+</table>
+
+				</li>
+			</ul>
+ 	<ul class="block" style="display: none;">
+				<li>
+					<div class="clear"></div>
+					<div class="jiance_table_text bottom_liubai">
+						
+						<div class="jiance_ner jiance_table_text">
+
+<div class="title"> <div class="qualified"> <i>√</i>合格
+                    </div><span>车辆配置6项 0</span></div>
+   
+							<div class="borken_new_img borken_new_img_peizhi_bg" style="position:relative">
+						</div>
+									<table>
+  <tr>
+    <th width="179">遥控钥匙：</th>
+    <td width="240">有</td>
+    <th width="250">千 斤 顶：</th>
+    <td width="169" class="border_none">有</td>
+  </tr>
+  <tr>
+    <th width="179">随车工具：</th>
+    <td class="maintable">有</td>
+    <th width="250">三 角 牌：</th>
+    <td width="169" class="border_none">有</td>
+  </tr>
+  <tr>
+    <th width="179">灭 火 器：</th>
+    <td width="240">有</td>
+    <th width="250">备 胎：</th>
+    <td width="169" class="border_none">有</td>
+  </tr>
+</table>
+				</li>
+			</ul>
+            
+ 	<ul class="block" style="display: none;">
+				<li>
+					<div class="clear"></div>
+					<div class="jiance_table_text bottom_liubai">
+						
+						<div class="jiance_ner jiance_table_text">
+
+<div class="title"> <div class="qualified"> <i>√</i>合格
+                    </div><span>内饰检测11项 0</span></div>
+   
+							<div class="borken_new_img borken_new_img_neishi_bg" style="position:relative">
+						</div>
+					<table>
+  <tr>
+    <th width="208">方向盘磨损：</th>
+    <td width="202">			正常
+			</td>
+    <th width="245">中控台磨损：</th>
+    <td width="167" class="border_none">			正常
+			</td>
+  </tr>
+  <tr>
+    <th width="208">主驾车门内饰板磨损：</th>
+    <td width="202">			正常
+			</td>
+    <th width="245">副驾车门内饰板磨损：</th>
+    <td width="167" class="border_none">			正常
+			</td>
+  </tr>
+  <tr>
+    <th width="208">后排左侧车门内饰板磨损：</th>
+    <td width="202">			正常
+			</td>
+    <th width="245">后排右侧车门内饰板磨损：<br></th>
+    <td width="167" class="border_none">			正常
+			</td>
+  </tr>
+   <tr>
+    <th width="208">主驾座椅磨损：</th>
+    <td width="202"><span class="border_none">			正常
+			</span></td>
+    <th width="245"> 副驾座椅磨损： <br></th>
+    <td width="167" class="border_none">			正常
+			</td>
+  </tr>
+    <tr>
+    <th width="208">后排座椅磨损：</th>
+    <td width="202">			正常
+			</td>
+    <th width="245">天窗开启状态：<br></th>
+    <td width="167" class="border_none">			无
+     </td>
+  </tr>
+   <tr>
+    <th width="208">玻璃升降： </th>
+    <td width="202"><span class="border_none">			正常
+			</span></td>
+    <th width="245"><br></th>
+    <td width="167" class="border_none">&nbsp;</td>
+  </tr>
+</table>
+
+				</li>
+			</ul>
+            
+			 	<ul class="block" style="display: none;">
+				<li>
+					<div class="clear"></div>
+					<div class="jiance_table_text bottom_liubai">
+						
+						<div class="jiance_ner jiance_table_text">
+
+<div class="title"> <div class="qualified"> <i>√</i>合格
+                    </div><span>&nbsp;
+
+
+</span></div>
+   
+							<div style="position:relative">
+						</div>
+<!-- 		<table> <tr>
+    <th width="838" colspan="4">　</th>
+  </tr>
+
+  <tr>
+    <th width="179">　</th>
+    <td width="240">　</td>
+    <th width="250">　</th>
+    <td width="169" class="border_none">　</td>
+  </tr>
+  <tr>
+</table> -->
+
+				</li>
+			</ul>
+			
+		</div>
+	</div>
+			</div>
+		</div>
+		<a name="E">
+		<div class="cardetailbox">
+			<div class="car_box5">
+				<em></em>
+			<h4 class="mt10"><span class="title">大图展示</span></h4>
+			</div>
+						<div class="box">
+				<center>					<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_095136.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_095151.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_095206.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_095237.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_095334.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_095344.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_095416.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_095428.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_093550.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_093604.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_093620.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_093639.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_093647.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_093727.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_093749.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_093803.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_093818.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_093828.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_093835.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_093847.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_094004.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_094013.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_095459.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_095527.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_095543.jpg">
+
+					</p>
+									<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="/upload_cars/IMG_20161227_095806.jpg">
+
+					</p>
+								</center>
+				<div style="clear:both;"></div> 
+			</div>
+					</div>
+		</div>
+	</div>
+</div>
+
+<div class="main">
+	<div class="othercarbox mt15">
+		<ul class="cardetail_tab clearfix">
+			<li class="here">同车系其他车源</li>
+		</ul>
+		<div class="box mt15">
+			<ul class="carlist clearfix">
+							</ul>
+		</div>
+	</div>
+</div>
+<div class="main">
+	<div class="othercarbox mt15">
+		<ul class="cardetail_tab clearfix">
+			<li class="here">同价位其他车源</li>
+		</ul>
+		<div class="box mt15">
+			<ul class="carlist clearfix">
+								<li>
+					<a href="/buy/2016/12/24/185.html" target="_blank"><img src="http://localhost/upload_cars/14825590642341430507200.jpg"/></a>
+					<p class="mt10"><a href="/buy/2016/12/24/185.html" target="_blank">海马S5 2014 款 1.6L </a></p>
+					<p><span class="gray01 fr">2016年2月上牌</span><span class="orange01 fb">7.00万</span></p>
+				</li>
+							</ul>
+		</div>
+	</div>
+</div>
+<div id="A1" class="hide">
+	<div class="popnotice">
+		江淮 和悦A30 2013款 1.5L手动豪华型 国IV，售价￥4.50万，2014年上牌，行驶3.30万公里
+	</div>
+	<div class="p20">
+	<form method="post" name="yuyueform" id="yuyueform" class="yuyueform">
+		<table class="poptable">
+		<tr>
+			<th><span class="red">*</span> 姓名：</th>
+			<td><input type="text" name="name" datatype="s" nullmsg="请填写姓名！"></td>
+		</tr>
+		<tr>
+			<th><span class="red">*</span> 手机号：</th>
+			<td><input type="text" name="mobilephone" datatype="m" nullmsg="请填写手机号！"></td>
+		</tr>
+		<tr>
+			<th><span class="red">*</span> 预约时间：</th>
+			<td><input type="text" class="laydate-icon" name="ordertime" datatype="*" nullmsg="请选择预约时间！" onclick="laydate()"></td>
+		</tr>
+		<tr>
+			<th><span class="red">*</span> 留言：</th>
+			<td><textarea name="orderinfo" rows="5" cols="25" datatype="*" nullmsg="请填写留言！"></textarea></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td class="gray">预约后我们将联系你!</td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><span class="button1 h35-p25 mr5"><a id="btnYuyueLookCar" href="javascript:;">提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</a></span></td>
+		</tr>
+		</table>
+	</form>
+	</div>
+</div>
+<div id="B1" class="hide">
+	<div class="popnotice">
+		江淮 和悦A30 2013款 1.5L手动豪华型 国IV，售价￥4.50万，2014年上牌，行驶3.30万公里
+	</div>
+	<div class="p20">
+		<form method="post" name="xunjiaform" id="xunjiaform" class="xunjiaform">
+		<table class="poptable">
+		<tr>
+			<th><span class="red">*</span> 期望价：</th>
+			<td><input type="text" name="name" datatype="s" nullmsg="请填写姓名！"></td>
+		</tr>
+		<tr>
+			<th><span class="red">*</span> 手机号：</th>
+			<td><input type="text" name="mobilephone" datatype="m" nullmsg="请填写手机号！"></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td class="gray">&nbsp;</td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><span class="button1 h35-p25 mr5"><a id="btnxuejia" href="javascript:;">坐&nbsp;等&nbsp;降&nbsp;价</a></span></td>
+		</tr>
+		</table>
+		</form>
+	</div>
+    </div>
+<div id="C1" class="hide">
+	<div class="popnotice">
+		首付：￥1.35万 &nbsp;&nbsp;&nbsp;&nbsp;贷款：￥3.15万 &nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;1年期&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;月付：￥2887.5&nbsp;&nbsp;&nbsp;&nbsp;
+	</div>
+	<div class="p20">
+		<form method="post" name="daikuanform" id="daikuanform" class="daikuanform">
+		<table class="poptable">
+		<tr>
+			<th><span class="red">*</span> 姓 名：</th>
+			<td><input type="text" name="name" datatype="s" nullmsg="请填写姓名！"></td>
+		</tr>
+		<tr>
+			<th><span class="red">*</span> 手机号：</th>
+			<td><input type="text" name="mobilephone" datatype="m" nullmsg="请填写手机号！"></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td class="gray">&nbsp;</td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><span class="button1 h35-p25 mr5"><a id="btndaikuan" href="javascript:;">立&nbsp;即&nbsp;申&nbsp;请</a></span></td>
+		</tr>
+		</table>
+		</form>
+	</div>
+    </div>
+		</div>
+	</div>
+﻿<script type="text/javascript" src="/static/js/layer/layer.min.js"></script>
+<script language="JavaScript">
+$(function() {
+	$('#feedback').on('click', function(){
+		var feedbackindex =  $.layer({
+			type: 1,
+			title: '意见反馈',
+			shade: [0.5, '#000'],
+			area: ['440px', 'auto'],
+			page: {dom: '#A1'}
+		});
+	
+		$('#btnfeedback').on('click', function(){
+			$.post("/index.php?m=ajax&ajax=1&feedback=1",{
+				f_tel: $("#A1 input[name='f_tel']").val(),
+				f_detail:$("#A1 textarea[name='f_detail']").val()
+				},function(data){
+					if (data==1)
+					{
+						layer.close(feedbackindex);
+						layer.alert("您的反馈信息已成功提交！", 9);
+						$('#feedbackform')[0].reset();
+					}
+					else{
+						layer.close(feedbackindex);
+						layer.alert("提交失败！请再次提交！", 9);
+					}
+				});
+		});
+	});
+});
+</script>
+<!--底部导航-->
+<div class="footer" id="foot">
+	<div class="footbox">
+      <div class="footleft">
+		<p class="foottop">
+						<a href="/index.html" title="首页" class="whiteA f14 pl10 pr10">首页</a> | 
+						<a href="/buy.html" title="我要买车" class="whiteA f14 pl10 pr10">我要买车</a> | 
+						<a href="/sellcar.html" title="我要卖车" class="whiteA f14 pl10 pr10">我要卖车</a> | 
+						<a href="/buycar.html" title="帮我找车" class="whiteA f14 pl10 pr10">帮我找车</a> | 
+						<a href="/insurance.html" title="服务保障" class="whiteA f14 pl10 pr10">服务保障</a> | 
+						<a href="/#" title="车碑论坛" class="whiteA f14 pl10 pr10">车碑论坛</a> | 
+					</p>
+		<p class="mt10 pl10"> 车碑二手车直卖网&nbsp;&nbsp;&nbsp;<a href="http://www.miitbeian.gov.cn/" target="_blank" style="color:#9c9c9c">皖ICP证16023597号</a>&nbsp;&nbsp;&nbsp;咨询电话：<span class="orange01 fb">400-832-0851</span></p>
+		<p class="mt10 pl10"> Copyright  2014-2015 车碑二手车直卖网 版权所有.  &nbsp;&nbsp;&nbsp;地址：安徽省滁州市开发区花园西路82号 </p>
+      </div>
+      <ul class="footright">
+        <li>
+        	<img src="/skin/image/weixin.jpg" width="100" height="100" />
+        </li>
+        <li>
+        	<p class="footright_p1">车碑二手车直卖网官方微信</p>
+            <p class="footright_p2">扫描二维码，即可进行互动，还有惊爆优惠等你来拿！</p>
+        </li>
+      </ul>
+	</div>
+	<script>
+$(function(){
+        //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+        $(function () {
+            $(window).scroll(function(){
+                if ($(window).scrollTop()>100){
+                    $("#back-to-top").fadeIn(1500);
+                }
+                else
+                {
+                    $("#back-to-top").fadeOut(1500);
+                }
+            });
+ 
+            //当点击跳转链接后，回到页面顶部位置
+ 
+            $("#back-to-top").click(function(){
+                $('body,html').animate({scrollTop:0},1000);
+                return false;
+            });
+        });
+    });
+</script>
+<p id="back-to-top"><a href="#top"><span></span>&nbsp;</a></p>
+</div>
+<div id="A1" class="hide">
+	<div class="popnotice">
+		请填写您的反馈内容和联系电话
+	</div>
+	<div class="p20">
+	<form method="post" name="yuyueform" id="yuyueform" class="yuyueform">
+		<table class="poptable">
+		<tr> 
+			<th><span class="red">*</span> 反馈内容：</th>
+			<td><textarea name="f_detail" rows="5" cols="35" datatype="*" nullmsg="请填写留言！"></textarea></td>
+		</tr>
+		<tr>
+			<th><span class="red">*</span> 手机号：</th>
+			<td><input type="text" name="f_tel" datatype="m" nullmsg="请填写手机号！"></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td class="gray">您的信息不会在网站上显示，我们将保证您的隐私安全。</td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><span class="button_orange h35-p25 mr5"><a id="btnfeedback" href="javascript:;">提交</a></span></td>
+		</tr>
+		</table>
+	</form>
+	</div>
+</div>
+<script type="text/javascript" src="/skin/js/qqkf.js"></script>
+<div id="floatTools" class="lanrenzhijia-cs">
+  <div class="floatL"> <a style="display: block" id="aFloatTools_Show" class="btnOpen" title="查看在线客服" onClick="javascript:$('#divFloatToolsView').animate({width: 'show', opacity: 'show'}, 'normal',function(){ $('#divFloatToolsView').show();kf_setCookie('RightFloatShown', 0, '', '/', 'www.xxxxxxx.com'); });$('#aFloatTools_Show').attr('style','display:none');$('#aFloatTools_Hide').attr('style','display:block');" href="javascript:void(0);"> 展开</a> <a style="display: none" id="aFloatTools_Hide" class="btnCtn" title="关闭在线客服" onClick="javascript:$('#divFloatToolsView').animate({width: 'hide', opacity: 'hide'}, 'normal',function(){ $('#divFloatToolsView').hide();kf_setCookie('RightFloatShown', 1, '', '/', 'www.lanrenzhijia.com'); });$('#aFloatTools_Show').attr('style','display:block');$('#aFloatTools_Hide').attr('style','display:none');" href="javascript:void(0);"> 收缩</a> </div>
+  <div id="divFloatToolsView" class="floatR display: none">
+    <div class="cn">
+      <h3 class="titZx">车辆买卖</h3>
+      <ul>
+        <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1000000&site=qq&menu=yes"> <img border="0" src="http://wpa.qq.com/pa?p=2:1000000:51" alt="车辆买卖" title="车辆买卖" /></a> </li>
+        </li>
+      </ul>
+      <h3>上牌过户</h3>
+      <ul>
+        <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1000000&site=qq&menu=yes"> <img border="0" src="http://wpa.qq.com/pa?p=2:1000000:51" alt="上牌过户" title="上牌过户" /></a></li>
+      </ul>
+      <h3>评估专家</h3>
+      <ul>
+        <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1000000&site=qq&menu=yes"> <img border="0" src="http://wpa.qq.com/pa?p=2:1000000:51" alt="评估专家" title="评估专家" /></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- 版权 结束 -->
+	</body>
+</html>
+

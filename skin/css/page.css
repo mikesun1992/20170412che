@@ -1,0 +1,444 @@
+@import url(base.css);
+@import url(common.css);
+@charset "utf-8";
+
+/*全站链接样式*/
+a{ color:#666; text-decoration:none;}
+a:hover{ color:#ff6600; text-decoration:none;} 
+.blank{height:10px;}
+body{ color:#666; font-size:12px;}
+.blank{ height:10px;}
+
+body{font-weight:normal;font:13px "微软雅黑",verdana,lucida,helvetica,arial,sans-serif;}
+
+/*新闻列表*/
+.news_list li{font-size:14px;height:45px;line-height:45px;border-bottom:1px dashed #eee;}
+
+/*新闻详细*/
+.news_title{height:70px;line-height:60px;font-size:22px;text-align:center;border-bottom:1px solid #eee;}
+.news_info{padding:20px;line-height:25px;font-size:14px;}
+
+/*相关新闻*/
+.about_news_list li{float:left;width:330px;height:25px;line-height:25px;}
+
+/*卖车购车*/
+.sell_banner{background:url(../img/sellcar_banner.jpg) no-repeat center 0;position:relative;}
+.buy_banner{background:url(../img/buycar_banner.jpg) no-repeat center 0;position:relative;}
+.sellbox{padding:12px 500px 10px 10px;width:680px;margin-left: auto;margin-right: auto;}
+.sellbox .box{padding:15px;}
+.sellbox h3{font-size:26px;text-align:center;margin-bottom:15px;color:#666;}
+.sellbox .form_title{border-bottom:1px solid #e1e1e1;color:#4f4f4f;height:55px;margin:0 20px 23px 20px;position:relative;text-align:center;width:650px}
+.sellbox .form_title span{background:none repeat scroll 0 0 #fff;bottom:-13px;display:inline-block;font-family:Microsoft YaHei;font-size:24px;left:50%;margin-left:-107px;position:absolute;text-align:center;width:215px}
+
+/*服务保障*/
+.Insurance_banner{background:url(../img/Insurance_banner_02.png) no-repeat center 0;position:relative;}
+.Insurance{padding:12px 500px 10px 10px;height:4201px;margin-left: auto;margin-right: auto;}
+.Insurance .box{padding:15px; text-align:center;}
+#Insurance-banner-01_ {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:1px;
+	height:186px;
+}
+
+
+
+#Insurance-banner-03_ {
+	position:absolute;
+	left:0px;
+	top:186px;
+	width:1px;
+	height:3510px;
+}
+
+#Insurance-banner-05_ {
+	position:absolute;
+	left:1px;
+	top:616px;
+	width:543px;
+	height:322px;
+}
+
+#Insurance-banner-06_ {
+	position:absolute;
+	left:544px;
+	top:616px;
+	width:850px;
+	height:264px;
+}
+
+#Insurance-banner-07_ {
+	position:absolute;
+	left:1394px;
+	top:616px;
+	width:526px;
+	height:322px;
+}
+
+#Insurance-banner-08_ {
+	position:absolute;
+	left:544px;
+	top:880px;
+	width:850px;
+	height:58px;
+}
+
+#Insurance-banner-09_ {
+	position:absolute;
+	left:1px;
+	top:938px;
+	width:365px;
+	height:2758px;
+}
+
+#Insurance-banner-10_ {
+	position:absolute;
+	left:366px;
+	top:938px;
+	width:1206px;
+	height:100px;
+}
+
+#Insurance-banner-11_ {
+	position:absolute;
+	left:1572px;
+	top:938px;
+	width:348px;
+	height:2758px;
+}
+
+#Insurance-banner-12_ {
+	position:absolute;
+	left:366px;
+	top:1038px;
+	width:1206px;
+	height:154px;
+}
+
+#Insurance-banner-13_ {
+	position:absolute;
+	left:366px;
+	top:1192px;
+	width:64px;
+	height:2504px;
+}
+
+#Insurance-banner-14_ {
+	position:absolute;
+	left:430px;
+	top:1192px;
+	width:228px;
+	height:276px;
+}
+
+#Insurance-banner-15_ {
+	position:absolute;
+	left:658px;
+	top:1192px;
+	width:914px;
+	height:124px;
+}
+
+#Insurance-banner-16_ {
+	position:absolute;
+	left:658px;
+	top:1316px;
+	width:352px;
+	height:420px;
+}
+
+#Insurance-banner-17_ {
+	position:absolute;
+	left:1010px;
+	top:1316px;
+	width:498px;
+	height:342px;
+}
+
+#Insurance-banner-18_ {
+	position:absolute;
+	left:1508px;
+	top:1316px;
+	width:64px;
+	height:2380px;
+}
+
+#Insurance-banner-19_ {
+	position:absolute;
+	left:430px;
+	top:1468px;
+	width:228px;
+	height:268px;
+}
+
+#Insurance-banner-20_ {
+	position:absolute;
+	left:1010px;
+	top:1658px;
+	width:498px;
+	height:78px;
+}
+
+#Insurance-banner-21_ {
+	position:absolute;
+	left:430px;
+	top:1736px;
+	width:682px;
+	height:312px;
+}
+
+#Insurance-banner-22_ {
+	position:absolute;
+	left:1112px;
+	top:1736px;
+	width:396px;
+	height:218px;
+}
+
+#Insurance-banner-23_ {
+	position:absolute;
+	left:1112px;
+	top:1954px;
+	width:24px;
+	height:636px;
+}
+
+#Insurance-banner-24_ {
+	position:absolute;
+	left:1136px;
+	top:1954px;
+	width:372px;
+	height:292px;
+}
+
+#Insurance-banner-25_ {
+	position:absolute;
+	left:430px;
+	top:2048px;
+	width:682px;
+	height:388px;
+}
+
+#Insurance-banner-26_ {
+	position:absolute;
+	left:1136px;
+	top:2246px;
+	width:372px;
+	height:344px;
+}
+
+#Insurance-banner-27_ {
+	position:absolute;
+	left:430px;
+	top:2436px;
+	width:22px;
+	height:1260px;
+}
+
+#Insurance-banner-28_ {
+	position:absolute;
+	left:452px;
+	top:2436px;
+	width:624px;
+	height:154px;
+}
+
+#Insurance-banner-29_ {
+	position:absolute;
+	left:1076px;
+	top:2436px;
+	width:36px;
+	height:154px;
+}
+
+#Insurance-banner-30_ {
+	position:absolute;
+	left:452px;
+	top:2590px;
+	width:540px;
+	height:26px;
+}
+
+#Insurance-banner-31_ {
+	position:absolute;
+	left:992px;
+	top:2590px;
+	width:516px;
+	height:506px;
+}
+
+#Insurance-banner-32_ {
+	position:absolute;
+	left:452px;
+	top:2616px;
+	width:540px;
+	height:310px;
+}
+
+#Insurance-banner-33_ {
+	position:absolute;
+	left:452px;
+	top:2926px;
+	width:512px;
+	height:457px;
+}
+
+#Insurance-banner-34_ {
+	position:absolute;
+	left:964px;
+	top:2926px;
+	width:28px;
+	height:457px;
+}
+
+#Insurance-banner-35_ {
+	position:absolute;
+	left:992px;
+	top:3096px;
+	width:516px;
+	height:287px;
+}
+
+#Insurance-banner-36_ {
+	position:absolute;
+	left:452px;
+	top:3383px;
+	width:362px;
+	height:31px;
+}
+
+#Insurance-banner-37_ {
+	position:absolute;
+	left:814px;
+	top:3383px;
+	width:684px;
+	height:136px;
+}
+
+#Insurance-banner-38_ {
+	position:absolute;
+	left:1498px;
+	top:3383px;
+	width:10px;
+	height:313px;
+}
+
+#Insurance-banner-39_ {
+	position:absolute;
+	left:452px;
+	top:3414px;
+	width:362px;
+	height:202px;
+}
+
+#Insurance-banner-40_ {
+	position:absolute;
+	left:814px;
+	top:3519px;
+	width:684px;
+	height:97px;
+}
+
+#Insurance-banner-41_ {
+	position:absolute;
+	left:452px;
+	top:3616px;
+	width:296px;
+	height:80px;
+}
+
+#Insurance-banner-42_ {
+	position:absolute;
+	left:748px;
+	top:3616px;
+	width:426px;
+	height:52px;
+}
+
+#Insurance-banner-43_ {
+	position:absolute;
+	left:1174px;
+	top:3616px;
+	width:324px;
+	height:80px;
+}
+
+#Insurance-banner-44_ {
+	position:absolute;
+	left:748px;
+	top:3668px;
+	width:426px;
+	height:28px;
+}
+
+#Insurance-banner-45_ {
+	position:absolute;
+	left:0px;
+	top:3696px;
+	width:100%;
+	height:556px;
+}
+
+/*我要服务*/
+.service_banner{background:url(../img/Service_banner.png) no-repeat center 0;position:relative;}
+.service{padding:12px 500px 10px 10px;height:1001px;margin-left: auto;margin-right: auto;}
+.service.box{padding:15px; text-align:center;}
+
+/*评估*/
+.assess_banner{background:url(../img/CgDJBFMdaJaAE89dAAGR_gjXid4126_0-0_9_0_0.jpg) no-repeat center 0;position:relative;height:500px;}
+.assessbox{padding:0 30px 30px 15px;width:370px;background:#fff;position:absolute;left:50%;top:20px;margin-left:160px;}
+.assessbox .box{padding:50px 30px;}
+.assessbox .form_title{border-bottom:1px solid #e1e1e1;color:#4f4f4f;height:55px;margin:0 0 43px 0;position:relative;text-align:center;width:370px}
+.assessbox .form_title span{background:none repeat scroll 0 0 #fff;bottom:-13px;display:inline-block;font-family:Microsoft YaHei;font-size:24px;left:50%;margin-left:-107px;position:absolute;text-align:center;width:215px}
+
+
+/*表格*/
+.listtable01{border:1px solid #e9e9e9;}
+.listtable01 th{background:#f5f5f5;padding:10px;border-bottom:1px solid #e9e9e9;}
+.listtable01 td{padding:10px;border-bottom:1px dotted #e9e9e9;}
+
+.showcar_pic_list li{float:left;padding:2px;}
+.showcar_pic_list li p{margin-top:5px;text-align:center;}
+.sell_but01{display:block;width:130px;height:38px;font-size:16px;font-weight:bold;font-family:"微软雅黑";line-height:38px;text-align:center;color:#fff;background:#ee7700;border:none;}
+.sell_but01:hover{color:#fff;}
+
+.sell_table th{width:120px;padding:10px 5px;text-align:right;font-size:14px;}
+.sell_table td{padding:5px 10px;text-align:left;}
+.sell_table input[type="text"]{padding:3px;border:1px solid #d8d8d8;font-size:12px;}
+.sell_table .select01{padding:2px;width:200px;border:1px solid #d8d8d8;font-size:12px;}
+.sell_table select{padding:2px;width:90px;border:1px solid #d8d8d8;font-size:12px;}
+.sell_table textarea{width:300px;height:60px;border:1px solid #d8d8d8;padding:5px;font-size:12px;}
+
+/**/
+.sellb{width:1190px;height:100px;background:url(../img/car_sell_banner.gif) no-repeat 0 0;}
+
+
+/*关于我们*/
+.aboutbox{margin-top:20px;position:relative;padding-left:16px;background:#fff url(../img/about.jpg) repeat-y;border:1px solid #e9e9e9;}
+.aboutbox .abouttitle{position:absolute;left:9px;top:-8px;width:178px;height:46px;line-height:46px;font-size:16px;background:url(../img/aboutus.png) no-repeat;padding-left:20px;}
+.aboutbox .leftbox{float:left;width:164px;padding-top:38px;}
+.aboutbox .leftbox .leftlist li{height:45px;line-height:45px;border-bottom:1px solid #eee;}
+.aboutbox .leftbox .leftlist li a{display:block;padding-left:15px;font-size:14px;}
+.aboutbox .leftbox .leftlist li a.here{background:#fff;}
+.aboutbox .rightbox{float:right;width:950px;padding:20px;}
+.aboutbox .rightbox h3{font-size:30px;height:55px;line-height:55px;border-bottom:1px solid #eee;}
+.aboutbox .rightbox .infobox{padding:20px 0;font-size:14px;line-height:25px;}
+
+/*选择城市*/
+.city-box-top{border:1px solid #e8e8e8;border-radius:3px;background:#f5f5f5;padding:20px;}
+.city-box{border:1px solid #e8e8e8;border-radius:3px;padding:20px;margin-bottom:20px;}
+.city-box .initial{color:#f60;font-size:20px;}
+.city-box .citylist li{float:left;padding-right:30px;line-height:30px;}
+.city-box-top label{font-weight:normal;padding-top:5px;}
+
+/*城市列表*/
+.searchcity{border-bottom:1px solid #e9e9e9;padding:10px 0;line-height:20px;background:#f9f9f9;padding:20px;}
+.searchcity span{float:left;padding-right:10px;}
+.citylist{padding-bottom:20px;}
+.citylist ul{padding:0 20px;}
+.citylist .select01{padding:2px;border:1px solid #d8d8d8;font-size:12px;}
+.citylist .citybut{background:#f60;color:#fff;border:none;padding:3px 30px;font-family:"微软雅黑";}
+.citylist h3{height:35px;line-height:35px;font-size:14px;color:#f60;margin-top:10px;font-weight:bold;padding:0 20px;}
+.citylist li{float:left;padding-right:20px;}
+

@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>注册 - <{$setting.title}></title>
+		<meta content="<{$setting.keywords}>"  name="keywords"/>
+		<meta content="<{$setting.description}>" name="description"/>
+		<link href="<{$weburl}>/skin/css/user.css" rel="stylesheet" type="text/css"/>
+		<script type="text/javascript" src="<{$weburl}>/static/js/jquery.js"></script>
+		<script type="text/javascript" src="<{$weburl}>/static/js/Validform_v5.3.2_min.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			//城市选择
+			<{if $setting.version==3}>
+			$("#province").bind("change", function(){
+				$.get("<{$weburl}>/index.php?m=ajax&ajax=1", { 
+					cityid :  $("#province").val() 
+				}, function (data, textStatus){
+					$("#city").html(data); // 把返回的数据添加到页面上
+				}) ;
+			})   ;
+			$("#province2").bind("change", function(){
+				$.get("<{$weburl}>/index.php?m=ajax&ajax=1", {
+					cityid :  $("#province2").val() 
+				}, function (data, textStatus){
+					$("#city2").html(data); // 把返回的数据添加到页面上
+				}) ;
+			})   ;
+			<{/if}>
+			//表单验证
+			$(".resform").Validform({
+				tiptype:3
+			});
+			$div_li = $("ul.reg_tab li");
+			$div_li.click(function() {
+				$(this).addClass("here").siblings().removeClass("here");
+				var index = $div_li.index(this);
+				$("div.regbox > div").eq(index).show().siblings().hide();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!--内容-->
+		<{include file="default/`$setting.templates`/head.html"}>
+		<div class="login_main mt10 clearfix">
+			<div class="login_left">
+				<div class="title">注册</div>
+				<ul class="clearfix reg_tab">
+					<li class="here">注册会员</li>
+				</ul>
+				<div class="regbox mt20">
+					<div>
+					<form name="loginform" class="resform" id="loginform" method="post" action="index.php?m=register" >
+					<table class="logintable">
+						<tr>
+							<th>手机号：</th>
+							<td><input type="text" id="mobile" name="mobilephone" class="inp01" datatype="m" ajaxurl="index.php?m=register&ajax=1" sucmsg="手机号验证通过！" nullmsg="请输入手机号！" errormsg="请输入正确的手机号！"/></td>
+						</tr>
+						<tr>
+							<th width="20%">验证码：</th>
+							<td><input name="authcode" id="cftcode"  type="text"  class="inp02" datatype="s" ajaxurl="index.php?m=register&ajax=1" nullmsg="请输入验证码！" errormsg="请输入正确的验证码！"/>
+
+								<input type="button" class="login_but" onclick="c()"  id="btn" value="获取验证码" style="font-size:14px;height: 40px;border-radius:25px;">
+							</td>
+						</tr>
+						<tr>
+							<th>推荐人手机号：</th>
+							<td><input type="text"  name="tuijian_mobile" class="inp01"  sucmsg="推荐人手机号验证通过！" nullmsg="请输入推荐人手机号！" errormsg="请输入正确的手机号！"/></td>
+						</tr>
+						<tr>
+							<th></th>
+							<td><input type="submit" class="login_but" value="注册">  <input type="hidden" name="action" value="register"><input type="hidden" name="isdealer" value="1"></td>
+						</tr>
+					</table>
+					</form>
+					</div>
+					<div class="hide">
+						
+					</div>
+				</div>
+			</div>
+			<div class="login_right">
+				<p class="f14 mt20">已是<{$setting.sitename}>会员？</p>
+				<p class="mt20"><a href="<{$weburl}>/index.php?m=login" class="register_but">我要登录</a></p>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var wait=60;
+			function time(o) {
+				if (wait == 0) {
+					o.removeAttribute("disabled");
+					o.value="获取验证码";
+					wait = 60;
+				} else {
+					o.setAttribute("disabled", true);
+					o.value=wait + "秒后重试";
+					wait--;
+					setTimeout(function() {
+								time(o)
+							},
+							1000)
+				}
+			}
+			$(function(){
+				$('#btn').click(function(){
+					var m=$('#mobile').val();
+					if(m==""){
+						alert('请输入手机号！');
+						//window.location.reload();
+					}else if (!(/^1(3|4|5|7|8)\d{9}$/.test(m))) {
+						alert('请输入正确的手机号！');
+					}else{
+						time(this);
+						$.post('index.php?m=yanzheng', {m: m}, function (data) {
+							if(data==1){
+								alert('发送成功！');
+							}else if(data==2){
+								alert('操作频繁！');
+							}else if(data==3){
+								alert('系统繁忙！');
+							}
+						})
+					}
+				})
+			})
+			
+		</script>
+		<!--版权-->
+		<{include file="default/`$setting.templates`/foot.html"}>
+	</body>
+</html>

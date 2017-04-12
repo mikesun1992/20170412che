@@ -1,0 +1,78 @@
+<script type="text/javascript" src="<{$weburl}>/static/js/jquery.inputtext.js"></script>
+<script language="JavaScript">
+$(function(){
+	$("#carcount").load("<{$weburl}>/?m=ajax&ajax=1&carcount=1");
+	$(".keywords").textRemindAuto();
+	<{if $setting.version==3}>
+	//城市选择
+	$(".topcity").toggle(
+	  function () {
+		$(".topcitylist").show();
+	  },
+	  function () {
+		$(".topcitylist").hide();
+	  }
+	);
+	<{/if}>
+})
+</script>
+
+<!--头部-->
+<{include file="default/`$setting.templates`/top.html"}>
+<div class="headw">
+	<div class="head">
+		<div class="logo"><a href="<{$weburl}>/"><{if $setting.logo<>''}><img src="<{$setting.logo}>" alt="<{$setting.sitename}>"><{else}><{$setting.sitename}><{/if}></a></div>
+		 	<{if $setting.version==3}><div class="topcity">
+				<div class="topcitybox"><i></i><script src="<{$weburl}>/?m=city"></script></div></div>
+			<div class="topcitylist hide">
+			<h3>热门城市</h3>
+			<ul class="clearfix">
+				<li><a href="<{$weburl}>/?m=city&cid=0">全国</a></li>
+				<{foreach from=$cache.recomcitylist key=skey item=city}>
+				<li><a href="<{$weburl}>/?m=city&cid=<{$skey}>"><{$city}></a></li>
+				<{/foreach}>
+			</ul>
+			<p class="tr"><a href="<{$weburl}>/?m=citylist" class="orange01">更多城市</a></p>
+			</div>
+			<{/if}>
+		<div class="topsearch">
+			<div class="topsearchbox">
+			<form method="get" action="<{$weburl}>/">
+				<input type="text" name="k" class="keywords" id="s" value="请输入车辆关键词或信息编号"><input type="submit" value="" class="button"/>
+				<input type="hidden" name="m" value="search">
+			</form>
+			</div>
+			<p class="topkeywords"><{foreach from=$cache.topkeywords item=keywords}><a href="<{$weburl}>/?m=search&k=<{$keywords.keyword}>"><{$keywords.keywords}></a>&nbsp;&nbsp;<{/foreach}></p>
+		</div><div class="hot-phone">
+
+		<script>
+
+		</script>
+                <i></i>
+
+                <!--顶部热线电话  -->
+
+ 
+               <span class="js-change-phone">
+
+                    <{$setting.tel}>
+                </span>
+
+            </div>
+	</div>
+</div>
+
+
+
+<div class="nav_list">
+	<ul class="clearfix">
+		<{foreach from=$partlist key=key item=part}>
+		<li>
+		<a href="<{if $part.c_target==2}><{$part.c_url}><{else}><{$weburl}>/<{$part.c_url}><{/if}>" title="<{$part.c_name}>" <{if $menustate==$part.c_id}>class="here"<{/if}> <{if $part.c_target==2}>target="_blank"<{/if}>><{$part.c_name}></a>
+		</li>
+		<{/foreach}>
+		<li style="float:right;"><a href="<{$weburl}>/app.html" style="vertical-align:top;"><img src="<{$weburl}>/skin/img/dealer.png"/>APP下载</a></li>
+		<li style="float:right;"><a href="<{$weburl}>/service.html" style="vertical-align:top;"><img src="<{$weburl}>/skin/img/kche.png"/>我要服务</a></li>
+	</ul>
+</div>
+<!--头部end -->

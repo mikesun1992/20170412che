@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link href="static/css/admin/style.css" rel="stylesheet" type="text/css" />
+<script charset="utf-8" src="admin/kindeditor/kindeditor-min.js"></script>
+<link rel="stylesheet" href="admin/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="admin/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="static/js/Validform_v5.3.2_min.js"></script>
+<script>
+	KindEditor.ready(function(K) {
+		var editor = K.editor({
+			uploadJson : '<{$adminpage}>?m=upload',
+			fileManagerJson : '<{$adminpage}>?m=upload_manager',
+			allowFileManager : true
+		});
+		K('#image1').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					imageUrl : K('#url1').val(),
+					clickFn : function(url, title, width, height, border, align) {
+						K('#url1').val(url);
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+		K('#image2').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					imageUrl : K('#url2').val(),
+					clickFn : function(url, title, width, height, border, align) {
+						K('#url2').val(url);
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+	});
+			function register(limittype)	{	
+	     if(limittype==1)		{		
+	        document.getElementById("count").disabled=false;		
+			}	
+		else{		
+		    document.getElementById("count").disabled=true;
+		}
+			}
+			
+			function register1(limittype)	{	
+	     if(limittype==1)		{		
+	        document.getElementById("count1").disabled=false;		
+			}	
+		else{		
+		    document.getElementById("count1").disabled=true;
+		}
+			}
+			function register2(limittype)	{	
+	     if(limittype==1)		{		
+	        document.getElementById("count2").disabled=false;		
+			}	
+		else{		
+		    document.getElementById("count2").disabled=true;
+		}
+			}
+</script>
+
+
+</head>
+<body>
+<div class="colorarea01">
+	<div class="search clearfix">
+		<div class="searchL">
+			<ul class="menulist">
+				<li><a href="<{$adminpage}>?m=jifengz&a=list" class="list">积分规则设置</a></li>
+			</ul>
+		</div>
+	</div>
+	<form action="<{$adminpage}>?m=jifengz&a=list" method="post" name="form" onsubmit="return chksubmit();">
+	<table cellspacing="0" cellpadding="0" width="28%"  class="maintable">
+
+		<tr>
+			<th>推荐人获得积分：</th>
+			<td><input name="tjr_jifen" type="text" size="50" id="title" value="<{$jifengz.tjr_jifen}>" /></td>
+		</tr>
+		<tr>
+			<th>新会员获得积分：</th>
+			<td><input name="newuser_jifen" type="text" size="50"  value="<{$jifengz.newuser_jifen}>" /></td>
+		</tr>
+		<tr>
+			<th>发布车辆获得积分：</th>
+			<td><input name="newcars_jifen" type="text" size="50"  value="<{$jifengz.newcars_jifen}>" /></td>
+		</tr>
+
+		<tr>
+			<th></th>
+			<td><div class="buttons">
+					<input type="submit" value="修改设置" class="submit">
+					<input type="hidden" name="a" value="<{$ac}>">
+				</div></td>
+		</tr>
+	</table>
+</div>
+</div>
+</body>
+</html>

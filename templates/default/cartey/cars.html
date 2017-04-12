@@ -1,0 +1,1957 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title><{$cars.p_allname}>-<{$setting.title}></title>
+		<meta content="<{$setting.keywords}>" name="keywords" />
+		<meta content="<{$cars.p_details}>" name="description" />
+		<link href="<{$weburl}>/skin/css/car.css" rel="stylesheet" type="text/css"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="<{$weburl}>/skin/css/iPicture.css">
+		<script type="text/javascript" src="<{$weburl}>/static/js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="<{$weburl}>/static/js/jquery.ipicture.js"></script>
+		<!--<script type="text/javascript" src="<{$weburl}>/static/js/jquery.js"></script>
+		<script type="text/javascript" src="<{$weburl}>/static/js/layer/layer.min.js"></script>
+		<script type="text/javascript" src="<{$weburl}>/static/js/laydate/laydate.js"></script>
+		<script type="text/javascript" src="<{$weburl}>/static/js/jquery.SuperSlide.2.1.js"></script>
+		<script type="text/javascript" src="<{$weburl}>/static/js/Validform_v5.3.2_min.js"></script>-->
+		<script type="text/javascript" src="<{$weburl}>/skin/js/jquery.SuperSlide.2.1.js"></script>
+		<script language="JavaScript">
+			$(function() {
+				//品牌选择
+				$("#brand").change(function(){
+					$.get("<{$weburl}>/?mod=ajax&ajax=1", { 
+						pid :  $("#brand").val() 
+					}, function (data, textStatus){
+						   $("#subbrand").html(data); // 把返回的数据添加到页面上
+						}
+					);
+				});
+				$("div.car_tab ul li a").mouseover(function() {
+					$(this).addClass("here").parent().siblings().children().removeClass("here");
+					var index = $div_li.index(this);
+					$("div.cartab_box > div").eq(index).show().siblings().hide();
+				});
+				$("#hits").load("<{$weburl}>/?m=ajax&ajax=1&carshit=1&id=<{$cars.p_id}>");
+				$(".emcity").toggle(
+				  function () {
+					$(".emission_city").show();
+				  },
+				  function () {
+					$(".emission_city").hide();
+				  }
+				);
+				//表单验证
+				$(".yuyueform").Validform({
+					tiptype:3
+				});
+
+				$('#yuyue').on('click', function(){
+					var yuyueindex =  $.layer({
+						type: 1,
+						title: '预约看车',
+						shade: [0.5, '#000'],
+						area: ['460px', 'auto'],
+						page: {dom: '#A1'}
+					});
+					$('#btnYuyueLookCar').on('click', function(){
+						$.post("<{$weburl}>/?m=ajax&ajax=1&yuyue=1",{
+							pid: <{$cars.p_id}>, 
+							uid: <{$cars.uid}>, 
+							name: $("#A1 input[name='name']").val(), 
+							mobilephone: $("#A1 input[name='mobilephone']").val(),
+							ordertime: $("#A1 input[name='ordertime']").val(),
+							orderinfo:$("#A1 textarea[name='orderinfo']").val()
+						},function(data){
+							if (data==1)
+							{
+								layer.close(yuyueindex);
+								layer.alert("预约成功！请耐心等待商家和您联系！", 9);
+								$('#yuyueform')[0].reset();
+							}
+							else{
+								layer.close(yuyueindex);
+								layer.alert("预约失败！请再次预约！", 9);
+							}
+						});
+					});
+				});
+				$('#xunjia').on('click', function(){
+					 var xunjiaindex = $.layer({
+						type: 1,
+						title: '我要砍价',
+						shade: [0.5, '#000'],
+						area: ['460px', 'auto'],
+						page: {dom: '#B1'}
+					});
+					$('#btnxuejia').on('click', function(){
+						$.post("<{$weburl}>/?m=ajax&ajax=1&xunjia=1",{
+							pid: <{$cars.p_id}>, 
+							uid: <{$cars.uid}>, 
+							name: $("#B1 input[name='name']").val(), 
+							mobilephone: $("#B1 input[name='mobilephone']").val(),
+						},function(data){
+							if (data==1)
+							{
+								layer.close(xunjiaindex);
+								layer.alert("询价成功！请耐心等待商家和您联系！", 9);
+								$('#xunjiaform')[0].reset();
+							}
+							else{
+								layer.close(xunjiaindex);
+								layer.alert("询价失败！请再次询价！", 9);
+							}
+						});
+					});
+				});	
+                $('#daikuan').on('click', function(){
+					var daikuanindex =  $.layer({
+						type: 1,
+						title: '分期贷款(元)',
+						shade: [0.5, '#000'],
+						area: ['460px', 'auto'],
+						page: {dom: '#C1'}
+					});
+					$('#btndaikuan').on('click', function(){
+						$.post("<{$weburl}>/?m=ajax&ajax=1&daikuan=1",{
+							pid: <{$cars.p_id}>, 
+							uid: <{$cars.uid}>, 
+							name: $("#C1 input[name='name']").val(), 
+							mobilephone: $("#C1 input[name='mobilephone']").val(),
+							ordertime: $("#C1 input[name='ordertime']").val(),
+							orderinfo:$("#C1 textarea[name='orderinfo']").val()
+						},function(data){
+							if (data==1)
+							{
+								layer.close(daikuanindex);
+								layer.alert("申请成功！请耐心等待商家和您联系！", 9);
+								$('#daikuanform')[0].reset();
+							}
+							else{
+								layer.close(daikuanindex);
+								layer.alert("申请失败！请再次申请！", 9);
+							}
+						});
+					});
+				});
+				
+			})
+		</script>
+
+        <script type="text/javascript">
+
+		//检测详情tab
+		function setTab(m, n) {
+			var tli = document.getElementById("menu" + m).getElementsByTagName("li");
+			/*获取选项卡的LI对象*/
+			var mli = document.getElementById("main" + m).getElementsByTagName("ul");
+			/*获取主显示区域对象*/
+			for (i = 0; i < tli.length; i++) {
+				tli[i].className = i == n ? "hover" : "";
+				/*更改选项卡的LI对象的样式，如果是选定的项则使用.hover样式*/
+				mli[i].style.display = i == n ? "block" : "none";
+				/*确定主区域显示哪一个对象*/
+			}
+		};
+	</script>
+
+
+<script type="text/javascript">
+$(function(){
+	$('#user_login').click(function(){	
+		if("undefined" != typeof closetime){
+			clearTimeout(closetime);	
+		}
+		openWindow(loginOpen,500,440,false,true);//弹框的id，宽度，高度，是否需要禁止滚动	
+	});
+});	
+</script>
+
+ 
+<script type="text/javascript">
+var timer;
+var second = getCookie("secondsremained");
+var isSubmit = true;
+$(function(){
+	loadInputCss();
+	
+	$("#loginCar").click(function(){
+		buttonClick($(this));
+		// 防止显示提示发送验证码时出现错误信息提示
+		if($('#login_carer_tipinfo').css('color') == 'rgb(102, 102, 102)' || $('#login_carer_tipinfo').css('color') == '#666' || $('#login_carer_tipinfo').css('color') == '#666666'){
+			return;
+		}
+		login();
+	});
+	
+	// 获取验证码点击事件
+	$('#getyzmcar').click(function(){
+		buttonClick($(this));
+		if(!$('#getyzmcar').hasClass('getYzm_On')){
+			return;
+		}
+		var mobile = $('#czhib_userName').val();
+		if(isMobil(mobile)){
+			var getVerifyUrl = 'czhib_customer/getVerify.htm'; //图形验证码
+			var czhib_yzm = $('#czhib_yzm').val().trim();
+			if("" == czhib_yzm || null == czhib_yzm)
+			{
+				$('#login_carer_tipinfo').css('color', 'red').html('请输入图形验证码！');
+				setTimeout("$('#login_carer_tipinfo').css('color', 'red').html('');", 3000);
+				$('#czhib_yzm').parent().removeClass('InputBingo black').addClass('InputWrong');	
+				return;
+			}
+			$.post(getVerifyUrl, {mobile : mobile,'customeryzm':czhib_yzm}, function(data) {
+				if(data.status){
+					$('#getyzmcar').removeClass('getYzm_On');
+					addCookie("secondsremained",60,60);//添加cookie记录,有效时间60s
+					second = 60;
+					timer = setTimeout('changeSecond()', 1000);
+					$('#login_carer_tipinfo').css('color', '#666').html('验证码已发送至手机，请耐心等待并查收！');
+					setTimeout("$('#login_carer_tipinfo').css('color', 'red').html('');", 3000);
+				} else {
+					$('#login_carer_tipinfo').html(data.msg);
+					if(data.msg.indexOf('图形验证码') >= 0){
+						$('#czhib_yzm').parent().removeClass('InputBingo black').addClass('InputWrong');	
+					}
+				}
+			}, 'json');
+		} else {
+			$('#login_carer_tipinfo').css('color', 'red').html('请输入正确的手机号码！');
+			$('#czhib_userName').parent().removeClass('InputBingo black');
+			$('#czhib_userName').parent().addClass('InputWrong');
+		}
+	});
+});
+
+//获取验证码按钮样式改变
+function changeSecond(){
+	$('#getyzmcar').html('(' + second + ')' + '重新获取');
+	second--;
+	if (second > -1) {
+		timer = setTimeout('changeSecond()', 1000);
+		editCookie("secondsremained", second, second+1);
+	} else {
+		var mobile = $('#czhib_userName').val();
+		//if(isMobil(mobile)){
+			$('#getyzmcar').addClass("getYzm_On");
+		//} else {
+		//	$('#getyzmcar').removeClass('getYzm_On');
+		//}
+		$('#getyzmcar').html('重新获取');
+		clearTimeout(timer);
+	}
+}
+
+//加载input标签样式
+function loadInputCss(){
+	if(second > 0){
+		$('#getyzmcar').html('(' + second + ')' + '重新获取');
+		$('#getyzmcar').removeClass('getYzm_On');
+		timer = setTimeout('changeSecond()', 1000);
+	} else {
+		$('#getyzmcar').html('获取验证码');
+	}
+	inputFocusAndBlur('#czhib_userName');
+	inputFocusAndBlur('#czhib_password');
+	inputFocusAndBlur('#czhib_yzm');
+}
+
+//手机号码输入监听
+function listenButton() {
+	if($('#czhib_userName').val().length == 11 && $('#getyzmcar').html() == '获取验证码'){
+		$('#getyzmcar').addClass("getYzm_On");
+	}
+}
+
+$(document).keydown(function(event) {
+	if (event.keyCode == 13 && isSubmit) {
+		/*回车键*/
+		setTimeout(function() {
+			login();
+		}, 10);
+	}else{
+		$(".boxy-btn1").focus();
+		isSubmit = true;
+	}
+});
+
+// 发送验证码时添加cookie
+function addCookie(name, value, expiresHours) {
+	var cookieString = name + "=" + escape(value);
+	// 判断是否设置过期时间,0代表关闭浏览器时失效
+	if (expiresHours > 0) {
+		var date = new Date();
+		date.setTime(date.getTime() + expiresHours * 1000);
+		cookieString = cookieString + ";expires=" + date.toUTCString();
+	}
+	document.cookie = cookieString;
+}
+
+// 修改cookie的值
+function editCookie(name, value, expiresHours) {
+	var cookieString = name + "=" + escape(value);
+	if (expiresHours > 0) {
+		var date = new Date();
+		date.setTime(date.getTime() + expiresHours * 1000); // 单位是毫秒
+		cookieString = cookieString + ";expires=" + date.toGMTString();
+	}
+	document.cookie = cookieString;
+}
+
+// 按钮点击优化
+var clickObj;
+function buttonClick(obj) {
+	if(obj.attr('data-click') == 'false'){
+		return;
+	}
+	obj.attr('data-click', 'false');
+	clickObj = obj;
+	setTimeout("clickObj.attr('data-click', 'true');", 2000);
+}
+
+
+//input标签焦点获得与失去
+function inputFocusAndBlur(id){
+	var obj = $(id);
+	obj.focus(function(){
+		obj.parent().removeClass('InputWrong').addClass('InputBingo');
+		if(obj.val() == obj.attr('default') || obj.css('color') == 'rgb(255, 0, 0)' || obj.css('color') == 'red'){
+			obj.val('');
+		}
+		if(document.getElementById('login_carer_tipinfo').style.color == 'red'){
+			$('#login_carer_tipinfo').html('');
+		}
+		obj.parent().addClass('black');
+	}).blur(function(){
+		if(obj.val() == '' || obj.val() == null){
+			obj.val(obj.attr('default'));
+			obj.parent().removeClass('black');
+		}
+	});
+}
+
+function login(){
+	var userName = $('#czhib_userName').val().trim();
+	var password = $('#czhib_password').val().trim();
+	var yzm = $('#czhib_yzm').val().trim();
+	var url = 'czhib_customer/signin.htm';
+	var successUrl = 'czhib_customer/index.htm';
+	isSubmit = false;
+	$.post(url, {userName:userName,password:password,yzm:yzm}, function(data) {
+		if(data.status){
+			delCookie('secondsremained');
+			window.location.href=$('base').attr('href') + successUrl;
+		}else{
+			if(data.msg == '用户不存在，评估或预约卖车后可创建用户' || data.msg == '请填写完整信息'){
+				if(data.msg == '请填写完整信息'){
+					if(userName == ''){
+						$('#czhib_userName').parent().removeClass('InputBingo black').addClass('InputWrong');
+					}
+					if(password == ''){
+						$('#czhib_password').parent().removeClass('InputBingo black').addClass('InputWrong');	
+					}
+					if(yzm == ''){
+						$('#czhib_yzm').parent().removeClass('InputBingo black').addClass('InputWrong');	
+					}				
+				}
+				$('#login_carer_tipinfo').html(data.msg).css('color', 'red');
+			} else if(data.msg == '图形验证码错误') {
+				$('#login_carer_tipinfo').css('color', 'red').html('图形验证码错误');
+				$('#czhib_yzm').parent().removeClass('InputBingo black').addClass('InputWrong');
+			} else {
+				$('#login_carer_tipinfo').css('color', 'red').html(data.data.smsyzmError);
+				$('#czhib_password').parent().removeClass('InputBingo black').addClass('InputWrong');
+				if(data.data.picyzmError != null){
+					$('#login_carer_tipinfo').html($('#login_carer_tipinfo').html() + "|"+ data.data.picyzmError);
+					//$('#czhib_yzm').parent().removeClass('InputBingo black').addClass('InputWrong');
+					$('#yzmImgBtn')[0].src='czhib_pub/yzm.htm?t='+Math.random();
+				}
+			}
+		}
+	}, 'json');
+}
+</script>
+ 
+<script type="text/javascript">
+
+function openWindow(id,w,h,r,s){
+	$('.loginOpenUl').find('.InputWrong').each(function(){
+		$(this).removeClass('InputWrong').addClass('InputBingo');
+	});
+	
+     $('#login_carer_tipinfo').html('');
+     $('#yzmImgBtn')[0].src = 'czhib_pub/yzm.htm?t='+Math.random();
+     openClose(businessWrong);
+     openClose(subOk);
+     newOpen(id,w,h,r,s);//弹框的id，宽度，高度，是否需要禁止滚动	
+	
+}
+
+
+</script>
+
+		</head>
+	<body>
+<!--内容--> 
+<{include file="default/`$setting.templates`/head.html"}>
+<div class="nav">您当前的位置：<a href="<{$weburl}>/">首页</a> <span>></span> <a href="<{$weburl}>/?m=search">买车</a> <span>></span> <{$cars.p_allname}></div>
+<div class="main mt10">
+	<div class="carbox clearfix">
+		<div class="carbox_left">
+			<div class="carpicbox">
+				<{if $cars.issell==1}>
+					<div class="issell"></div>
+				<{/if}>
+				<{if $cars.p_mainpic<>""}>
+				<img src="<{$weburl}><{$cars.p_mainpic}>" id="BigImg"/>
+				<{else}>
+				<img src="<{$weburl}>/static/img/bigcar.jpg"/>
+				<{/if}>
+			</div>
+			<{if $pic_list neq ""}>
+			<div class="ladyScroll">
+				<a class="prev" href="javascript:void(0)"></a>
+				<div class="scrollWrap">
+					<div class="dlList">
+						<{foreach from=$pic_list item=piclist}>
+						<dl>
+							<dt><img src="<{$weburl}><{$piclist.smallpic}>" onmousemove="javascript:document.getElementById('BigImg').src='<{$weburl}><{$piclist.pic}>'"></dt>
+						</dl>
+						<{/foreach}>
+					</div>
+				</div>
+				<a class="next" href="javascript:void(0)"></a>
+			</div>
+			<script type="text/javascript">
+				jQuery(".ladyScroll").slide({ mainCell:".dlList", effect:"leftLoop",vis:5, autoPlay:true});
+			</script>
+			<{/if}>
+		</div>
+		<div class="carbox_center">
+		<ul class="clearfix">
+			<{foreach from=$recombrandlist key=skey item=recombrand}>
+			<li class="js-title">
+				<a <{if $skey==0}>class="current"<{/if}> href="javascript:;"><img src="upload/brand/<{$recombrand.pic}>"><{$recombrand.b_name}></a>
+            </li>
+			<{/foreach}>
+       </ul>
+			<h1 class="carname"><{$cars.p_allname}></h1>
+			<p class="gray01" style="line-height:28px;"><span>发布日期：<{$cars.listtime}><span class="pl10">关注度：<span class="orange01" id="hits"></span>  车源号: <em><{$cars.p_no}></em>
+			<span class="bdsharebuttonbox" style="float:right;"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a></span>
+			</p>
+			<div class="pricebox clearfix">
+				<div class="mt20">车主报价：<span class="price"><{$cars.p_price}></span>
+				<a href="javascript:;" class="a3 clearfix" id="yuyue"><i></i><span>预约看车</span></a>
+				<a href="javascript:;" class="a4 clearfix" id="xunjia"><i></i><span>砍 价</span></a>
+				首付：<span class="price"><{$shoufu}></span>
+				<a href="javascript:;" class="a5 clearfix" id="daikuan"><i></i><span>分期贷款</span></a>
+				</div>
+				<div>出厂报价：<span class="fb white"><{$cars.p_newprice}></span>万  + <span class="fb white"><{$cars.p_tax}></span>万(购置税) 您节省了<span class="fb white"><{$cars.p_save}></span>万</div>
+			</div>
+			<div class="para">
+				<ul class="clearfix">
+                    <li>
+                        <dl>
+                             <dt><span class="img1"></span></dt>
+                             <dd>表显里程<strong><{$cars.p_kilometre}>万公里</strong></dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                             <dt><span class="img2"></span></dt>
+                             <dd>上牌时间<strong><{$cars.p_year}>年<{$cars.p_month}>月</strong></dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+							<dt><span class="img3"></span></dt>
+                            <dd>排放标准<strong><{$cars.p_emission}></strong>
+							</dd>
+						</dl>
+                    </li>
+						 <li>
+                        <dl>
+							<dt><span class="img4"></span></dt>
+                            <dd>档位/排量<strong><{$cars.p_transmission}>/<{$cars.p_gas}></strong>
+							</dd>
+						</dl>
+                    </li>
+					 <li class="last">
+                        <dl>
+							<dt><span class="img5"></span></dt>
+                            <dd>牌照所在地<strong><{$cars.city}></strong>
+							</dd>
+						</dl>
+                    </li>
+				</ul>
+            </div>
+			<div class="contactbox" id="tel">
+				<h3>免费咨询电话（8:00-19:00 周六日休息） <i class="i-yb"></i>延长质保&nbsp;&nbsp;&nbsp;<i class="i-ckb"></i>代办服务&nbsp;&nbsp;&nbsp;<i class="i-dk"></i>分期购车</h3>
+			</div>
+			<div class="ensure"><!--保障服务-->
+            <img src="<{$weburl}>/skin/img/server.png" width="672" height="92" />
+			</div>
+		</div>
+		
+	</div>
+</div>
+<div class="notice mt20">
+	<span class="fr">看车电话：<span class="orange01"><{$setting.tel}></span></span>二手车交易车辆过户前请勿轻易给对方押金、订金，交易中请仔细查验车况，避免上当受骗。
+</div>
+<div class="main">
+	<div class="main clearfix" style="margin-top:40px;">
+	<div class="main">
+	
+		<ul class="cardetail_tab clearfix ">
+			<li class="here"><a href="#A">基本信息</a></li>
+			<li><a href="#B">车辆配置</a></li>
+			<li><a href="#C">车主描述</a></li>
+		    <li><a href="#D">检测报告</a></li>
+			<li><a href="#E">图片展示</a></li>
+
+		</ul>
+		<a name="A">
+		<div class="cardetailbox">
+			<div class="car_box5">
+				<em></em>
+				<h4 class="mt10"><span class="title">基本信息</span></h4>
+			</div>
+			<div style="clear:both;"></div>
+			<div class="box">
+				<ul class="cardetaillist clearfix">
+					<li><span>车   型：</span><{if $cars.modelname<>''}><{$cars.modelname}><{else}>无<{/if}></li>
+					<li><span>车体颜色：</span><{if $cars.p_color<>''}><{$cars.p_color}><{else}>无<{/if}></li>
+					<li><span>首次上牌：</span><{$cars.p_year}>-<{$cars.p_month}></li>	
+                    <li><span>过户次数：</span><{$info_rs.gh}>次</li>
+					<li><span>年检有效期至：</span><{$info_rs.nj_overtime}></li>
+					<li><span>交强险到期</span><{$info_rs.jqx_overtime}></li>
+					<li><span>商业险到期：</span><{$info_rs.syx_overtime}></li>
+					<li><span>车辆用途：</span>-</li>
+
+				</ul>
+			</div>
+		</div>
+		<a name="B">
+		<div class="cardetailbox">
+			<div class="car_box5">
+				<em></em>
+				<h4 class="mt10"><span class="title">车辆配置</span></h4>
+			</div>
+			<div style="clear:both;"></div>
+			<div class="box">
+				<ul class="cardetaillist clearfix">
+					<li><span>变 速 器：</span><{if $cars.p_transmission<>''}><{$cars.p_transmission}><{else}>无<{/if}></li>
+					<li><span>燃油标号：</span><{$cars.p_emission}></li>
+					<li><span>排    量：</span><{$cars.p_gas}></li>		
+				</ul>
+			</div>
+		</div>
+		
+			<div class="box">
+				<ul class="cardetaillist clearfix">
+					<{foreach from=$paralist key=key item=paralist}>
+						<{if $paralist.type_name=='checkbox'}>
+						<{foreach from=$list key=key item=list}>
+						<{if $list.checkvalue==2}><li><span class="gray"></span><{$key}></li><{/if}>
+						<{/foreach}>
+						<{elseif $paralist.c_name=='胎压监测装置' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i1"></i>胎压监测</li></span>
+						<{elseif $paralist.c_name=='电子稳定' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i2"></i>电子稳定(ESP)</li></span>
+						<{elseif $paralist.c_name=='倒车雷达' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i3"></i>倒车雷达</li></span>
+						<{elseif $paralist.c_name=='定速巡航' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i4"></i>定速巡航</li></span>
+						<{elseif $paralist.c_name=='自动空调' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i5"></i>自动空调</li></span>
+						<{elseif $paralist.c_name=='四轮驱动' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i6"></i>四轮驱动</li></span>
+						<{elseif $paralist.c_name=='GPS导航' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i7"></i>GPS导航</li></span>
+						<{elseif $paralist.c_name=='座椅加热' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i8"></i>座椅加热</li></span>
+						<{elseif $paralist.c_name=='蓝牙电话' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i9"></i>蓝牙电话</li></span>
+						<{elseif $paralist.c_name=='外接音源' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i10"></i>外接音源</li></span>
+						
+						<{elseif $paralist.c_name=='大灯随动' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i11"></i>大灯随动</li></span>
+						<{elseif $paralist.c_name=='空气悬挂' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i12"></i>空气悬挂</li></span>
+						<{elseif $paralist.c_name=='自动大灯' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i13"></i>自动大灯</li></span>
+						<{elseif $paralist.c_name=='电动车窗' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i14"></i>电动车窗</li></span>
+						<{elseif $paralist.c_name=='全景天窗' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i15"></i>全景天窗</li></span>
+						<{elseif $paralist.c_name=='后座出风' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i16"></i>后座出风</li></span>
+						<{elseif $paralist.c_name=='倒车影像' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i17"></i>倒车影像</li></span>
+						<{elseif $paralist.c_name=='电动后备箱' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i18"></i>电动后备箱</li></span>
+						<{elseif $paralist.c_name=='涡轮增压' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i19"></i>涡轮增压</li></span>
+						<{elseif $paralist.c_name=='真皮座椅' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i20"></i>真皮座椅</li></span>
+						
+						<{elseif $paralist.c_name=='侧气囊帘' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i21"></i>侧气囊帘</li></span>
+						<{elseif $paralist.c_name=='电子手刹' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i22"></i>电子手刹</li></span>
+						<{elseif $paralist.c_name=='电动座椅' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i23"></i>电动座椅</li></span>
+						<{elseif $paralist.c_name=='电动遮阳帘' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i24"></i>电动遮阳帘</li></span>
+						<{elseif $paralist.c_name=='氙气大灯' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i25"></i>氙气大灯</li></span>
+						<{elseif $paralist.c_name=='一键启动' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i26"></i>一键启动</li></span>
+						<{elseif $paralist.c_name=='自动泊车入位' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i27"></i>自动泊车入位</li></span>
+						<{elseif $paralist.c_name=='中控台彩屏' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i28"></i>中控台彩屏</li></span>
+						<{elseif $paralist.c_name=='电动后视镜' && $paralist.c_value=='有'}><span class="icon_gp"><li><i class="i29"></i>电动后视镜</li></span>
+						<{elseif $paralist.id > 9 && $paralist.id < 40}><span class="icon_gp"></span>
+						<{else}>
+						
+						<{/if}>
+					<{/foreach}>
+				</ul>
+			</div>
+			<a name="C">
+		<div class="cardetailbox">
+			<div class="car_box5">
+				<em></em>
+			<h4 class="mt10"><span class="title">车主描述</span></h4>
+			</div>
+			<div class="box">
+				<{$cars.p_details}>
+			</div>
+		</div>
+			<a name="D">
+		<div class="cardetailbox">
+			<div class="car_box5">
+				<em></em>
+			<h4 class="mt10"><span class="title">检测报告</span></h4>
+			</div>
+			<div class="box">
+	 <div id="certificate"> <div class="detail-report-new-wrapper" rrc-event-scope="certification"> <div class="container"> <div class="border-top"> <div class="left"></div> <div class="right"></div> <div class="center"></div> </div> </div> <div class="container"> <div class="border-center"> <div class="left"></div> <div class="right"></div> <div class="center"> <div class="content clearfixnew"> <div class="title">车碑质量检测合格证
+                    <div class="test-ps">258项专业检测：108项国家标准检测，150项车碑车专项检测</div> </div> <div class="content-left"> <div class="head-img"> <img class="tester-img" src="<{$jcs.pic}>" /> </div> <div class="staff-ID">NO.<{$jcs.jcs_id}></div> <div class="staff-star"> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="star"></div> <div class="mark"><span>100%&nbsp;</span>好评</div> </div> <div class="name"><{$jcs.name}></div> <div class="staff-title"><{$jcs.type}></div> <div class="achievement"> <div class="car-number-inspected"> <span>检测日期：</span> <span class="number-unit"><{$cars.listtime}></span> </div> <div class="car-number-rejected"> <span>评估有效期：</span> <span class="number-unit">1个月</span> </div> </div> <div class="staff-video video-open"><i class="iconfont icon-20shipin"></i>车辆检测拒绝重大事故车<div class="jiantou-right"></div></div> <button class="ask-btn btn-base btn-default" id="free_phone_btn" rrc-tel-button="咨询-PC-详情页-5" rrc-event-name="button-vehiclecondition" rrc-event-param="detail"> <img class="report-img" src="<{$weburl}>/skin/img/tel.gif">&nbsp;&nbsp;免费咨询车况
+                    	</button> </div> <div class="content-right"> <div class="test-result"> <span class="result">检验结果 : </span>
+                                <{$info_rs.pingjia}>                       </div> <div class="test-main"> <div class="test-main-item"> <img class="" src="<{$weburl}>/skin/img/pcsgc.png" /> <div class="option-title">排除事故车</div> <div class="option"> <div class="child-title">重大事故排查28项</div> <i class="iconfont icon-gou"></i> </div> </div> <div class="test-main-item fire"> <img class="" src="<{$weburl}>/skin/img/pchsc.png" /> <div class="option-title">排除火烧车</div> <div class="option"> <div class="child-title">火烧车排查4项</div> <i class="iconfont icon-gou"></i> </div> </div> <div class="test-main-item"> <img class="" src="<{$weburl}>/skin/img/pcspc.png" /> <div class="option-title">排除泡水车</div> <div class="option"> <div class="child-title">泡水车排查6项</div> <i class="iconfont icon-gou"></i> </div> </div> </div> <div class="other clearfixnew"> <div class="test-other narrow  "> <div class="other-title">核心部件检测</div> <div class="option"> <div class="child-title">发动机舱</div> <div class="mun">15项</div> <i class="iconfont icon-gou"></i> </div> <div class="option"> <div class="child-title">底盘</div> <div class="mun">4项</div> <i class="iconfont icon-gou"></i> </div> <div class="option"> <div class="child-title">悬挂系统</div> <div class="mun">7项</div> <i class="iconfont icon-gou"></i> </div> </div> <div class="test-other   "> <div class="other-title">磨损程度评估</div> <div class="option"> <div class="child-title">车体覆盖件</div> <div class="mun">7项</div> <i class="iconfont icon-gou"></i> <a class="test-fail-box" href="#detail_blemish_inspect" rrc-event-name="flaw-moreinfo"> <div class="test-fail"> <{if $waiguan_num!=0}>
+
+
+                                <div class="mun">5项</div> <div class="cuowutishi"></div> <div class="fail-remind "> <p class="fail-num">有5处瑕疵</p> <div class="fail-text">查看详情<div class="jiantou-right"></div></div> <i class="test-fail-triangle-outer"></i> <i class="test-fail-triangle-inner"></i> </div> </div> </a>
+                            </if>
+                                 </div> <div class="option"> <div class="child-title">车身辅助结构件</div> <div class="mun">12项</div> <i class="iconfont icon-gou"></i> </div> <div class="option"> <div class="child-title">车内易磨损部位</div> <div class="mun">10项</div> <i class="iconfont icon-gou"></i> </div> </div> <div class="test-other   pass-mar"> <div class="other-title">常用功能检测</div> <div class="option"> <div class="child-title">电子控制系统</div> <div class="mun">6项</div> <i class="iconfont icon-gou"></i> </div> <div class="option"> <div class="child-title">常用功能开关</div> <div class="mun">13项</div> <i class="iconfont icon-gou"></i> </div> <div class="option"> <div class="child-title">灯光系统</div> <div class="mun">5项</div> <i class="iconfont icon-gou"></i> </div> <div class="option"> <div class="child-title">玻璃、后视镜</div> <div class="mun">11项</div> <i class="iconfont icon-gou"></i> </div> <div class="option"> <div class="child-title">轮胎轮毂</div> <div class="mun">10项</div> <i class="iconfont icon-gou"></i> </div> <div class="option"> <div class="child-title">随车附件</div> <div class="mun">6项</div> <i class="iconfont icon-gou"></i> </div> </div> <div class="test-other  narrow-last pass-mar"> <div class="other-title">启动检测</div> <div class="option"> <div class="child-title">驾驶室</div> <div class="mun">4项</div> <i class="iconfont icon-gou"></i> </div> <div class="option"> <div class="child-title">发动机</div> <div class="mun">4项</div> <i class="iconfont icon-gou"></i> </div> <div class="option"> <div class="child-title">转向系统</div> <div class="mun">3项</div> <i class="iconfont icon-gou"></i> </div> </div> </div> </div> <div class="signature"> <div class="signature-message">以上为当前车况，交易前会做二次深度检测</div> </div> <div class="qualified"> </div> </div> </div> </div> <div class="container"> <div class="border-bottom"> <div class="left"></div> <div class="right"></div> <div class="center"></div> </div> </div> </div> </div>
+<div style="clear:both;">&nbsp;</div> 
+<div class="center">
+	<div id="tabs0" class="tabs0">
+		<ul class="menu0" id="menu0">
+			<li onclick="setTab(0,0)" class="hover"><span></span>事故排查</li>
+			<li onclick="setTab(0,1)" class=""><span></span>外观检测</li>
+			<li onclick="setTab(0,2)" class=""><span></span>发动机检测</li>
+			<li onclick="setTab(0,3)" class=""><span></span>系统设备性能</li>
+            <li onclick="setTab(0,4)" class=""><span></span>底盘检测</li>
+            <li onclick="setTab(0,5)" class=""><span></span>车辆配置</li>
+            <li onclick="setTab(0,6)" class=""><span></span>内饰检测</li>
+            <li onclick="setTab(0,7)" class=""><span></span>新车参数</li>
+		</ul>
+		<div class="main" id="main0">
+			<ul class="block">
+				<li>
+					<div class="clear"></div>
+					<div class="jiance_table_text bottom_liubai">
+						
+						<div class="jiance_ner jiance_table_text">
+
+<div class="title"> <div class="qualified"> <i>√</i>合格
+                    </div><span><{$sgpc_rs.sg_msg}>&nbsp; <{$sgpc_num}></span></div>
+							<div class="borken_new_img borken_new_img_sg_bg" style="position:relative">
+						</div>
+					<table>
+						<tr>
+							<th width="838" colspan="4">
+								<p align="left">&nbsp;&nbsp; 排除重大碰撞</th>
+						</tr>
+  <tr>
+    <th width="179">左A柱</th>
+    <td width="240"><{if $sgpc_rs.zaz==1}>正常<{else}>不正常<{/if}></td>
+    <th width="250">右A柱</th>
+    <td width="169" class="border_none"><{if $sgpc_rs.yaz==1}>正常<{else}>不正常<{/if}></td>
+  </tr>
+  <tr>
+    <th width="179">左B柱</th>
+    <td width="240"><{if $sgpc_rs.zbz==1}>正常<{else}>不正常<{/if}></td>
+    <th width="250">右B柱</th>
+    <td width="169" class="border_none"><{if $sgpc_rs.ybz==1}>正常<{else}>不正常<{/if}></td>
+  </tr>
+  <tr>
+    <th width="179">左C柱</th>
+    <td width="240"><{if $sgpc_rs.zcz==1}>正常<{else}>不正常<{/if}></td>
+    <th width="250">右C柱</th>
+    <td width="169" class="border_none"><{if $sgpc_rs.ycz==1}>正常<{else}>不正常<{/if}></td>
+  </tr>
+						<tr>
+							<th width="179">左前纵梁</th>
+							<td width="240"><{if $sgpc_rs.zqzl==1}>正常<{else}>不正常<{/if}></td>
+							<th width="250">右前纵梁</th>
+							<td width="169" class="border_none"><{if $sgpc_rs.yqzl==1}>正常<{else}>不正常<{/if}></td>
+						</tr>
+						<tr>
+							<th width="179">左后纵梁</th>
+							<td width="240"><{if $sgpc_rs.zhzl==1}>正常<{else}>不正常<{/if}></td>
+							<th width="250">右后纵梁</th>
+							<td width="169" class="border_none"><{if $sgpc_rs.yhzl==1}>正常<{else}>不正常<{/if}></td>
+						</tr>
+						<tr>
+							<th width="179">前防撞梁</th>
+							<td width="240"><{if $sgpc_rs.qfzl==1}>正常<{else}>不正常<{/if}></td>
+							<th width="250">后防撞梁</th>
+							<td width="169" class="border_none"><{if $sgpc_rs.hfzl==1}>正常<{else}>不正常<{/if}></td>
+						</tr>
+						<tr>
+							<th width="179">左前减震器悬挂部位</th>
+							<td width="240"><{if $sgpc_rs.zqjzqxg==1}>正常<{else}>不正常<{/if}></td>
+							<th width="250">右前减震器悬挂部位</th>
+							<td width="169" class="border_none"><{if $sgpc_rs.yqjzqxg==1}>正常<{else}>不正常<{/if}></td>
+						</tr>
+						<tr>
+							<th width="179">左后减震器悬挂部位</th>
+							<td width="240"><{if $sgpc_rs.zhjzqxg==1}>正常<{else}>不正常<{/if}></td>
+							<th width="250">右后减震器悬挂部位</th>
+							<td width="169" class="border_none"><{if $sgpc_rs.yhjzqxg==1}>正常<{else}>不正常<{/if}></td>
+						</tr>
+						<tr>
+							<th width="179">发动机舱防火墙</th>
+							<td width="240"><{if $sgpc_rs.fdjfhq==1}>正常<{else}>不正常<{/if}></td>
+							<th width="250">后备箱底板</th>
+							<td width="169" class="border_none"><{if $sgpc_rs.hbxdb==1}>正常<{else}>不正常<{/if}></td>
+						</tr>
+						<tr>
+							<th width="179">车身左右对称性</th>
+							<td width="240"><{if $sgpc_rs.zydc==1}>正常<{else}>不正常<{/if}></td>
+						</tr>
+
+						<tr>
+							<th width="838" colspan="4">
+								<p align="left">&nbsp;&nbsp; 排除泡水</th>
+						</tr>
+						<tr>
+							<th width="179">发动机线束及橡胶制品</th>
+							<td width="240"><{if $sgpc_rs.fdjxs==1}>正常<{else}>不正常<{/if}></td>
+							<th width="250">后备箱边角及备胎槽</th>
+							<td width="169" class="border_none"><{if $sgpc_rs.hbxbj==1}>正常<{else}>不正常<{/if}></td>
+						</tr>
+
+						<tr>
+							<th width="179">座椅滑轨内</th>
+							<td width="240"><{if $sgpc_rs.zyhgn==1}>正常<{else}>不正常<{/if}></td>
+							<th width="250">后排座椅坐垫底部</th>
+							<td width="169" class="border_none"><{if $sgpc_rs.hzydb==1}>正常<{else}>不正常<{/if}></td>
+						</tr>
+						<tr>
+							<th width="179">安全带底部</th>
+							<td width="240"><{if $sgpc_rs.aqddb==1}>正常<{else}>不正常<{/if}></td>
+							<th width="250">全车地胶地毯</th>
+							<td width="169" class="border_none"><{if $sgpc_rs.djdt==1}>正常<{else}>不正常<{/if}></td>
+						</tr>
+						<tr>
+							<th width="179">音响喇叭底部</th>
+							<td width="240"><{if $sgpc_rs.yxlbdb==1}>正常<{else}>不正常<{/if}></td>
+							<th width="250">烟灰缸底座</th>
+							<td width="169" class="border_none"><{if $sgpc_rs.yhgdb==1}>正常<{else}>不正常<{/if}></td>
+						</tr>
+
+						<tr>
+							<th width="838" colspan="4">
+								<p align="left">&nbsp;&nbsp; 排除火烧</th>
+						</tr>
+						<tr>
+							<th width="179">车辆覆盖件及驾驶舱</th>
+							<td width="240"><{if $sgpc_rs.clfgj==1}>正常<{else}>不正常<{/if}></td>
+						</tr>
+</table>
+				</li>
+			</ul>
+
+			<ul>
+				<li>
+					<div class="clear"></div>
+
+						<div class="jiance_ner jiance_table_text">
+  
+							<div class="title"> <div class="qualified"> <i>√</i>合格
+                    </div><span>事故项（0）  特定项（0）  缺陷项：（0）<{$waiguan_num}></span></div>
+
+
+							<div class="" style="width: 800px; height: 400px; text-align: center; margin: 60px auto;">
+								<div id="iPicture" data-interaction="hover">
+									<div class="ip_slide">
+										<!-- 本身的图片 -->
+										<img class="ip_tooltipImg" src="<{$weburl}>/skin/img/Carwg.png">
+										<!--左前保险杠-->
+										ccccc<{$zq_bxg}>aaaa
+										<div class="ip_tooltip ip_img32" style="top: 216px; left: 692px; z-index: 1; display:<{if $zq_bxg==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.zq_bxg_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!--右前保险杠-->
+										<div class="ip_tooltip ip_img32" style="top: 216px; left: 611px; z-index: 1; display:<{if $yq_bxg==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.yq_bxg_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--左后保险杆-->
+										<div class="ip_tooltip ip_img32" style="top: 216px; left: 90px; z-index: 1; display:<{if $zh_bxg==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.zh_bxg_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--右后保险杆-->
+										<div class="ip_tooltip ip_img32" style="top: 216px; left: 170px; z-index: 1; display:<{if $yh_bxg==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.yh_bxg_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+										<!--左前翼子板-->
+										<div class="ip_tooltip ip_img32" style="top: 70px; left: 480px; z-index: 1; display:<{if $zq_yzb==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.zq_yzb_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--右前翼子板-->
+										<div class="ip_tooltip ip_img32" style="top: 340px; left: 480px; z-index: 1; display:<{if $yq_yzb==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.yq_yzb_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--左后翼子板-->
+										<div class="ip_tooltip ip_img32" style="top: 70px; left: 264px; z-index: 1; display:<{if $zh_yzb==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.zh_yzb_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--右后翼子板-->
+										<div class="ip_tooltip ip_img32" style="top: 340px; left: 268px; z-index: 1; display:<{if $yh_yzb==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.yh_yzb_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--左A柱-->
+										<div class="ip_tooltip ip_img32" style="top: 111px; left: 408px; z-index: 1; display:<{if $zaz==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.zaz_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--右A柱-->
+										<div class="ip_tooltip ip_img32" style="top: 302px; left: 408px; z-index: 1; display:<{if $yaz==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.yaz_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--左B柱-->
+										<div class="ip_tooltip ip_img32" style="top: 90px; left: 365px; z-index: 1; display:<{if $zbz==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.zbz_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--右B柱-->
+										<div class="ip_tooltip ip_img32" style="top: 315px; left: 370px; z-index: 1; display:<{if $ybz==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.ybz_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--左C柱-->
+										<div class="ip_tooltip ip_img32" style="top: 98px; left: 310px; z-index: 1; display:<{if $zcz==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.zcz_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--右C柱-->
+										<div class="ip_tooltip ip_img32" style="top: 318px; left: 310px; z-index: 1; display:<{if $ycz==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.ycz_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--左前门-->
+										<div class="ip_tooltip ip_img32" style="top: 55px; left: 410px; z-index: 1; display:<{if $zqm==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.zqm_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--右前门-->
+										<div class="ip_tooltip ip_img32" style="top: 350px; left: 410px; z-index: 1; display:<{if $yqm==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.yqm_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--左后门-->
+										<div class="ip_tooltip ip_img32" style="top: 55px; left: 340px; z-index: 1; display:<{if $zhm==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.zhm_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--右后门-->
+										<div class="ip_tooltip ip_img32" style="top: 350px; left: 350px; z-index: 1; display:<{if $yhm==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.yhm_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--左车顶-->
+										<div class="ip_tooltip ip_img32" style="top: 185px; left: 368px; z-index: 1; display:<{if $zcd==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.zcd_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--右车顶-->
+										<div class="ip_tooltip ip_img32" style="top: 230px; left: 368px; z-index: 1; display:<{if $ycd==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.ycd_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--左侧裙边-->
+										<div class="ip_tooltip ip_img32" style="top: 30px; left: 370px; z-index: 1; display:<{if $zcqb==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.zcqb_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--右侧裙边-->
+										<div class="ip_tooltip ip_img32" style="top: 378px; left: 375px; z-index: 1; display:<{if $ycqb==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.ycqb_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--后备箱-->
+										<div class="ip_tooltip ip_img32" style="top: 205px; left: 245px; z-index: 1; display:<{if $hbx==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.hbx_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--发动机盖-->
+										<div class="ip_tooltip ip_img32" style="top: 205px; left: 520px; z-index: 1; display:<{if $fdj==1}>block;<{else}>none<{/if}>" data-button="moreblue" data-tooltipbg="bgblack" data-round="roundBgW" data-animationtype="ltr-slide">
+											<div class="descrContainer">
+												<div class="pass-rtl"></div>
+												<div class="bgyellow">
+													<div class="xs" style="display: none;">
+														<p><img src="<{$waiguan_rs.fdj_pic}>" width="360px" height="240px"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<script type="text/javascript">
+									$("#iPicture").iPicture();
+								</script>
+
+							</div>
+
+
+						<table>
+  <tr>
+    <th width="179">左前保险杠：</th>
+    <td width="240">
+		<{if $waiguan_rs.zq_bxg==1}>
+		完好
+		<{elseif $waiguan_rs.zq_bxg==2}>
+		更换
+		<{elseif $waiguan_rs.zq_bxg==3}>
+		做漆
+		<{elseif $waiguan_rs.zq_bxg==4}>
+		钣金
+		<{else}>完好
+		<{/if}>
+	</td>
+    <th width="250">右前保险杠：</th>
+    <td width="169" class="border_none">
+		<{if $waiguan_rs.yq_bxg==1}>
+		完好
+		<{elseif $waiguan_rs.yq_bxg==2}>
+		更换
+		<{elseif $waiguan_rs.yq_bxg==3}>
+		做漆
+		<{elseif $waiguan_rs.yq_bxg==4}>
+		钣金
+		<{else}>完好
+		<{/if}>
+	</td>
+  </tr>
+  <tr>
+    <th width="179">左后保险杆：</th>
+    <td width="240">
+		<{if $waiguan_rs.zh_bxg==1}>
+		完好
+		<{elseif $waiguan_rs.zh_bxg==2}>
+		更换
+		<{elseif $waiguan_rs.zh_bxg==3}>
+		做漆
+		<{elseif $waiguan_rs.zh_bxg==4}>
+		钣金
+		<{else}>完好
+		<{/if}>
+	</td>
+    <th width="250">右后保险杆：</th>
+    <td width="169" class="border_none">
+		<{if $waiguan_rs.yh_bxg==1}>
+		完好
+		<{elseif $waiguan_rs.yh_bxg==2}>
+		更换
+		<{elseif $waiguan_rs.yh_bxg==3}>
+		做漆
+		<{elseif $waiguan_rs.yh_bxg==4}>
+		钣金
+		<{else}>完好
+		<{/if}>
+	</td>
+  </tr>
+  <tr>
+    <th width="179">左前翼子板：</th>
+    <td width="240">
+		<{if $waiguan_rs.zq_yzb==1}>
+		完好
+		<{elseif $waiguan_rs.zq_yzb==2}>
+		更换
+		<{elseif $waiguan_rs.zq_yzb==3}>
+		做漆
+		<{elseif $waiguan_rs.zq_yzb==4}>
+		钣金
+		<{else}>完好
+		<{/if}>
+	</td>
+    <th width="250">右前翼子板：</th>
+    <td width="169" class="border_none">
+		<{if $waiguan_rs.yq_yzb==1}>
+		完好
+		<{elseif $waiguan_rs.yq_yzb==2}>
+		更换
+		<{elseif $waiguan_rs.yq_yzb==3}>
+		做漆
+		<{elseif $waiguan_rs.yq_yzb==4}>
+		钣金
+		<{else}>完好
+		<{/if}>
+	</td>
+  </tr>
+							<tr>
+								<th width="179">左后翼子板：</th>
+								<td width="240">
+									<{if $waiguan_rs.zh_yzb==1}>
+									完好
+									<{elseif $waiguan_rs.zh_yzb==2}>
+									更换
+									<{elseif $waiguan_rs.zh_yzb==3}>
+									做漆
+									<{elseif $waiguan_rs.zh_yzb==4}>
+									钣金
+									<{else}>完好
+									<{/if}>
+								</td>
+								<th width="250">右后翼子板：</th>
+								<td width="169" class="border_none">
+									<{if $waiguan_rs.yh_yzb==1}>
+									完好
+									<{elseif $waiguan_rs.yh_yzb==2}>
+									更换
+									<{elseif $waiguan_rs.yh_yzb==3}>
+									做漆
+									<{elseif $waiguan_rs.yh_yzb==4}>
+									钣金
+									<{else}>完好
+									<{/if}>
+								</td>
+							</tr>
+
+							<tr>
+								<th width="179">左A柱：</th>
+								<td width="240">
+									<{if $waiguan_rs.zaz==1}>
+									完好
+									<{elseif $waiguan_rs.zaz==2}>
+									更换
+									<{elseif $waiguan_rs.zaz==3}>
+									做漆
+									<{elseif $waiguan_rs.zaz==4}>
+									钣金
+									<{else}>完好
+									<{/if}>
+								</td>
+								<th width="250">右A柱：</th>
+								<td width="169" class="border_none">
+									<{if $waiguan_rs.yaz==1}>
+									完好
+									<{elseif $waiguan_rs.yaz==2}>
+									更换
+									<{elseif $waiguan_rs.yaz==3}>
+									做漆
+									<{elseif $waiguan_rs.yaz==4}>
+									钣金
+									<{else}>完好
+									<{/if}>
+								</td>
+							</tr>
+
+							<tr>
+								<th width="179">左B柱：</th>
+								<td width="240">
+									<{if $waiguan_rs.zbz==1}>
+									完好
+									<{elseif $waiguan_rs.zbz==2}>
+									更换
+									<{elseif $waiguan_rs.zbz==3}>
+									做漆
+									<{elseif $waiguan_rs.zbz==4}>
+									钣金
+									<{else}>完好
+									<{/if}>
+								</td>
+								<th width="250">右B柱：</th>
+								<td width="169" class="border_none">
+									<{if $waiguan_rs.ybz==1}>
+									完好
+									<{elseif $waiguan_rs.ybz==2}>
+									更换
+									<{elseif $waiguan_rs.ybz==3}>
+									做漆
+									<{elseif $waiguan_rs.ybz==4}>
+									钣金
+									<{else}>完好
+									<{/if}>
+								</td>
+							</tr>
+
+							<tr>
+								<th width="179">左C柱：</th>
+								<td width="240">
+									<{if $waiguan_rs.zcz==1}>
+									完好
+									<{elseif $waiguan_rs.zcz==2}>
+									更换
+									<{elseif $waiguan_rs.zcz==3}>
+									做漆
+									<{elseif $waiguan_rs.zcz==4}>
+									钣金
+									<{else}>完好
+									<{/if}>
+								</td>
+								<th width="250">右C柱：</th>
+								<td width="169" class="border_none">
+									<{if $waiguan_rs.ycz==1}>
+									完好
+									<{elseif $waiguan_rs.ycz==2}>
+									更换
+									<{elseif $waiguan_rs.ycz==3}>
+									做漆
+									<{elseif $waiguan_rs.ycz==4}>
+									钣金
+									<{else}>完好
+									<{/if}>
+								</td>
+							</tr>
+
+							<tr>
+								<th width="179">左前门：</th>
+								<td width="240">
+									<{if $waiguan_rs.zqm==1}>
+									完好
+									<{elseif $waiguan_rs.zqm==2}>
+									更换
+									<{elseif $waiguan_rs.zqm==3}>
+									做漆
+									<{elseif $waiguan_rs.zqm==4}>
+									钣金
+									<{else}>完好
+									<{/if}>
+								</td>
+								<th width="250">右前门：</th>
+								<td width="169" class="border_none">
+									<{if $waiguan_rs.yqm==1}>
+									完好
+									<{elseif $waiguan_rs.yqm==2}>
+									更换
+									<{elseif $waiguan_rs.yqm==3}>
+									做漆
+									<{elseif $waiguan_rs.yqm==4}>
+									钣金
+									<{else}>完好
+									<{/if}>
+								</td>
+							</tr>
+
+							<tr>
+								<th width="179">左后门：</th>
+								<td width="240">
+									<{if $waiguan_rs.zhm==1}>
+									完好
+									<{elseif $waiguan_rs.zhm==2}>
+									更换
+									<{elseif $waiguan_rs.zhm==3}>
+									做漆
+									<{elseif $waiguan_rs.zhm==4}>
+									钣金
+									<{else}>完好
+									<{/if}>
+								</td>
+								<th width="250">右后门：</th>
+								<td width="169" class="border_none">
+									<{if $waiguan_rs.yhm==1}>
+									完好
+									<{elseif $waiguan_rs.yhm==2}>
+									更换
+									<{elseif $waiguan_rs.yhm==3}>
+									做漆
+									<{elseif $waiguan_rs.yhm==4}>
+									钣金
+									<{else}>完好
+									<{/if}>
+								</td>
+							</tr>
+
+							<tr>
+
+								<th width="250">左车顶：</th>
+								<td width="169" >
+									<{if $waiguan_rs.zcd==1}>
+									完好
+									<{elseif $waiguan_rs.zcd==2}>
+									更换
+									<{elseif $waiguan_rs.zcd==3}>
+									做漆
+									<{elseif $waiguan_rs.zcd==4}>
+									钣金
+									<{else}>完好
+									<{/if}>
+								</td>
+
+								<th width="179">右车顶：</th>
+								<td width="240" class="border_none">
+									<{if $waiguan_rs.ycd==1}>
+									完好
+									<{elseif $waiguan_rs.ycd==2}>
+									更换
+									<{elseif $waiguan_rs.ycd==3}>
+									做漆
+									<{elseif $waiguan_rs.ycd==4}>
+									钣金
+									<{else}>完好
+									<{/if}>
+								</td>
+							</tr>
+
+							<tr>
+
+								<th width="250">左侧裙边：</th>
+								<td width="169" >
+									<{if $waiguan_rs.zcqb==1}>
+									完好
+									<{elseif $waiguan_rs.zcqb==2}>
+									更换
+									<{elseif $waiguan_rs.zcqb==3}>
+									做漆
+									<{elseif $waiguan_rs.zcqb==4}>
+									钣金
+									<{else}>完好
+									<{/if}>
+								</td>
+								<th width="179">右侧裙边：</th>
+								<td width="240" class="border_none">
+									<{if $waiguan_rs.ycqb==1}>
+									完好
+									<{elseif $waiguan_rs.ycqb==2}>
+									更换
+									<{elseif $waiguan_rs.ycqb==3}>
+									做漆
+									<{elseif $waiguan_rs.ycqb==4}>
+									钣金
+									<{else}>完好
+									<{/if}>
+								</td>
+							</tr>
+
+							<tr>
+
+								<th width="179">后备箱 ：</th>
+								<td width="240">
+									<{if $waiguan_rs.hbx==1}>
+									完好
+									<{elseif $waiguan_rs.hbx==2}>
+									更换
+									<{elseif $waiguan_rs.hbx==3}>
+									做漆
+									<{elseif $waiguan_rs.hbx==4}>
+									钣金
+									<{else}>完好
+									<{/if}>
+								</td>
+								<th width="250">发动机盖：</th>
+								<td width="169" class="border_none">
+									<{if $waiguan_rs.fdj==1}>
+									完好
+									<{elseif $waiguan_rs.fdj==2}>
+									更换
+									<{elseif $waiguan_rs.fdj==3}>
+									做漆
+									<{elseif $waiguan_rs.fdj==4}>
+									钣金
+									<{else}>完好
+									<{/if}>
+								</td>
+							</tr>
+</table>
+
+
+						<div class="clear"></div>
+					</div>
+				</li>
+			</ul>
+
+	<ul class="block" style="display: none;">
+				<li>
+					<div class="clear"></div>
+					<div class="jiance_table_text bottom_liubai">
+						
+						<div class="jiance_ner jiance_table_text">
+
+<div class="title"> <div class="qualified"> <i>√</i>合格
+                    </div><span><{$fdj_rs.fdj_msg}>  <{$fdj_num}></span></div>
+   
+							<div class="borken_new_img borken_new_img_fadongji_bg" style="position:relative">
+						</div>
+					<table>
+  <tr>
+    <th width="179">是否有拆卸痕迹：</th>
+    <td width="240"><{if $fdj_rs.fdj_cx==1}>是<{else}>否<{/if}></td>
+    <th width="250">舱线束是否老化：</th>
+    <td width="169" class="border_none"><{if $fdj_rs.fdj_lh==1}>是<{else}>否<{/if}></td>
+  </tr>
+  <tr>
+    <th width="179">传感器外观损坏：</th>
+    <td width="240"><{if $fdj_rs.cgq_sh==1}>是<{else}>否<{/if}></td>
+    <th width="250">缸线有无破损：</th>
+    <td width="169" class="border_none"><{if $fdj_rs.gx_ps==1}>是<{else}>否<{/if}></td>
+  </tr>
+  <tr>
+    <th width="179">缸盖漏油渗油：</th>
+    <td width="240"><{if $fdj_rs.fdjg_ly==1}>是<{else}>否<{/if}></td>
+    <th width="250">水箱是否破损：</th>
+    <td width="169" class="border_none"><{if $fdj_rs.sx_ps==1}>是<{else}>否<{/if}></td>
+  </tr>
+    <tr>
+    <th width="179">机油底壳：</th>
+    <td width="240"><{if $fdj_rs.jydk==1}>不正常<{else}>正常<{/if}></td>
+    <th width="250">机油液面：</th>
+    <td width="169" class="border_none"><{if $fdj_rs.jyym==1}>不正常<{else}>正常<{/if}></td>
+  </tr>
+    <tr>
+    <th width="179">防冻液液面：</th>
+    <td width="240"><{if $fdj_rs.fdym==1}>不正常<{else}>正常<{/if}></td>
+    <th width="250">助力泵液面：</th>
+    <td width="169" class="border_none"><{if $fdj_rs.zlbym==1}> 不正常 <{elseif $fdj_rs.zlbym==2}> 正常 <{elseif $fdj_rs.zlbym==3}> 无 <{/if}> </td>
+  </tr>
+    <tr>
+    <th width="179">变速箱底壳：</th>
+    <td width="240"><{if $fdj_rs.bsxdk==1}>不正常<{else}>正常<{/if}></td>
+    <th width="250">螺丝出厂状态：</th>
+    <td width="169" class="border_none"><{if $fdj_rs.ls==1}>是<{else}>否<{/if}></td>
+  </tr>
+    <tr>
+    <th width="179">制动液液面：</th>
+    <td width="240"><{if $fdj_rs.zdy==1}>不正常<{else}>正常<{/if}></td>
+    <th width="250">空调压缩机：</th>
+    <td width="169" class="border_none"><{if $fdj_rs.ktysj==1}> 不正常 <{elseif $fdj_rs.ktysj==2}> 正常 <{elseif $fdj_rs.ktysj==3}> 无 <{/if}> </td>
+  </tr>
+    <tr>
+    <th width="179" height="19">转向助力泵：</th>
+    <td width="240" height="19"><{if $fdj_rs.zxzlb==1}> 不正常 <{elseif $fdj_rs.zxzlb==2}> 正常 <{elseif $fdj_rs.zxzlb==3}> 无 <{elseif $fdj_rs.zxzlb==4}> 电子助力 <{/if}> 　</td>
+    <th width="250" height="19">　</th>
+    <td width="169" class="border_none" height="19">　</td>
+  </tr>
+    </table>
+				</li>
+			</ul>
+ 	<ul class="block" style="display: none;">
+				<li>
+					<div class="clear"></div>
+					<div class="jiance_table_text bottom_liubai">
+						
+						<div class="jiance_ner jiance_table_text">
+
+<div class="title"> <div class="qualified"> <i>√</i>合格
+                    </div><span><{$xtsb_rs.sb_msg}> <{$xtsb_num}></span></div>
+   
+							<div class="borken_new_img borken_new_img_xingneng_bg" style="position:relative">
+						</div>
+<table> <tr>
+    <th width="838" colspan="4">
+	<p align="left">&nbsp;&nbsp; 安全系统检测</th>
+  </tr>
+
+  <tr>
+    <th width="178">变速箱系统警示灯：</th>
+    <td width="241"><{if $xtsb_rs.bsxd==1}>正常<{else}>不正常<{/if}></td>
+    <th width="250">制动系统警示灯：</th>
+    <td width="169" class="border_none"><{if $xtsb_rs.zdd==1}>正常<{else}>不正常<{/if}></td>
+  </tr>
+  <tr>
+    <th width="178">ABS系统警示灯：</th>
+    <td width="241"><{if $xtsb_rs.absd==1}> 正常 <{elseif $xtsb_rs.absd==2}> 不正常 
+	<{elseif $xtsb_rs.absd==3}> 无 <{/if}> </td>
+    <th width="250">安全气囊系统：</th>
+    <td width="169" class="border_none"><{if $xtsb_rs.aqql==1}> 正常 <{elseif $xtsb_rs.aqql==2}> 
+	不正常 <{elseif $xtsb_rs.aqql==3}> 无 <{/if}> </td>
+  </tr>
+  <tr>
+    <th width="178">发动机系统警示灯：</th>
+    <td width="241"><{if $xtsb_rs.fdjd==1}>正常<{else}>不正常<{/if}></td>
+    <th width="250">　</th>
+    <td width="169" class="border_none">　</td>
+ <tr>
+    <th width="838" colspan="4">
+	<p align="left">&nbsp;&nbsp; 指示灯系统检测</th>
+  </tr>
+
+  <tr>
+    <th width="178">前雾灯：</th>
+    <td width="241"><{if $xtsb_rs.qwd==1}> 正常 <{elseif $xtsb_rs.qwd==2}> 不正常 <{elseif 
+	$xtsb_rs.qwd==3}> 无 <{/if}> 　</td>
+    <th width="250">后雾灯：</th>
+    <td width="169" class="border_none"><{if $xtsb_rs.hwd==1}> 正常 <{elseif $xtsb_rs.hwd==2}> 
+	不正常 <{elseif $xtsb_rs.hwd==3}> 无 <{/if}> </td>
+  </tr>
+  <tr>
+    <th width="178">近光灯：</th>
+    <td width="241"><{if $xtsb_rs.jgd==1}>正常<{else}>不正常<{/if}></td>
+    <th width="250">远光灯：</th>
+    <td width="169" class="border_none"><{if $xtsb_rs.ygd==1}>正常<{else}>不正常<{/if}></td>
+  </tr>
+  <tr>
+    <th width="178">前转向灯：</th>
+    <td width="241"><{if $xtsb_rs.qzxd==1}>正常<{else}>不正常<{/if}></td>
+    <th width="250">后转向灯：</th>
+    <td width="169" class="border_none"><{if $xtsb_rs.hzxd==1}>正常<{else}>不正常<{/if}>　</td>
+  </tr>
+    <tr>
+    <th width="178">倒车灯：</th>
+    <td width="241"><{if $xtsb_rs.dcd==1}>正常<{else}>不正常<{/if}></td>
+    <th width="250">刹车灯：</th>
+    <td width="169" class="border_none"><{if $xtsb_rs.scd==1}>正常<{else}>不正常<{/if}></td>
+  </tr>
+  <tr>
+    <th width="178">室内顶灯：</th>
+    <td width="241"><{if $xtsb_rs.sndd==1}>正常<{else}>不正常<{/if}></td>
+    <th width="250">　</th>
+    <td width="169" class="border_none">　</td>
+  </tr>
+</table>
+				</li>
+			</ul>
+ 	<ul class="block" style="display: none;">
+				<li>
+					<div class="clear"></div>
+					<div class="jiance_table_text bottom_liubai">
+						
+						<div class="jiance_ner jiance_table_text">
+
+<div class="title"> <div class="qualified"> <i>√</i><{if $waiguan_rs.dp==1}> 合格 <{elseif $waiguan_rs.dp==2}> 剐蹭 <{elseif $waiguan_rs.dp==3}> 托底 <{/if}> 
+                    </div><span>底盘检测5项 <{$waiguan_rs.dp_msg}> <{$dp_num}></span></div>
+   
+							<div class="borken_new_img borken_new_img_dipan_bg" style="position:relative">
+						</div>
+			<table>
+ <tr>
+    <th width="179">右后减震器：</th>
+    <td width="240"><{if $waiguan_rs.yhjzq==1}>
+				正常
+				<{elseif $waiguan_rs.yhjzq==2}>
+				漏油
+				<{elseif $waiguan_rs.yhjzq==3}>
+				塌陷
+	<{/if}> </td>
+    <th width="250">右前减震器：</th>
+    <td width="169" class="border_none"><{if $waiguan_rs.yqjzq==1}>
+				正常
+				<{elseif $waiguan_rs.yqjzq==2}>
+				漏油
+				<{elseif $waiguan_rs.yqjzq==3}>
+				塌陷
+	<{/if}> </td>
+  </tr>
+  <tr>
+    <th width="179">左前减震器：</th>
+    <td width="240"><{if $waiguan_rs.zqjzq==1}>
+				正常
+				<{elseif $waiguan_rs.zqjzq==2}>
+				漏油
+				<{elseif $waiguan_rs.zqjzq==3}>
+				塌陷
+	<{/if}> </td>
+    <th width="250">左后减震器：</th>
+    <td width="169" class="border_none"><{if $waiguan_rs.zhjzq==1}>
+				正常
+				<{elseif $waiguan_rs.zhjzq==2}>
+				漏油
+				<{elseif $waiguan_rs.zhjzq==3}>
+				塌陷
+	<{/if}> </td>
+  </tr>
+</table>
+
+				</li>
+			</ul>
+ 	<ul class="block" style="display: none;">
+				<li>
+					<div class="clear"></div>
+					<div class="jiance_table_text bottom_liubai">
+						
+						<div class="jiance_ner jiance_table_text">
+
+<div class="title"> <div class="qualified"> <i>√</i>合格
+                    </div><span>车辆配置6项 <{$clpz_num}></span></div>
+   
+							<div class="borken_new_img borken_new_img_peizhi_bg" style="position:relative">
+						</div>
+									<table>
+  <tr>
+    <th width="179">遥控钥匙：</th>
+    <td width="240"><{if $info_rs.yk_keys==1}>有<{else}>无<{/if}></td>
+    <th width="250">千 斤 顶：</th>
+    <td width="169" class="border_none"><{if $info_rs.qjd==1}>有<{else}>无<{/if}></td>
+  </tr>
+  <tr>
+    <th width="179">随车工具：</th>
+    <td class="maintable"><{if $info_rs.tool==1}>有<{else}>无<{/if}></td>
+    <th width="250">三 角 牌：</th>
+    <td width="169" class="border_none"><{if $info_rs.sjp==1}>有<{else}>无<{/if}></td>
+  </tr>
+  <tr>
+    <th width="179">灭 火 器：</th>
+    <td width="240"><{if $info_rs.mhq==1}>有<{else}>无<{/if}></td>
+    <th width="250">备 胎：</th>
+    <td width="169" class="border_none"><{if $info_rs.bt==1}>有<{else}>无<{/if}></td>
+  </tr>
+</table>
+				</li>
+			</ul>
+            
+ 	<ul class="block" style="display: none;">
+				<li>
+					<div class="clear"></div>
+					<div class="jiance_table_text bottom_liubai">
+						
+						<div class="jiance_ner jiance_table_text">
+
+<div class="title"> <div class="qualified"> <i>√</i>合格
+                    </div><span>内饰检测11项 <{$neishi_num}></span></div>
+   
+							<div class="borken_new_img borken_new_img_neishi_bg" style="position:relative">
+						</div>
+					<table>
+  <tr>
+    <th width="208">方向盘磨损：</th>
+    <td width="202"><{if $neishi_rs.fxp==1}>
+			正常
+			<{elseif $neishi_rs.fxp==2}>
+			轻微
+			<{elseif $neishi_rs.fxp==3}>
+			严重
+			<{/if}></td>
+    <th width="245">中控台磨损：</th>
+    <td width="167" class="border_none"><{if $neishi_rs.zkt==1}>
+			正常
+			<{elseif $neishi_rs.zkt==2}>
+			轻微
+			<{elseif $neishi_rs.zkt==3}>
+			严重
+			<{/if}></td>
+  </tr>
+  <tr>
+    <th width="208">主驾车门内饰板磨损：</th>
+    <td width="202"><{if $neishi_rs.zjcm==1}>
+			正常
+			<{elseif $neishi_rs.zjcm==2}>
+			轻微
+			<{elseif $neishi_rs.zjcm==3}>
+			严重
+			<{/if}></td>
+    <th width="245">副驾车门内饰板磨损：</th>
+    <td width="167" class="border_none"><{if $neishi_rs.fjcm==1}>
+			正常
+			<{elseif $neishi_rs.fjcm==2}>
+			轻微
+			<{elseif $neishi_rs.fjcm==3}>
+			严重
+			<{/if}></td>
+  </tr>
+  <tr>
+    <th width="208">后排左侧车门内饰板磨损：</th>
+    <td width="202"><{if $neishi_rs.hzcm==1}>
+			正常
+			<{elseif $neishi_rs.hzcm==2}>
+			轻微
+			<{elseif $neishi_rs.hzcm==3}>
+			严重
+			<{/if}></td>
+    <th width="245">后排右侧车门内饰板磨损：<br></th>
+    <td width="167" class="border_none"><{if $neishi_rs.hycm==1}>
+			正常
+			<{elseif $neishi_rs.hycm==2}>
+			轻微
+			<{elseif $neishi_rs.hycm==3}>
+			严重
+			<{/if}></td>
+  </tr>
+   <tr>
+    <th width="208">主驾座椅磨损：</th>
+    <td width="202"><span class="border_none"><{if $neishi_rs.zjzy==1}>
+			正常
+			<{elseif $neishi_rs.zjzy==2}>
+			轻微
+			<{elseif $neishi_rs.zjzy==3}>
+			严重
+	 <{/if}></span></td>
+    <th width="245"> 副驾座椅磨损： <br></th>
+    <td width="167" class="border_none"><{if $neishi_rs.fjzy==1}>
+			正常
+			<{elseif $neishi_rs.fjzy==2}>
+			轻微
+			<{elseif $neishi_rs.fjzy==3}>
+			严重
+			<{/if}></td>
+  </tr>
+    <tr>
+    <th width="208">后排座椅磨损：</th>
+    <td width="202"><{if $neishi_rs.hzy==1}>
+			正常
+			<{elseif $neishi_rs.hzy==2}>
+			轻微
+			<{elseif $neishi_rs.hzy==3}>
+			严重
+	  <{/if}></td>
+    <th width="245">天窗开启状态：<br></th>
+    <td width="167" class="border_none"><{if $neishi_rs.tc==1}>
+			正常
+			<{elseif $neishi_rs.tc==2}>
+			不正常
+			<{elseif $neishi_rs.tc==3}>
+			无
+     <{/if}></td>
+  </tr>
+   <tr>
+    <th width="208">玻璃升降： </th>
+    <td width="202"><span class="border_none"><{if $neishi_rs.blsj==1}>
+			正常
+			<{elseif $neishi_rs.blsj==2}>
+			不正常
+	 <{/if}></span></td>
+    <th width="245"><br></th>
+    <td width="167" class="border_none">&nbsp;</td>
+  </tr>
+</table>
+
+				</li>
+			</ul>
+            
+			 	<ul class="block" style="display: none;">
+				<li>
+					<div class="clear"></div>
+					<div class="jiance_table_text bottom_liubai">
+						
+						<div class="jiance_ner jiance_table_text">
+
+<div class="title"> <div class="qualified"> <i>√</i>合格
+                    </div><span>&nbsp;
+<{$cars.n_info}>
+
+</span></div>
+   
+							<div style="position:relative">
+						</div>
+<!-- 		<table> <tr>
+    <th width="838" colspan="4">　</th>
+  </tr>
+
+  <tr>
+    <th width="179">　</th>
+    <td width="240">　</td>
+    <th width="250">　</th>
+    <td width="169" class="border_none">　</td>
+  </tr>
+  <tr>
+</table> -->
+
+				</li>
+			</ul>
+			
+		</div>
+	</div>
+			</div>
+		</div>
+		<a name="E">
+		<div class="cardetailbox">
+			<div class="car_box5">
+				<em></em>
+			<h4 class="mt10"><span class="title">大图展示</span></h4>
+			</div>
+			<{if $pic_list neq ""}>
+			<div class="box">
+				<center><{foreach from=$pic_list item=piclist}>
+					<p class="tc mt10 carbigpic" style="width:540px;height:415px;margin-right:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="<{$weburl}><{$piclist.pic}>">
+
+					</p>
+				<{/foreach}>
+				</center>
+				<div style="clear:both;"></div> 
+			</div>
+			<{/if}>
+		</div>
+		</div>
+	</div>
+</div>
+
+<div class="main">
+	<div class="othercarbox mt15">
+		<ul class="cardetail_tab clearfix">
+			<li class="here">同车系其他车源</li>
+		</ul>
+		<div class="box mt15">
+			<ul class="carlist clearfix">
+				<{foreach from=$samecar key=skey item=recomcarlist}>
+				<li>
+					<a href="<{$recomcarlist.p_url}>" target="_blank"><{if $recomcarlist.p_mainpic<>""}><img src="<{$recomcarlist.p_mainpic}>"/><{else}><img src="<{$weburl}>/static/img/car.jpg"/><{/if}></a>
+					<p class="mt10"><a href="<{$recomcarlist.p_url}>" target="_blank"><{$recomcarlist.p_shortname}></a></p>
+					<p><span class="gray01 fr"><{$recomcarlist.p_year}>年<{$recomcarlist.p_month}>月上牌</span><span class="orange01 fb"><{$recomcarlist.p_price}>万</span></p>
+				</li>
+				<{/foreach}>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="main">
+	<div class="othercarbox mt15">
+		<ul class="cardetail_tab clearfix">
+			<li class="here">同价位其他车源</li>
+		</ul>
+		<div class="box mt15">
+			<ul class="carlist clearfix">
+				<{foreach from=$samepricecars key=skey item=recomcarlist}>
+				<li>
+					<a href="<{$recomcarlist.p_url}>" target="_blank"><{if $recomcarlist.p_mainpic<>""}><img src="<{$recomcarlist.p_mainpic}>"/><{else}><img src="<{$weburl}>/static/img/car.jpg"/><{/if}></a>
+					<p class="mt10"><a href="<{$recomcarlist.p_url}>" target="_blank"><{$recomcarlist.p_shortname}></a></p>
+					<p><span class="gray01 fr"><{$recomcarlist.p_year}>年<{$recomcarlist.p_month}>月上牌</span><span class="orange01 fb"><{$recomcarlist.p_price}>万</span></p>
+				</li>
+				<{/foreach}>
+			</ul>
+		</div>
+	</div>
+</div>
+<div id="A1" class="hide">
+	<div class="popnotice">
+		<{$cars.p_allname}>，售价<{$cars.p_price}>，<{$cars.p_year}>年上牌，行驶<{$cars.p_kilometre}>万公里
+	</div>
+	<div class="p20">
+	<form method="post" name="yuyueform" id="yuyueform" class="yuyueform">
+		<table class="poptable">
+		<tr>
+			<th><span class="red">*</span> 姓名：</th>
+			<td><input type="text" name="name" datatype="s" nullmsg="请填写姓名！"></td>
+		</tr>
+		<tr>
+			<th><span class="red">*</span> 手机号：</th>
+			<td><input type="text" name="mobilephone" datatype="m" nullmsg="请填写手机号！"></td>
+		</tr>
+		<tr>
+			<th><span class="red">*</span> 预约时间：</th>
+			<td><input type="text" class="laydate-icon" name="ordertime" datatype="*" nullmsg="请选择预约时间！" onclick="laydate()"></td>
+		</tr>
+		<tr>
+			<th><span class="red">*</span> 留言：</th>
+			<td><textarea name="orderinfo" rows="5" cols="25" datatype="*" nullmsg="请填写留言！"></textarea></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td class="gray">预约后我们将联系你!</td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><span class="button1 h35-p25 mr5"><a id="btnYuyueLookCar" href="javascript:;">提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</a></span></td>
+		</tr>
+		</table>
+	</form>
+	</div>
+</div>
+<div id="B1" class="hide">
+	<div class="popnotice">
+		<{$cars.p_allname}>，售价<{$cars.p_price}>，<{$cars.p_year}>年上牌，行驶<{$cars.p_kilometre}>万公里
+	</div>
+	<div class="p20">
+		<form method="post" name="xunjiaform" id="xunjiaform" class="xunjiaform">
+		<table class="poptable">
+		<tr>
+			<th><span class="red">*</span> 期望价：</th>
+			<td><input type="text" name="name" datatype="s" nullmsg="请填写姓名！"></td>
+		</tr>
+		<tr>
+			<th><span class="red">*</span> 手机号：</th>
+			<td><input type="text" name="mobilephone" datatype="m" nullmsg="请填写手机号！"></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td class="gray">&nbsp;</td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><span class="button1 h35-p25 mr5"><a id="btnxuejia" href="javascript:;">坐&nbsp;等&nbsp;降&nbsp;价</a></span></td>
+		</tr>
+		</table>
+		</form>
+	</div>
+    </div>
+<div id="C1" class="hide">
+	<div class="popnotice">
+		首付：<{$shoufu}> &nbsp;&nbsp;&nbsp;&nbsp;贷款：<{$daikuan}> &nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;1年期&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;月付：<{$anjie}>&nbsp;&nbsp;&nbsp;&nbsp;
+	</div>
+	<div class="p20">
+		<form method="post" name="daikuanform" id="daikuanform" class="daikuanform">
+		<table class="poptable">
+		<tr>
+			<th><span class="red">*</span> 姓 名：</th>
+			<td><input type="text" name="name" datatype="s" nullmsg="请填写姓名！"></td>
+		</tr>
+		<tr>
+			<th><span class="red">*</span> 手机号：</th>
+			<td><input type="text" name="mobilephone" datatype="m" nullmsg="请填写手机号！"></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td class="gray">&nbsp;</td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><span class="button1 h35-p25 mr5"><a id="btndaikuan" href="javascript:;">立&nbsp;即&nbsp;申&nbsp;请</a></span></td>
+		</tr>
+		</table>
+		</form>
+	</div>
+    </div>
+		</div>
+	</div>
+<{include file="default/`$setting.templates`/foot.html" }>
+
+	</body>
+</html>
+

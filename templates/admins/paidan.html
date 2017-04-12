@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>派单</title>
+<link href="static/css/admin/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="static/js/common.js"></script>
+<script type="text/javascript" src="static/js/jquery.js"></script>
+	<script>
+		$(function() {
+					//城市
+					$("#province").change(function () {
+						$.get("<{$weburl}>/index.php?m=ajax&ajax=1", {
+									cityid: $("#province").val()
+								}, function (data, textStatus) {
+									$("#city").html(data); // 把返回的数据添加到页面上
+								}
+						);
+					});
+				})
+	</script>
+</head>
+<body>
+<div class="colorarea01">
+<div class="search clearfix">
+	<div class="search clearfix">
+		<form action="<{$adminpage}>?m=paidan" method="post" name="form2">
+			<table cellspacing="0" cellpadding="0" class="toptable">
+				<tr>
+					<td>
+					<span>
+						<select id="province" class="select" name="aid">
+							<{$selectprovincesearch}>
+						</select>
+           				<select id="city" class="select" name="cid">
+			   				<option value="">请选择城市</option>
+		   				</select>
+					</span>
+						<input type="submit" value="查询" class="combutton02">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
+	<input id="p_id" type="hidden" value="<{$p_id}>"/>
+<table cellspacing="0" cellpadding="0" width="100%"  class="listtable">
+<tr><th>ID</th><th>检测师工号</th><th>姓名</th><th>手机号</th><th>类型</th><th>操作</th></tr>
+<{foreach from=$jcs item=list}>
+<tr style=" height:32px;" align="center" onmouseover="on(this);" onmouseout="out(this);">
+<td width="30" align="center"><{$list.id}></td>
+<td align="center"><{$list.jcs_id}>
+<td align="center"><{$list.name}></td>
+<td align="center"><{$list.mobile}></td>
+<td align="center"><{$list.type}></td>
+<!--
+<td align="center"><a href="<{$adminpage}>?m=paidan&id=<{$list.id}>&page=<{$page}>"> 派单</a></td>
+-->
+<td align="center"><input type="button" class="combutton02" value="派单" onclick="paidan(<{$list.jcs_id}>)"/></td>
+</td>
+</tr>
+<{/foreach}>
+
+</table>
+	<div class="listpage"><{$button_basic}><{$button_select}></div>
+</div>
+<script type="text/javascript">
+	function paidan(id) {
+		var p_id=$('#p_id').val();
+		window.location.href="<{$weburl}>/admins_login.php?m=paidan&p_id="+p_id+"&jcs_id="+id;
+	}
+</script>
+<script type="text/javascript">
+    function out(obj) {
+        obj.style.color = 'black';
+    }
+ 
+ 
+    function on(obj) {
+        obj.style.color = 'orange';
+    }
+</script>
+</body>
+</html>

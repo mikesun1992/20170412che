@@ -1,0 +1,1066 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link href="<{$weburl}>static/css/admin/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<{$weburl}>static/js/jquery.js"></script>
+<script type="text/javascript" src="<{$weburl}>static/js/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript">
+
+    function nofind(){
+
+        var img=event.srcElement;
+
+        img.src="skin/img/nopic.jpg";
+
+        img.onerror=null; 
+
+    }
+
+</script>
+
+</head>
+<body>
+<div id="outerdiv" style="position:fixed;top:0;left:0;background:rgba(0,0,0,0.7);z-index:2;width:100%;height:100%;display:none;">
+	<div id="innerdiv" style="left:0px; top:0px">
+		<img id="bigimg" style="border:5px solid #fff;" src="" onerror="nofind();"/>
+	</div>
+</div>
+<div class="search clearfix">
+	<div class="searchL">
+		<ul class="menulist">
+			<li><a href="javascript:history.go(-1)" class="list">返回</a></li>
+		</ul>
+	</div>
+</div>
+<div class="colorarea01">
+<div class="search clearfix">
+	<div class="searchL">
+		<ul class="menulist">
+			<li>车主信息</li>
+		</ul>
+	</div>
+</div>
+	<table cellspacing="0" cellpadding="0" align="center" width="100%"  class="maintable">
+		<tr><th>车主姓名：</th><td><{$info_rs.name}></td></tr>
+		<tr><th>联系方式：</th><td><{$info_rs.mobile}></td></tr>
+		<tr><th>车牌号：</th><td><{$info_rs.cars_num}></td></tr>
+		<tr><th>行驶证：</th><td><img class="pimg" style="width: 100px;height: 80px;" src="<{$info_rs.xsz}>" onerror="nofind();"></td></tr>
+		<tr><th>登记证：</th><td><img class="pimg" style="width: 100px;height: 80px;" src="<{$info_rs.djz}>"  onerror="nofind();"></td></tr>
+		<tr><th>车辆铭牌：</th><td><img class="pimg" style="width: 100px;height: 80px;" src="<{$info_rs.mp}>"  onerror="nofind();"></td></tr>
+		<tr><th>车架号：</th><td><{$info_rs.cjh}></td></tr>
+	</table>
+	</div>
+		<div class="colorarea01">
+
+	<div class="search clearfix">
+	<div class="searchL">
+		<ul class="menulist">
+			<li>基础信息</li>
+		</ul>
+	</div>
+</div>
+	<table cellspacing="0" cellpadding="0" width="100%"  class="maintable">
+		<tr><th>品牌型号：</th><td><{$brand}></td></tr>
+		<tr><th>上牌时间：</th><td><{$info_rs.sp_time}></td></tr>
+		<tr><th>公里数：</th><td><{$info_rs.km}></td></tr>
+		<tr><th>上牌地：</th><td><{$a}>&nbsp;<{$c}></td></tr>
+		<tr><th>变速箱：</th><td><{$info_rs.bsx}></td></tr>
+		<tr><th>排量：</th><td><{$info_rs.pl}></td></tr>
+		<tr><th>排放标准：</th><td><{$info_rs.p_emission}></td></tr>
+		<tr><th>车辆类型：</th><td><{$type}></td></tr>
+		<tr><th>过户次数：</th><td><{$info_rs.gh}></td></tr>
+		<tr><th>年检到期时间：</th><td><{$info_rs.nj_overtime}></td></tr>
+		<tr><th>交强险到期时间：</th><td><{$info_rs.jqx_overtime}></td></tr>
+		<tr><th>商业险到期时间：</th><td><{$info_rs.syx_overtime}></td></tr>
+		<tr><th>车身颜色：</th><td><{$info_rs.color}></td></tr>
+		<tr><th>机动车检验标志：</th><td><img class="pimg" style="width: 100px;height: 80px;" src="<{$info_rs.jd_pic}>" onerror="nofind();"></td></tr>
+		<tr><th>交强险标志：</th><td><img class="pimg" style="width: 100px;height: 80px;" src="<{$info_rs.jqx_pic}>" onerror="nofind();"></td></tr>
+		<tr><th>环保标志：</th><td><img class="pimg" style="width: 100px;height: 80px;" src="<{$info_rs.hb_pic}>" onerror="nofind();"></td></tr>
+	</table>
+	</div>
+		<div class="colorarea01">
+
+	<div class="search clearfix">
+	<div class="searchL">
+		<ul class="menulist">
+			<li>车辆图片</li>
+		</ul>
+	</div>
+</div>
+	<table cellspacing="0" cellpadding="0" width="100%"  class="maintable">
+		<tr>
+			<th>图片：</th>
+				<td >
+
+						<{foreach from=$pic item=p}>
+						<img class="pimg" style="width: 150px;height: 80px;" src="<{$p.pic}>">
+						<{/foreach}>
+			</td>
+
+
+		</tr>
+	</table>
+	</div>
+
+
+<div class="colorarea01">
+
+	<div class="search clearfix">
+		<div class="searchL">
+			<ul class="menulist">
+				<li>事故排查</li>
+			</ul>
+		</div>
+	</div>
+	<table cellspacing="0" cellpadding="0" width="100%"  class="maintable">
+		<tr><th><h3>排除重大碰撞</h3></th><td></td></tr>
+		<tr><th>左A柱：</th><td><{if $sgpc_rs.zaz==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>右A柱：</th><td><{if $sgpc_rs.yaz==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>左B柱：</th><td><{if $sgpc_rs.zbz==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>右B柱：</th><td><{if $sgpc_rs.ybz==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>左C柱：</th><td><{if $sgpc_rs.zcz==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>右C柱：</th><td><{if $sgpc_rs.ycz==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>左前纵梁：</th><td><{if $sgpc_rs.zqzl==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>右前纵梁：</th><td><{if $sgpc_rs.yqzl==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>左后纵梁：</th><td><{if $sgpc_rs.zhzl==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>右后纵梁：</th><td><{if $sgpc_rs.yhzl==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>前防撞梁：</th><td><{if $sgpc_rs.qfzl==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>后防撞梁：</th><td><{if $sgpc_rs.hfzl==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>左前减震器悬挂部位：</th><td><{if $sgpc_rs.zqjzqxg==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>右前减震器悬挂部位：</th><td><{if $sgpc_rs.yqjzqxg==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>左后减震器悬挂部位：</th><td><{if $sgpc_rs.zhjzqxg==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>右后减震器悬挂部位：</th><td><{if $sgpc_rs.yhjzqxg==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>发动机舱防火墙：</th><td><{if $sgpc_rs.fdjfhq==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>后备箱底板：</th><td><{if $sgpc_rs.hbxdb==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>车身左右对称性：</th><td><{if $sgpc_rs.zydc==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th><h3>排除泡水</h3></th><td></td></tr>
+		<tr><th>发动机线束及橡胶制品：</th><td><{if $sgpc_rs.fdjxs==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>后备箱边角及备胎槽：</th><td><{if $sgpc_rs.hbxbj==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>座椅滑轨内：</th><td><{if $sgpc_rs.zyhgn==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>后排座椅坐垫底部：</th><td><{if $sgpc_rs.hzydb==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>安全带底部：</th><td><{if $sgpc_rs.aqddb==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>全车地胶地毯：</th><td><{if $sgpc_rs.djdt==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>音响喇叭底部：</th><td><{if $sgpc_rs.yxlbdb==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>烟灰缸底座：</th><td><{if $sgpc_rs.yhgdb==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th><h3>排除火烧</h3></th><td></td></tr>
+		<tr><th>车辆覆盖件及驾驶舱：</th><td><{if $sgpc_rs.clfgj==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>事故排查备注信息：</th><td><{$sgpc_rs.sg_msg}></td></tr>
+	</table>
+</div>
+
+
+
+		<div class="colorarea01">
+
+	<div class="search clearfix">
+	<div class="searchL">
+		<ul class="menulist">
+			<li>发动机检测</li>
+		</ul>
+	</div>
+</div>
+	<table cellspacing="0" cellpadding="0" width="100%"  class="maintable">
+		<tr><th>是否有拆卸痕迹：</th><td><{if $fdj_rs.fdj_cx==1}>是<{else}>否<{/if}></td></tr>
+		<tr><th>舱线束是否老化：</th><td><{if $fdj_rs.fdj_lh==1}>是<{else}>否<{/if}></td></tr>
+		<tr><th>传感器外观损坏：</th><td><{if $fdj_rs.cgq_sh==1}>是<{else}>否<{/if}></td></tr>
+		<tr><th>缸线有无破损：</th><td><{if $fdj_rs.gx_ps==1}>是<{else}>否<{/if}></td></tr>
+		<tr><th>缸盖漏油渗油：</th><td><{if $fdj_rs.fdjg_ly==1}>是<{else}>否<{/if}></td></tr>
+		<tr><th>水箱是否破损：</th><td><{if $fdj_rs.sx_ps==1}>是<{else}>否<{/if}></td></tr>
+		<tr><th>机油底壳：</th><td><{if $fdj_rs.jydk==1}>不正常<{else}>正常<{/if}></td></tr>
+		<tr><th>机油液面：</th><td><{if $fdj_rs.jyym==1}>不正常<{else}>正常<{/if}></td></tr>
+		<tr><th>防冻液液面：</th><td><{if $fdj_rs.fdym==1}>不正常<{else}>正常<{/if}></td></tr>
+		<tr><th>助力泵液面：</th>
+			<td>
+				<{if $fdj_rs.zlbym==1}>
+				不正常
+				<{elseif $fdj_rs.zlbym==2}>
+				正常
+				<{elseif $fdj_rs.zlbym==3}>
+				无
+				<{/if}>
+			</td>
+		</tr>
+		<tr><th>变速箱底壳：</th><td><{if $fdj_rs.bsxdk==1}>不正常<{else}>正常<{/if}></td></tr>
+		<tr><th>螺丝出厂状态：</th><td><{if $fdj_rs.ls==1}>是<{else}>否<{/if}></td></tr>
+		<tr><th>制动液液面：</th><td><{if $fdj_rs.zdy==1}>不正常<{else}>正常<{/if}></td></tr>
+		<tr><th>空调压缩机：</th>
+			<td>
+				<{if $fdj_rs.ktysj==1}>
+				不正常
+				<{elseif $fdj_rs.ktysj==2}>
+				正常
+				<{elseif $fdj_rs.ktysj==3}>
+				无
+				<{/if}>
+			</td>
+		</tr>
+		<tr><th>转向助力泵：</th>
+			<td>
+				<{if $fdj_rs.zxzlb==1}>
+				不正常
+				<{elseif $fdj_rs.zxzlb==2}>
+				正常
+				<{elseif $fdj_rs.zxzlb==3}>
+				无
+				<{elseif $fdj_rs.zxzlb==4}>
+				电子助力
+				<{/if}>
+			</td>
+		</tr>
+		<tr><th>发动机备注信息：</th><td><{$fdj_rs.fdj_msg}></td></tr>
+	</table>
+	</div>
+
+
+<div class="colorarea01">
+
+	<div class="search clearfix">
+		<div class="searchL">
+			<ul class="menulist">
+				<li>系统设备</li>
+			</ul>
+		</div>
+	</div>
+	<table cellspacing="0" cellpadding="0" width="100%"  class="maintable">
+		<tr><th><h3>安全系统检测</h3></th><td></td></tr>
+		<tr><th>变速箱系统警示灯：</th><td><{if $xtsb_rs.bsxd==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>制动系统警示灯：</th><td><{if $xtsb_rs.zdd==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>ABS系统警示灯：</th>
+			<td>
+				<{if $xtsb_rs.absd==1}>
+				正常
+				<{elseif $xtsb_rs.absd==2}>
+				不正常
+				<{elseif $xtsb_rs.absd==3}>
+				无
+				<{/if}>
+			</td>
+		</tr>
+		<tr><th>安全气囊系统：</th>
+			<td>
+				<{if $xtsb_rs.aqql==1}>
+				正常
+				<{elseif $xtsb_rs.aqql==2}>
+				不正常
+				<{elseif $xtsb_rs.aqql==3}>
+				无
+				<{/if}>
+			</td>
+		</tr>
+		<tr><th>发动机系统警示灯：</th><td><{if $xtsb_rs.fdjd==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th><h3>指示灯系统检测</h3></th><td></td></tr>
+
+
+		<tr><th>前雾灯：</th>
+			<td>
+				<{if $xtsb_rs.qwd==1}>
+				正常
+				<{elseif $xtsb_rs.qwd==2}>
+				不正常
+				<{elseif $xtsb_rs.qwd==3}>
+				无
+				<{/if}>
+			</td>
+		</tr>
+
+
+
+		<tr><th>后雾灯：</th>
+			<td>
+				<{if $xtsb_rs.hwd==1}>
+				正常
+				<{elseif $xtsb_rs.hwd==2}>
+				不正常
+				<{elseif $xtsb_rs.hwd==3}>
+				无
+				<{/if}>
+			</td>
+		</tr>
+
+		<!--<tr><th>前雾灯：</th><td><{if $xtsb_rs.qwd==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>后雾灯：</th><td><{if $xtsb_rs.hwd==1}>正常<{else}>不正常<{/if}></td></tr>-->
+		<tr><th>近光灯：</th><td><{if $xtsb_rs.jgd==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>远光灯：</th><td><{if $xtsb_rs.ygd==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>前转向灯：</th><td><{if $xtsb_rs.qzxd==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>后转向灯：</th><td><{if $xtsb_rs.hzxd==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>倒车灯：</th><td><{if $xtsb_rs.dcd==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>刹车灯：</th><td><{if $xtsb_rs.scd==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>室内顶灯：</th><td><{if $xtsb_rs.sndd==1}>正常<{else}>不正常<{/if}></td></tr>
+		<tr><th>系统设备备注信息：</th><td><{$xtsb_rs.sb_msg}></td></tr>
+	</table>
+</div>
+
+
+
+
+
+
+
+		<div class="colorarea01">
+
+	<div class="search clearfix">
+	<div class="searchL">
+		<ul class="menulist">
+			<li>车辆配置</li>
+		</ul>
+	</div>
+</div>
+	<table cellspacing="0" cellpadding="0" width="100%"  class="maintable">
+		<tr><th>遥控钥匙：</th><td><{if $info_rs.yk_keys==1}>有<{else}>无<{/if}></td></tr>
+		<tr><th>千 斤 顶：</th><td><{if $info_rs.qjd==1}>有<{else}>无<{/if}></td></tr>
+		<tr><th>随车工具：</th><td><{if $info_rs.tool==1}>有<{else}>无<{/if}></td></tr>
+		<tr><th>三 角 牌：</th><td><{if $info_rs.sjp==1}>有<{else}>无<{/if}></td></tr>
+		<tr><th>灭 火 器：</th><td><{if $info_rs.mhq==1}>有<{else}>无<{/if}></td></tr>
+		<tr><th>备 胎：</th><td><{if $info_rs.bt==1}>有<{else}>无<{/if}></td></tr>
+	</table>
+	</div>
+	<div class="colorarea01">
+
+	<div class="search clearfix">
+	<div class="searchL">
+		<ul class="menulist">
+			<li>外观检测</li>
+		</ul>
+	</div>
+</div>
+	<table cellspacing="0" cellpadding="0" width="100%"  class="maintable">
+		<tr><th>左前保险杠：</th>
+			<td>
+				<{if $waiguan_rs.zq_bxg==1}>
+					完好
+				<{elseif $waiguan_rs.zq_bxg==2}>
+					更换
+				<{elseif $waiguan_rs.zq_bxg==3}>
+					做漆
+				<{elseif $waiguan_rs.zq_bxg==4}>
+					钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.zq_bxg_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.zq_bxg_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.zq_bxg_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.zq_bxg_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.zq_bxg_pic}>" onerror="nofind();"></td>		</tr>
+		<tr><th>右前保险杠：</th>
+			<td>
+				<{if $waiguan_rs.yq_bxg==1}>
+				完好
+				<{elseif $waiguan_rs.yq_bxg==2}>
+				更换
+				<{elseif $waiguan_rs.yq_bxg==3}>
+				做漆
+				<{elseif $waiguan_rs.yq_bxg==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.yq_bxg_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.yq_bxg_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.yq_bxg_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.yq_bxg_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.yq_bxg_pic}>" onerror="nofind();"></td>		</tr>
+		<tr><th>左后保险杆：</th>
+			<td>
+				<{if $waiguan_rs.zh_bxg==1}>
+				完好
+				<{elseif $waiguan_rs.zh_bxg==2}>
+				更换
+				<{elseif $waiguan_rs.zh_bxg==3}>
+				做漆
+				<{elseif $waiguan_rs.zh_bxg==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.zh_bxg_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.zh_bxg_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.zh_bxg_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.zh_bxg_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.zh_bxg_pic}>" onerror="nofind();"></td>		</tr>
+		<tr><th>右后保险杆：</th>
+			<td>
+				<{if $waiguan_rs.yh_bxg==1}>
+				完好
+				<{elseif $waiguan_rs.yh_bxg==2}>
+				更换
+				<{elseif $waiguan_rs.yh_bxg==3}>
+				做漆
+				<{elseif $waiguan_rs.yh_bxg==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.yh_bxg_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.yh_bxg_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.yh_bxg_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.yh_bxg_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.yh_bxg_pic}>" onerror="nofind();"></td>		</tr>
+
+
+
+
+
+
+		<tr><th>左前翼子板：</th>
+			<td>
+				<{if $waiguan_rs.zq_yzb==1}>
+				完好
+				<{elseif $waiguan_rs.zq_yzb==2}>
+				更换
+				<{elseif $waiguan_rs.zq_yzb==3}>
+				做漆
+				<{elseif $waiguan_rs.zq_yzb==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.zq_yzb_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.zq_yzb_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.zq_yzb_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.zq_yzb_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.zq_yzb_pic}>" onerror="nofind();"></td>		</tr>
+
+
+
+
+		<tr><th>右前翼子板：</th>
+			<td>
+				<{if $waiguan_rs.yq_yzb==1}>
+				完好
+				<{elseif $waiguan_rs.yq_yzb==2}>
+				更换
+				<{elseif $waiguan_rs.yq_yzb==3}>
+				做漆
+				<{elseif $waiguan_rs.yq_yzb==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.yq_yzb_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.yq_yzb_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.yq_yzb_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.yq_yzb_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.yq_yzb_pic}>" onerror="nofind();"></td>		</tr>
+
+
+
+
+
+		<tr><th>左后翼子板：</th>
+			<td>
+				<{if $waiguan_rs.zh_yzb==1}>
+				完好
+				<{elseif $waiguan_rs.zh_yzb==2}>
+				更换
+				<{elseif $waiguan_rs.zh_yzb==3}>
+				做漆
+				<{elseif $waiguan_rs.zh_yzb==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.zh_yzb_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.zh_yzb_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.zh_yzb_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.zh_yzb_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.zh_yzb_pic}>" onerror="nofind();"></td>		</tr>
+
+
+
+
+		<tr><th>右后翼子板：</th>
+			<td>
+				<{if $waiguan_rs.yh_yzb==1}>
+				完好
+				<{elseif $waiguan_rs.yh_yzb==2}>
+				更换
+				<{elseif $waiguan_rs.yh_yzb==3}>
+				做漆
+				<{elseif $waiguan_rs.yh_yzb==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.yh_yzb_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.yh_yzb_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.yh_yzb_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.yh_yzb_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.yh_yzb_pic}>" onerror="nofind();"></td>		</tr>
+
+
+
+
+		<tr><th>左A柱：</th>
+			<td>
+				<{if $waiguan_rs.zaz==1}>
+				完好
+				<{elseif $waiguan_rs.zaz==2}>
+				更换
+				<{elseif $waiguan_rs.zaz==3}>
+				做漆
+				<{elseif $waiguan_rs.zaz==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.zaz_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.zaz_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.zaz_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.zaz_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.zaz_pic}>" onerror="nofind();"></td>		</tr>
+
+
+
+
+		<tr><th>右A柱：</th>
+			<td>
+				<{if $waiguan_rs.yaz==1}>
+				完好
+				<{elseif $waiguan_rs.yaz==2}>
+				更换
+				<{elseif $waiguan_rs.yaz==3}>
+				做漆
+				<{elseif $waiguan_rs.yaz==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.yaz_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.yaz_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.yaz_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.yaz_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.yaz_pic}>" onerror="nofind();"></td>		</tr>
+
+
+
+
+		<tr><th>左B柱：</th>
+			<td>
+				<{if $waiguan_rs.zbz==1}>
+				完好
+				<{elseif $waiguan_rs.zbz==2}>
+				更换
+				<{elseif $waiguan_rs.zbz==3}>
+				做漆
+				<{elseif $waiguan_rs.zbz==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.zbz_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.zbz_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.zbz_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.zbz_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.zbz_pic}>" onerror="nofind();"></td>		</tr>
+
+
+
+
+		<tr><th>右B柱：</th>
+			<td>
+				<{if $waiguan_rs.ybz==1}>
+				完好
+				<{elseif $waiguan_rs.ybz==2}>
+				更换
+				<{elseif $waiguan_rs.ybz==3}>
+				做漆
+				<{elseif $waiguan_rs.ybz==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.ybz_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.ybz_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.ybz_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.ybz_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.ybz_pic}>" onerror="nofind();"></td>		</tr>
+
+
+
+
+		<tr><th>左C柱：</th>
+			<td>
+				<{if $waiguan_rs.zcz==1}>
+				完好
+				<{elseif $waiguan_rs.zcz==2}>
+				更换
+				<{elseif $waiguan_rs.zcz==3}>
+				做漆
+				<{elseif $waiguan_rs.zcz==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.zcz_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.zcz_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.zcz_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.zcz_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.zcz_pic}>" onerror="nofind();"></td>		</tr>
+
+
+
+
+		<tr><th>右C柱：</th>
+			<td>
+				<{if $waiguan_rs.ycz==1}>
+				完好
+				<{elseif $waiguan_rs.ycz==2}>
+				更换
+				<{elseif $waiguan_rs.ycz==3}>
+				做漆
+				<{elseif $waiguan_rs.ycz==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.ycz_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.ycz_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.ycz_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.ycz_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.ycz_pic}>" onerror="nofind();"></td>		</tr>
+
+
+
+
+		<tr><th>左前门：</th>
+			<td>
+				<{if $waiguan_rs.zqm==1}>
+				完好
+				<{elseif $waiguan_rs.zqm==2}>
+				更换
+				<{elseif $waiguan_rs.zqm==3}>
+				做漆
+				<{elseif $waiguan_rs.zqm==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.zqm_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.zqm_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.zqm_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.zqm_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.zqm_pic}>" onerror="nofind();"></td>			<td>备注信息：<{$waiguan_rs.zqm_msg}></td>
+		</tr>
+
+
+
+		<tr><th>右前门：</th>
+			<td>
+				<{if $waiguan_rs.yqm==1}>
+				完好
+				<{elseif $waiguan_rs.yqm==2}>
+				更换
+				<{elseif $waiguan_rs.yqm==3}>
+				做漆
+				<{elseif $waiguan_rs.yqm==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.yqm_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.yqm_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.yqm_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.yqm_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.yqm_pic}>" onerror="nofind();"></td>			<td>备注信息：<{$waiguan_rs.yqm_msg}></td>
+		</tr>
+
+
+
+		<tr><th>左后门：</th>
+			<td>
+				<{if $waiguan_rs.zhm==1}>
+				完好
+				<{elseif $waiguan_rs.zhm==2}>
+				更换
+				<{elseif $waiguan_rs.zhm==3}>
+				做漆
+				<{elseif $waiguan_rs.zhm==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.zhm_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.zhm_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.zhm_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.zhm_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.zhm_pic}>" onerror="nofind();"></td>			<td>备注信息：<{$waiguan_rs.zhm_msg}></td>
+		</tr>
+
+
+
+
+		<tr><th>右后门：</th>
+			<td>
+				<{if $waiguan_rs.yhm==1}>
+				完好
+				<{elseif $waiguan_rs.yhm==2}>
+				更换
+				<{elseif $waiguan_rs.yhm==3}>
+				做漆
+				<{elseif $waiguan_rs.yhm==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.yhm_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.yhm_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.yhm_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.yhm_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.yhm_pic}>" onerror="nofind();"></td>			<td>备注信息：<{$waiguan_rs.yhm_msg}></td>
+		</tr>
+
+		<tr><th>后备箱 ：</th>
+			<td>
+				<{if $waiguan_rs.hbx==1}>
+				完好
+				<{elseif $waiguan_rs.hbx==2}>
+				更换
+				<{elseif $waiguan_rs.hbx==3}>
+				做漆
+				<{elseif $waiguan_rs.hbx==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.hbx_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.hbx_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.hbx_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.hbx_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.hbx_pic}>" onerror="nofind();"></td>			<td>备注信息：<{$waiguan_rs.hbx_msg}></td>
+		</tr>
+
+
+
+		<tr><th>左车顶：</th>
+			<td>
+				<{if $waiguan_rs.zcd==1}>
+				完好
+				<{elseif $waiguan_rs.zcd==2}>
+				更换
+				<{elseif $waiguan_rs.zcd==3}>
+				做漆
+				<{elseif $waiguan_rs.zcd==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.zcd_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.zcd_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.zcd_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.zcd_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.zcd_pic}>" onerror="nofind();"></td>		</tr>
+
+
+		<tr><th>右车顶：</th>
+			<td>
+				<{if $waiguan_rs.ycd==1}>
+				完好
+				<{elseif $waiguan_rs.ycd==2}>
+				更换
+				<{elseif $waiguan_rs.ycd==3}>
+				做漆
+				<{elseif $waiguan_rs.ycd==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.ycd_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.ycd_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.ycd_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.ycd_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.ycd_pic}>" onerror="nofind();"></td>		</tr>
+
+
+		<tr><th>左侧裙边：</th>
+			<td>
+				<{if $waiguan_rs.zcqb==1}>
+				完好
+				<{elseif $waiguan_rs.zcqb==2}>
+				更换
+				<{elseif $waiguan_rs.zcqb==3}>
+				做漆
+				<{elseif $waiguan_rs.zcqb==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.zcqb_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.zcqb_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.zcqb_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.zcqb_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.zcqb_pic}>" onerror="nofind();"></td>		</tr>
+
+
+
+		<tr><th>右侧裙边：</th>
+			<td>
+				<{if $waiguan_rs.ycqb==1}>
+				完好
+				<{elseif $waiguan_rs.ycqb==2}>
+				更换
+				<{elseif $waiguan_rs.ycqb==3}>
+				做漆
+				<{elseif $waiguan_rs.ycqb==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.ycqb_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.ycqb_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.ycqb_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.ycqb_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.ycqb_pic}>" onerror="nofind();"></td>		</tr>
+
+
+
+		<tr><th>发动机盖：</th>
+			<td>
+				<{if $waiguan_rs.fdj==1}>
+				完好
+				<{elseif $waiguan_rs.fdj==2}>
+				更换
+				<{elseif $waiguan_rs.fdj==3}>
+				做漆
+				<{elseif $waiguan_rs.fdj==4}>
+				钣金
+				<{/if}>
+			</td>
+			<td><{if $waiguan_rs.fdj_hh==1}>有划痕<{else}>无划痕<{/if}></td>
+			<td><{if $waiguan_rs.fdj_ax==1}>有凹陷<{else}>无凹陷<{/if}></td>
+			<td><{if $waiguan_rs.fdj_ps==1}>有破损<{else}>无破损<{/if}></td>
+			<td><{if $waiguan_rs.fdj_lh==1}>有裂痕<{else}>无裂痕<{/if}></td>
+			<td><img class="pimg" style="width: 100px;height: 80px;" src="<{$waiguan_rs.fdj_pic}>" onerror="nofind();"></td>		</tr>
+	</table>
+	</div>
+		<div class="colorarea01">
+
+	<div class="search clearfix">
+	<div class="searchL">
+		<ul class="menulist">
+			<li>底盘检测</li>
+		</ul>
+	</div>
+</div>
+	<table cellspacing="0" cellpadding="0" width="100%"  class="maintable">
+
+		<tr><th>底盘检测：</th>
+			<td>
+			<{if $waiguan_rs.dp==1}>
+				正常
+			<{elseif $waiguan_rs.dp==2}>
+				剐蹭
+			<{elseif $waiguan_rs.dp==3}>
+				托底
+			<{/if}>
+			</td>
+		</tr>
+		<tr><th>右后减震器：</th>
+			<td>
+				<{if $waiguan_rs.yhjzq==1}>
+				正常
+				<{elseif $waiguan_rs.yhjzq==2}>
+				漏油
+				<{elseif $waiguan_rs.yhjzq==3}>
+				塌陷
+				<{/if}>
+			</td>
+		</tr>
+		<tr><th>右前减震器：</th>
+			<td>
+				<{if $waiguan_rs.yqjzq==1}>
+				正常
+				<{elseif $waiguan_rs.yqjzq==2}>
+				漏油
+				<{elseif $waiguan_rs.yqjzq==3}>
+				塌陷
+				<{/if}>
+			</td>
+		</tr>
+		<tr><th>左前减震器：</th>
+			<td>
+				<{if $waiguan_rs.zqjzq==1}>
+				正常
+				<{elseif $waiguan_rs.zqjzq==2}>
+				漏油
+				<{elseif $waiguan_rs.zqjzq==3}>
+				塌陷
+				<{/if}>
+			</td>
+		</tr>
+		<tr><th>左后减震器：</th>
+			<td>
+				<{if $waiguan_rs.zhjzq==1}>
+				正常
+				<{elseif $waiguan_rs.zhjzq==2}>
+				漏油
+				<{elseif $waiguan_rs.zhjzq==3}>
+				塌陷
+				<{/if}>
+			</td>
+		</tr>
+		<tr><th>底盘备注信息：</th><td><{$waiguan_rs.dp_msg}></td></tr>
+	</table>
+	</div>
+		<div class="colorarea01">
+
+	<div class="search clearfix">
+	<div class="searchL">
+		<ul class="menulist">
+			<li>内饰检测</li>
+		</ul>
+	</div>
+</div>
+	<table cellspacing="0" cellpadding="0" width="100%"  class="maintable">
+		<tr><th>方向盘磨损：</th><td>
+			<{if $neishi_rs.fxp==1}>
+			正常
+			<{elseif $neishi_rs.fxp==2}>
+			轻微
+			<{elseif $neishi_rs.fxp==3}>
+			严重
+			<{/if}></td></tr>
+		<tr><th>中控台磨损：</th><td>
+			<{if $neishi_rs.zkt==1}>
+			正常
+			<{elseif $neishi_rs.zkt==2}>
+			轻微
+			<{elseif $neishi_rs.zkt==3}>
+			严重
+			<{/if}>
+		</td></tr>
+		<tr><th>主驾车门内饰板磨损：</th><td>
+			<{if $neishi_rs.zjcm==1}>
+			正常
+			<{elseif $neishi_rs.zjcm==2}>
+			轻微
+			<{elseif $neishi_rs.zjcm==3}>
+			严重
+			<{/if}>
+		</td></tr>
+		<tr><th>副驾车门内饰板磨损：</th><td>
+			<{if $neishi_rs.fjcm==1}>
+			正常
+			<{elseif $neishi_rs.fjcm==2}>
+			轻微
+			<{elseif $neishi_rs.fjcm==3}>
+			严重
+			<{/if}>
+		</td></tr>
+		<tr><th>后排左侧车门内饰板磨损：</th><td>
+			<{if $neishi_rs.hzcm==1}>
+			正常
+			<{elseif $neishi_rs.hzcm==2}>
+			轻微
+			<{elseif $neishi_rs.hzcm==3}>
+			严重
+			<{/if}>
+		</td></tr>
+		<tr><th>后排右侧车门内饰板磨损：</th><td>
+			<{if $neishi_rs.hycm==1}>
+			正常
+			<{elseif $neishi_rs.hycm==2}>
+			轻微
+			<{elseif $neishi_rs.hycm==3}>
+			严重
+			<{/if}>
+		</td></tr>
+		<tr><th>主驾座椅磨损：</th><td>
+			<{if $neishi_rs.zjzy==1}>
+			正常
+			<{elseif $neishi_rs.zjzy==2}>
+			轻微
+			<{elseif $neishi_rs.zjzy==3}>
+			严重
+			<{/if}>
+		</td></tr>
+		<tr><th>副驾座椅磨损：</th><td>
+			<{if $neishi_rs.fjzy==1}>
+			正常
+			<{elseif $neishi_rs.fjzy==2}>
+			轻微
+			<{elseif $neishi_rs.fjzy==3}>
+			严重
+			<{/if}>
+		</td></tr>
+		<tr><th>后排座椅磨损：</th><td>
+			<{if $neishi_rs.hzy==1}>
+			正常
+			<{elseif $neishi_rs.hzy==2}>
+			轻微
+			<{elseif $neishi_rs.hzy==3}>
+			严重
+			<{/if}>
+		</td></tr>
+		<tr><th>天窗开启状态：</th><td>
+			<{if $neishi_rs.tc==1}>
+			正常
+			<{elseif $neishi_rs.tc==2}>
+			不正常
+			<{elseif $neishi_rs.tc==3}>
+			无
+			<{/if}>
+		</td></tr>
+		<tr><th>玻璃升降：</th><td>
+			<{if $neishi_rs.blsj==1}>
+			正常
+			<{elseif $neishi_rs.blsj==2}>
+			不正常
+			<{/if}>
+		</td></tr>
+	</table>
+	</div>
+
+<div class="colorarea01">
+
+	<div class="search clearfix">
+		<div class="searchL">
+			<ul class="menulist">
+				<li>检测师点评</li>
+			</ul>
+		</div>
+	</div>
+	<table cellspacing="0" cellpadding="0" width="100%"  class="maintable">
+		<tr><th>价格：</th><td><{$info_rs.price}>(/万元)</td></tr>
+		<tr><th>是否推荐：</th><td><{if $info_rs.tui==1}>是<{else}>否<{/if}></td></tr>
+		<tr><th>加装设备备注信息：</th><td><{$info_rs.jzsb_msg}></td></tr>
+		<tr><th>点评：</th><td><{$info_rs.pingjia}></td></tr>
+	</table>
+</div>
+<script>
+	$(function(){
+		$(".pimg").click(function(){
+			var _this = $(this);//将当前的pimg元素作为_this传入函数
+			imgShow("#outerdiv", "#innerdiv", "#bigimg", _this);
+		});
+	});
+
+	function imgShow(outerdiv, innerdiv, bigimg, _this){
+		var src = _this.attr("src");//获取当前点击的pimg元素中的src属性
+		$(bigimg).attr("src", src);//设置#bigimg元素的src属性
+
+		/*获取当前点击图片的真实大小，并显示弹出层及大图*/
+		$("<img/>").attr("src", src).load(function(){
+			var windowW = $(window).width();//获取当前窗口宽度
+			var windowH = $(window).height();//获取当前窗口高度
+			var realWidth = this.width;//获取图片真实宽度
+			var realHeight = this.height;//获取图片真实高度
+			var imgWidth, imgHeight;
+			var scale = 0.8;//缩放尺寸，当图片真实宽度和高度大于窗口宽度和高度时进行缩放
+
+			if(realHeight>windowH*scale) {//判断图片高度
+				imgHeight = windowH*scale;//如大于窗口高度，图片高度进行缩放
+				imgWidth = imgHeight/realHeight*realWidth;//等比例缩放宽度
+				if(imgWidth>windowW*scale) {//如宽度扔大于窗口宽度
+					imgWidth = windowW*scale;//再对宽度进行缩放
+				}
+			} else if(realWidth>windowW*scale) {//如图片高度合适，判断图片宽度
+				imgWidth = windowW*scale;//如大于窗口宽度，图片宽度进行缩放
+				imgHeight = imgWidth/realWidth*realHeight;//等比例缩放高度
+			} else {//如果图片真实高度和宽度都符合要求，高宽不变
+				imgWidth = realWidth;
+				imgHeight = realHeight;
+			}
+			$(bigimg).css("width",imgWidth);//以最终的宽度对图片缩放
+
+			var w = (windowW-imgWidth)/2;//计算图片与窗口左边距
+			var h = (windowH-imgHeight)/2;//计算图片与窗口上边距
+			$(innerdiv).css({"top":h, "left":w});//设置#innerdiv的top和left属性
+			$(outerdiv).fadeIn("fast");//淡入显示#outerdiv及.pimg
+		});
+
+		$(outerdiv).click(function(){//再次点击淡出消失弹出层
+			$(this).fadeOut("fast");
+		});
+	}
+</script>
+<script>
+	window.onload = window.onresize = window.onscroll = function() {
+		var doc = document,
+				layer = doc.getElementById('innerdiv'),
+				clientWidth  = window.innerWidth/*W3C*/|| doc.documentElement.clientWidth/*std IE*/||doc.body.clientWidth/*IE quirk mode*/,
+				clientHeight = window.innerHeight || doc.documentElement.clientHeight || doc.body.clientHeight;
+		layer.style.left = Math.round((clientWidth - layer.offsetWidth) / 2) + 'px';
+		layer.style.top  = Math.round((clientHeight - layer.offsetHeight) / 2) + 'px';
+	};
+</script>
+</body>
+</html>

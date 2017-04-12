@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="static/css/admin/style.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="static/js/common.js"></script>
+</head>
+<body>
+<div class="colorarea01">
+	<form action="jifenjl" method="post" name="form">
+	<table cellspacing="0" cellpadding="0" width="100%"  class="listtable">
+		<tr><th>ID</th>
+		<th>手机号</th>
+		<th>条件</th>
+		<th>积分</th>
+		<th>获取时间</th>
+		<th  width='100'>操作</th></tr>
+		<{foreach from=$list item=jl}>
+		<tr>
+			<td align="center" width="80"><{$jl.id}>&nbsp;</td>
+			<td align="center"><{$jl.mobile}>&nbsp;</td>
+			<{if $jl.status==1}>
+			<td align="center">作为推荐人获得积分&nbsp;</td>
+			<{elseif $jl.status==2}>
+			<td align="center">作为新会员获得积分&nbsp;</td>
+			<{elseif $jl.status==3}>
+			<td align="center">发布车辆信息获得积分&nbsp;</td>
+			<{else}>
+			<td align="center">消费积分&nbsp;</td>
+			<{/if}>
+			<td align="center"><{$jl.jifen}>&nbsp;</td>
+			<td align="center"><{$jl.create_time}>&nbsp;</td>
+			<td align="center"><a href="javascript:if(confirm('确实要删除吗?'))location='<{$adminpage}>?m=jifenjl&a=del&id=<{$jl.id}>&page=<{$page}>'">删除</a></td>
+		</tr>
+		<{/foreach}>
+	</table>
+	</form>
+	<div class="listpage"><{$button_basic}><{$button_select}></div>
+</div>
+</body>
+</html>

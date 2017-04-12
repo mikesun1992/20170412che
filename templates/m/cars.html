@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title><{$setting.title}></title>
+	<link href="<{$weburl}>/templates/m/css/page.css" rel="stylesheet" type="text/css"/>
+	<script src="<{$weburl}>/templates/m/js/jquery.js" type="text/javascript"></script>	
+	<script src="<{$weburl}>/templates/m/js/TouchSlide.1.1.js"></script>
+</head>
+<body>
+<!--头部-->
+<div class="comnav clearfix">
+	<a href="javascript:window.history.go(-1);" class="reback">返回</a>
+	<a href="/index.php" class="home">首页</a>
+	汽车详情
+</div>
+<!--头部结束-->
+<!--主体-->
+<{if $cars.p_mainpic<>""}>
+<div class="main mt10">
+	<div id="focus" class="carpic">
+		<div class="hd">
+			<ul></ul>
+		</div>
+		<div class="bd">
+			<ul>
+				<{foreach from=$pic_list item=pic}>
+				<li><a href="#"><img _src="<{$pic}>" src="images/blank.png" /></a></li>
+				<{/foreach}>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript">
+		TouchSlide({ 
+			slideCell:"#focus",
+			titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+			mainCell:".bd ul", 
+			effect:"left", 
+			autoPlay:true,//自动播放
+			autoPage:true, //自动分页
+			switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+		});
+	</script>
+</div>
+<{/if}>
+<div class="carname">
+	<{$cars.p_allname}>
+</div>
+<div class="detailbox">
+	<div class="box">
+		<p class="pl10">车主报价：<span class="orange01 fb f16"><{$cars.p_price}></span></p>
+		<p class="pl10">出厂报价：<{$cars.p_newprice}>万+<{$cars.p_tax}>万(购置税) 您节省了<{$cars.p_save}>万 </p>
+		 <p class="pl10">服 务 费：<{$fuwufei}>（车价x3%，最低2500元）</p>
+		  <p class="pl10">服 务 项: ● 1年/2万公里基础质保 ● 14天可退 ● 258项全面检测</p>
+		<ul class="detaillist clearfix">
+			<li><span class="fb">上牌日期：</span><{$cars.p_year}>年<{$cars.p_month}>月</li>
+			<li><span class="fb">发布日期：</span><{$cars.listtime}></li>
+		</ul>
+	</div>
+</div>
+<div class="detailbox">
+	<h3>基本信息</h3>
+	<div class="box">
+		<ul class="detaillist mt10 clearfix">
+			<li><span class="gray">车型：</span><{if $cars.p_modelname<>''}><{$cars.p_modelname}><{else}>无<{/if}></li>	
+			<li><span class="gray">行驶里程：</span><{if $cars.p_kilometre<>''}><{$cars.p_kilometre}>万公里<{else}>无<{/if}></li>
+			<li><span class="gray">颜色：</span><{if $cars.p_color<>''}><{$cars.p_color}><{else}>无<{/if}></li>
+			<li><span class="gray" style="word-spacing:10px;">变速箱：</span><{if $cars.p_transmission<>''}><{$cars.p_transmission}><{else}>无<{/if}></li>
+			<li><span class="gray">排量：</span><{$cars.p_gas}></li>
+			<li><span class="gray">年检到期：</span><{$cars.p_overtime}></li>
+			<li><span class="gray">上牌地：</span><{if $cars.city<>''}><{$cars.city}><{else}>无<{/if}></li>
+			<li><span class="gray">排放标准：</span><{$cars.p_emission}></li>
+			<li><span class="gray">过户次数：</span><{$info_rs.gh}></li>
+			<li><span class="gray">国产进口：</span><{$cars.p_country}></li>
+		</ul>
+	</div>
+</div>
+<div class="detailbox mt15">
+	<h3>车辆配置</h3>
+	<div class="box">
+	<ul class="detaillist mt10 clearfix">
+		<li><span class="gray">变 速 器：</span><{$info_rs.bsx}></li>
+		<li><span class="gray">燃油类型：</span><{$cars.p_fmode}></li>
+		<li><span class="gray">排    量：</span><{$info_rs.pl}></li>
+		<li><span class="gray">遥控钥匙：</span><{if $info_rs.yk_keys==1}>有<{else}>无<{/if}></li>
+		</ul>
+	</div>
+</div>
+<div class="detailbox mt15">
+	<h3>车主描述</h3>
+	<div class="box">
+		<{$cars.p_details}>
+	</div>
+</div>
+<div class="detailbox mt15">
+	<h3>检测报告</h3>
+	<div class="box">
+		
+	</div>
+</div>
+<div class="detailbox mt15">
+	<h3>图片展示</h3>
+			<{if $cars.p_mainpic<>""}>
+			<div class="box">
+				<center><{foreach from=$pic_list item=pic}>
+					<p style="margin-top:10px;float:left;overflow:hidden;background-color: #f9f9f9">
+						<img style="width:100%" src="<{$pic}>">
+
+					</p>
+				<{/foreach}>
+				</center>
+				<div style="clear:both;"></div> 
+			</div>
+			<{/if}>
+</div>
+<{if $cars.uid==0}>
+<div class="detailbox mt15">
+	<h3>联系方式</h3>
+	<div class="box">
+		<{if $cars.p_username<>''}><p><span>联系人：</span><{$setting.title}></p><{/if}>
+		<{if $cars.p_tel<>''}><p class="mt5">手机：<{$setting.tel}></p><{/if}>
+	</div>
+</div>
+<{elseif $cars.uid==-1}>
+<div class="detailbox mt15">
+	<h3>预约看车</h3>
+	<div class="box">
+		<p><span>联系人：<{$setting.title}></span></p>
+		<p class="mt5">手机：<{$setting.tel}></p>
+	</div>
+</div>
+<{else}>
+	<{if $shop.isdealer==1}>
+	<div class="detailbox mt15">
+		<h3>预约买车</h3>
+		<div class="box">
+			<{if $shop.nicname<>''}><p class="mt5">联系人：<{$setting.title}></p><{/if}>
+			<{if $shop.mobilephone<>''}><p class="mt5">手机：<{$setting.tel}></p><{/if}>
+		</div>
+	</div>
+	<{else}>
+	
+	<{/if}>
+<{/if}>
+
+<div class="detailbox mt15">
+	<h3>同车型推荐</h3>
+	<{foreach from=$samecar item=samecarlist}>
+	<div class="carlist clearfix mt10">
+		<div class="carlist_left">
+			<a href="<{$samecarlist.p_id}>.html"><{if $samecarlist.p_mainpic<>''}><img src="<{$samecarlist.p_mainpic}>"/><{else}>暂无图片<{/if}></a>
+		</div>
+		<div class="carlist_right">
+			<p class="f12 fb"><a href="<{$samecarlist.p_id}>.html"><{$samecarlist.p_allname}></a></p>
+			<p>上牌日期：<{$samecarlist.p_year}>年<{$samecarlist.p_month}>月</p>
+			<p><span class="orange01 f14 fr pr10 fb"><{$samecarlist.p_price}></span><{$samecarlist.listtime}></p>
+		</div>
+	</div>
+	<{/foreach}>
+</div>
+<div class="detailbox mt15">
+	<h3>同价位推荐</h3>
+	<{foreach from=$samepricecars item=samepricecarlist}>
+	<div class="carlist clearfix mt10">
+		<div class="carlist_left">
+			<a href="<{$samepricecarlist.p_id}>.html"><{if $samepricecarlist.p_mainpic<>''}><img src="<{$samepricecarlist.p_mainpic}>"/><{else}>暂无图片<{/if}></a>
+		</div>
+		<div class="carlist_right">
+			<p class="f12 fb"><a href="<{$samepricecarlist.p_id}>.html"><{$samepricecarlist.p_allname}></a></p>
+			<p>上牌日期：<{$samepricecarlist.p_year}>年<{$samepricecarlist.p_month}>月</p>
+			<p><span class="orange01 fr pr10 fb"><{$samepricecarlist.p_price}></span><{$samepricecarlist.listtime}></p>
+		</div>
+	</div>
+	<{/foreach}>
+</div>
+<div id="foottel">
+	<{if $cars.uid==0}>
+		<div class="tel">
+			<p>联系人：<span class="orange01"><{$setting.title}></span></p>
+			<p>电话：<span class="orange01"><{$setting.tel}></span></p>
+		</div>
+		<div class="clickfoottel">
+			<a href="tel:<{$cars.p_tel}>">电话咨询</a>
+		</div>
+	<{elseif $cars.uid==-1}>
+	<div class="detailbox mt15">
+		<div class="tel">
+			<p>联系人：<span class="orange01"><{$setting.title}></span></p>
+			<p>电话：<span class="orange01"><{$setting.tel}></span></p>
+		</div>
+		<div class="clickfoottel">
+			<a href="tel:<{$setting.tel}>">电话咨询</a>
+		</div>
+	</div>
+	<{else}>
+		<div class="tel">
+			<p>联系人：<span class="orange01"><{$setting.title}></span></p>
+			<p>电话：<span class="orange01"><{$setting.tel}></span></p>
+		</div>
+		<div class="clickfoottel">
+			<a href="tel://<{$setting.tel}>/">电话咨询</a>
+		</div>
+	<{/if}>
+</div>
+<!--主体-->
+<!--底部--> 
+<{include file="svye2016m/foot.html"}>
+<!--底部结束-->
+</body>
+</html>
